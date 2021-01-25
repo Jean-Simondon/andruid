@@ -1,3 +1,43 @@
 <resources>
-    <string name="app_name">andruid</string>
+
+    <!-- GENERAL -->
+    <string name="app_name">Andruid</string>
+
+    <!-- Autre -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Item Menu DM -->
+    <string name="menu_home_dm">Home DM</string>
+    <string name="menu_codex">Codex</string>
+
+    <string name="menu_script">Script</string>
+    <string name="menu_map">Map</string>
+    <string name="menu_team_info">Team info</string>
+    <string name="menu_fight">Fight</string>
+    <string name="menu_music">Music</string>
+
+    <!-- Item Menu PC -->
+    <string name="menu_home_pc">Home PC</string>
+    <string name="menu_detail_caractere">Detail Caractere</string>
+    <string name="menu_journal">Journal</string>
+    <string name="menu_inventory">Inventory</string>
+    <string name="menu_skill">Skill</string>
+    <string name="menu_spell">Spell</string>
+
+    <!-- Item Menu DM & PC -->
+    <string name="menu_dice">Dice</string>
+
+    <!-- DM -->
+    <string name="title_activity_main_dm">MainDmActivity</string>
+
+    <!-- Header Menu DM  -->
+    <string name="nav_header_title">Andruid</string>
+
+    <!-- PC -->
+    <string name="title_activity_main_pc">MainPcActivity</string>
+
+
 </resources>

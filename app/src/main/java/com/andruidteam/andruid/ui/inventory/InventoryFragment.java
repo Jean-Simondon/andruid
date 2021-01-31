@@ -17,6 +17,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.ui.journal.JournalFragment;
@@ -24,8 +27,11 @@ import com.andruidteam.andruid.ui.journal.JournalFragment;
 public class InventoryFragment extends Fragment implements LifecycleOwner {
 
     private InventoryViewModel minventoryViewModel;
+    //    private FragmentActivity myContext;
 
-//    private FragmentActivity myContext;
+    public InventoryFragment() {
+        super(R.layout.fragment_inventory);
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -47,12 +53,11 @@ public class InventoryFragment extends Fragment implements LifecycleOwner {
         FragmentManager fragmentManager = getFragmentManager();
 //        FragmentManager fragManager = myContext.getSupportFragmentManager();
 
-
         // ---------------------------------------  LIFECYCLEOWNER : Objet pour gérer les cycles de vie de fragments ----------------------------------------------------
 
-        LifecycleOwner lifecycleOwner = (LifecycleOwner) getLifecycle();
+//        LifecycleOwner lifecycleOwner = (LifecycleOwner) getLifecycle();
 
-        LifecycleOwner viewLifecycleOwner =  getViewLifecycleOwner();
+//        LifecycleOwner viewLifecycleOwner =  getViewLifecycleOwner();
 //        LifecycleOwner viewllifecycleOwner2 = getViewLifecycleOwnerLiveData();
         // utile à observer un élément de la vue uniquement dans un cas spécifique,
 
@@ -61,6 +66,8 @@ public class InventoryFragment extends Fragment implements LifecycleOwner {
 
 
         // ---------------------------------------  TEXT VIEW EXEMPLE ----------------------------------------------------
+
+//        InventoryFragment fragment = (InventoryFragment) fragmentManager.findFragmentById(R.id.fragment_container);
 
         // dans cette hiérarchie, on récupère l'élément text_inventory
         final TextView textView = root.findViewById(R.id.text_inventory);
@@ -76,43 +83,27 @@ public class InventoryFragment extends Fragment implements LifecycleOwner {
         });
 
 
-
-
-
-
-
-
-
         // ---------------------------------------  BOUTON AJOUT NOUVEAU ITEM  ----------------------------------------------------
 
-        // on le récupère dans le XML
+
         final Button addNewItem = root.findViewById(R.id.searchForItemButton);
 
         addNewItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment_pc, JournalFragment.class, null)
-                        .setReorderingAllowed(true)
-                        .addToBackStack("Inventory")
-                        .commit();
+                NavDirections action = InventoryFragmentDirections.actionFragmentInventoryToBlankFragment();
+                Navigation.findNavController(v).navigate(action);
             }
         });
 
-
+        // ---------------------------------------  FIN ----------------------------------------------------
 
         // Et puis il faut renvoyer le container XML en fin de méthode
         return root;
     }
 
 
-//    @Override
-//    public void onAttach(Activity activity) {
-    //    myContext=(FragmentActivity) activity;
-        //    super.onAttach(activity);
-    //  }
-
-
+/*
     @Override
     public void onStart() {
         super.onStart();
@@ -154,24 +145,9 @@ public class InventoryFragment extends Fragment implements LifecycleOwner {
         super.onDetach();
     }
 
-
+*/
 
 }
-
-
-/**
- * Cyle de vie de la View
- *
- */
-
-
-
-
-
-
-
-
-
 
 
 

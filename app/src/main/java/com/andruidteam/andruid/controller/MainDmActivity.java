@@ -19,13 +19,14 @@ import com.google.android.material.navigation.NavigationView;
  */
 public class MainDmActivity extends AppCompatActivity {
 
+    private DrawerLayout mDrawerLayout;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main_dm);
+
         /**
          * Dans le layout activity_main_dm, on a l'architecture suviante :
          * DrawerLayout : contient tout le reste
@@ -35,7 +36,7 @@ public class MainDmActivity extends AppCompatActivity {
          */
 
         // On récupère le drawer, conteneur de tout le reste
-        DrawerLayout drawer = findViewById(R.id.drawer_layout_dm);
+        mDrawerLayout = findViewById(R.id.drawer_layout_dm);
 
         // Mise en place de de la barre d'outils au dessus du fragment
         setSupportActionBar(findViewById(R.id.toolbar_dm));
@@ -45,8 +46,8 @@ public class MainDmActivity extends AppCompatActivity {
 
         // On récupère chaque item du menu à l'aide de leur ID pour que chaque menu soient considéré comme une destination de haut niveau
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home_dm, R.id.nav_codex, R.id.nav_dice, R.id.nav_script, R.id.nav_map, R.id.nav_team_info, R.id.nav_fight, R.id.nav_music)
-                .setOpenableLayout(drawer)
+                R.id.nav_home_dm, R.id.nav_codex, R.id.diceFragment, R.id.nav_script, R.id.nav_map, R.id.nav_team_info, R.id.nav_fight, R.id.nav_music)
+                .setOpenableLayout(mDrawerLayout)
                 .build();
 
         // On récupère le fragment remplaçable

@@ -5,31 +5,31 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home_pc"
+            android:id="@+id/HomePcFragment"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_home_pc" />
         <item
-            android:id="@+id/nav_dice"
+            android:id="@+id/diceFragment"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_dice" />
         <item
-            android:id="@+id/nav_detail_caractere"
+            android:id="@+id/detailCaractereFragment"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_detail_caractere" />
         <item
-            android:id="@+id/nav_journal"
+            android:id="@+id/journalFragment"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_journal" />
         <item
-            android:id="@+id/nav_inventory"
+            android:id="@+id/inventoryFragment"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_inventory" />
         <item
-            android:id="@+id/nav_skill"
+            android:id="@+id/skillFragment"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_skill" />
         <item
-            android:id="@+id/nav_spell"
+            android:id="@+id/spellFragment"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_spell" />
     </group>

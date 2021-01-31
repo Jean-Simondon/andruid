@@ -19,7 +19,7 @@
         tools:layout="@layout/fragment_codex" />
 
     <fragment
-        android:id="@+id/nav_dice"
+        android:id="@+id/diceFragment"
         android:name="com.andruidteam.andruid.ui.dice.DiceFragment"
         android:label="@string/menu_dice"
         tools:layout="@layout/fragment_dice" />

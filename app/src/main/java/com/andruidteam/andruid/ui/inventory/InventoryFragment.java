@@ -82,13 +82,13 @@ public class InventoryFragment extends Fragment implements LifecycleOwner {
             }
         });
 
-
         // ---------------------------------------  BOUTON AJOUT NOUVEAU ITEM  ----------------------------------------------------
 
 
         final Button addNewItem = root.findViewById(R.id.searchForItemButton);
 
         addNewItem.setOnClickListener(new View.OnClickListener() {
+            int example = 10;
             @Override
             public void onClick(View v) {
                 NavDirections action = InventoryFragmentDirections.actionFragmentInventoryToBlankFragment();
@@ -98,7 +98,6 @@ public class InventoryFragment extends Fragment implements LifecycleOwner {
 
         // ---------------------------------------  FIN ----------------------------------------------------
 
-        // Et puis il faut renvoyer le container XML en fin de méthode
         return root;
     }
 

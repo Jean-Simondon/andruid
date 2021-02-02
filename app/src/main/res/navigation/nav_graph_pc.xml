@@ -39,7 +39,7 @@
             app:destination="@id/exampleFragment" />
         <action
             android:id="@+id/action_fragmentInventory_to_blankFragment"
-            app:destination="@id/blanckFragment" />
+            app:destination="@id/blankFragment" />
     </fragment>
 
     <fragment
@@ -60,7 +60,7 @@
         android:label="@string/menu_spell"
         tools:layout="@layout/fragment_spell" />
     <fragment
-        android:id="@+id/blanckFragment"
+        android:id="@+id/blankFragment"
         android:name="com.andruidteam.andruid.BlankFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_blank" >

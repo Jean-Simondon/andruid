@@ -49,14 +49,23 @@ public class MainPcActivity extends AppCompatActivity {
         // On connecte le navController avec le navigation View de manière à afficher les menu dans le panneau latéral
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        /**
+         * NavigationUI est une bibliothèque qui gère les Options Menu, Bottom Navigation, Navigation View, Navigation Drawer, Action Bar, Toolbar, Collapsing Toolbar
+         *
+         */
+
     }
 
+    /**
+     * menu settings dans le coin supérieur droit
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_pc, menu);
         return true;
     }
+
 
     @Override
     public boolean onSupportNavigateUp() {

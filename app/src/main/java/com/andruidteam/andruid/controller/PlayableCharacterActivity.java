@@ -2,7 +2,7 @@ package com.andruidteam.andruid.controller;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.app.Activity;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
@@ -19,7 +19,7 @@ import com.google.android.material.navigation.NavigationView;
  * Main activity for the PC part of the app
  * Holds the Navigation Host Fragment, Drawer, Toolbar etc.
  */
-public class MainPcActivity extends AppCompatActivity {
+public class PlayableCharacterActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private AppBarConfiguration mAppBarConfiguration;
@@ -27,7 +27,7 @@ public class MainPcActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_pc); // layout principal avec drawer, toolbar, fragment, et navigation view
+        setContentView(R.layout.activity_pc); // layout principal avec drawer, toolbar, fragment, et navigation view
         mDrawerLayout = findViewById(R.id.drawer_layout_pc); // drawer : container général de activity_main_pc
         setSupportActionBar(findViewById(R.id.toolbar_pc)); // la toolbar au dessus du fragment
 

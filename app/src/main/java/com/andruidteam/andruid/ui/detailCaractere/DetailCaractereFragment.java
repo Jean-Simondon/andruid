@@ -17,21 +17,25 @@ import com.andruidteam.andruid.R;
 public class DetailCaractereFragment extends Fragment {
 
     private DetailCaractereViewModel mdetailCaractereViewModel;
+    private View mRoot;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         mdetailCaractereViewModel = new ViewModelProvider(this).get(DetailCaractereViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_detail_caractere, container, false);
-        final TextView textView = root.findViewById(R.id.text_detail_caractere);
+        mRoot = inflater.inflate(R.layout.fragment_detail_caractere, container, false);
+        return mRoot;
+    }
 
-        mdetailCaractereViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        final TextView textView = mRoot.findViewById(R.id.text_detail_caractere);
+        mdetailCaractereViewModel.getFirstName().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
-
-        return root;
 
     }
 }

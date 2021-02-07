@@ -1,6 +1,6 @@
-package com.andruidteam.andruid.model;
+package com.andruidteam.andruid.viewModel;
 
-public class PlayerCaracter {
+public class PlayerCaracterViewModel {
 
     /**
      * Id

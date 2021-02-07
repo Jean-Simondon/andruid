@@ -1,42 +1,36 @@
 package com.andruidteam.andruid.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
+import com.andruidteam.andruid.IOnBackPressed;
 import com.andruidteam.andruid.R;
+import com.andruidteam.andruid.ui.main.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
-
-    private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button buttonToDM = findViewById(R.id.toDM);
-        Button buttonToPC = findViewById(R.id.toPC);
+        if (savedInstanceState == null) {
+            HomeFragment fragment = new HomeFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.fragment_container_main, fragment, HomeFragment.TAG)
+                    .commit();
+        }
 
-        buttonToDM.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainDmActivity.class);
-                startActivity(intent);
-            }
-        });
+    }
 
-        buttonToPC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainPcActivity.class);
-                startActivity(intent);
-            }
-        });
-
+    @Override public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container_main);
+        if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
+            super.onBackPressed();
+        }
     }
 
 }

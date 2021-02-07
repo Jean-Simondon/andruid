@@ -4,7 +4,12 @@ import android.os.Bundle;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.SavedStateHandle;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Cette classe, ViewModel, est utile afin de sauvegarder
@@ -18,13 +23,32 @@ import androidx.lifecycle.ViewModel;
 
 public class InventoryViewModel extends ViewModel {
 
-    // Un attribut, qui est une chaine de caractère
+    /**
+     * Le ViewModel garde toutes les données instancié, plutôt que ce soit les fragments et activity sinon on les perds lors d'une rotation
+     * Le ViewModel se reposent sur le Repository pour récupérer les données
+     */
+
+    /**
+     * Contient les LiveData, notion importante
+     */
+    private SavedStateHandle state;
+    public LiveData<List<String>> filteredData;
+    private InventoryRepository mInventoryRepository;
     private MutableLiveData<String> mText;
 
-    // Le constructeur, ou on donne une valeur pour la première fois à notre chaine de caractère
-    public InventoryViewModel() {
+    /**
+     * @param savedStatedHandle is a key/Value map dont la clef est le nom de la variable, afin de retrouver les valeurs et de les instancier à nouveau
+     *      car les valeurs persiste ainsi après que le processus soit tué par le système et reste disponible dans l'objet
+     */
+
+    public InventoryViewModel(SavedStateHandle savedStatedHandle) {
+
+        state = savedStatedHandle;
+
+
         mText = new MutableLiveData<>();
-        mText.setValue("This is inventory fragment");
+        mText = state.get("ma_variable");
+//        mText.setValue("This is inventory fragment");
     }
 
     // un getter sur cette chaine de caractère
@@ -34,7 +58,10 @@ public class InventoryViewModel extends ViewModel {
 
 
 
-
+/**
+ * Documentation de SavedStateHandle
+ * https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate#java
+ */
 
 
 

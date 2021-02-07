@@ -17,7 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 /**
  * MainDmActivity sera la single activity au dessus de toutes les fonctionnalités de la branche Dungeon Master de l'application
  */
-public class MainDmActivity extends AppCompatActivity {
+public class DungeonMasterActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private AppBarConfiguration mAppBarConfiguration;
@@ -25,7 +25,7 @@ public class MainDmActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_dm);
+        setContentView(R.layout.activity_dm);
 
         /**
          * Dans le layout activity_main_dm, on a l'architecture suviante :

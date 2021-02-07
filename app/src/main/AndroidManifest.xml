@@ -17,11 +17,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".controller.MainPcActivity"
+            android:name=".controller.PlayableCharacterActivity"
             android:label="@string/title_activity_main_pc"
             android:theme="@style/Theme.andruid.NoActionBar" />
         <activity
-            android:name=".controller.MainDmActivity"
+            android:name=".controller.DungeonMasterActivity"
             android:label="@string/title_activity_main_dm"
             android:theme="@style/Theme.andruid.NoActionBar" />
     </application>

@@ -26,8 +26,13 @@ import com.andruidteam.andruid.ui.journal.JournalFragment;
 
 public class InventoryFragment extends Fragment implements LifecycleOwner {
 
+    /**
+     * Les Activity et Fragment ne doivent connaitre que les ViewModel
+     * Activity et Fragment ne servent qu'à se brancher sur l'interface layout
+     *
+     */
+
     private InventoryViewModel minventoryViewModel;
-    //    private FragmentActivity myContext;
 
     public InventoryFragment() {
         super(R.layout.fragment_inventory);
@@ -35,46 +40,12 @@ public class InventoryFragment extends Fragment implements LifecycleOwner {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        // ---------------------------------------  Lien avec le ViewModelProvider pour gérer les données injectés dans le XML ----------------------------------------------------
-
-        // Le ViewModelProvider nous procure une référence vers notre InventoryViewModel
-        // Le ViewModel contient les données propres à notre fragment, notamment la valeur des éléments du XML comme les chaines de caractères
         minventoryViewModel = new ViewModelProvider(this).get(InventoryViewModel.class);
 
-        // ---------------------------------------  Récupération du layourt sous la forme d'une hiérarchie d'élément ----------------------------------------------------
-
-        // On instancie un layout en XML dans un objet de type vue
-        // comme le paramètre container est précisé, il s'agira de toute une hiérarchie d'élément
         View root = inflater.inflate(R.layout.fragment_inventory, container, false);
-
-        // ---------------------------------------  FragmentManager : Objet pour gérer les fragments ----------------------------------------------------
-
-        // On récupère le fragment manager qui nousn permettra, par exemple de passer à un autre fragment
         FragmentManager fragmentManager = getFragmentManager();
-//        FragmentManager fragManager = myContext.getSupportFragmentManager();
-
-        // ---------------------------------------  LIFECYCLEOWNER : Objet pour gérer les cycles de vie de fragments ----------------------------------------------------
-
-//        LifecycleOwner lifecycleOwner = (LifecycleOwner) getLifecycle();
-
-//        LifecycleOwner viewLifecycleOwner =  getViewLifecycleOwner();
-//        LifecycleOwner viewllifecycleOwner2 = getViewLifecycleOwnerLiveData();
-        // utile à observer un élément de la vue uniquement dans un cas spécifique,
-
-        // Utile à placer un observer
-        //        lifecycleOwner.status.observe()
-
-
-        // ---------------------------------------  TEXT VIEW EXEMPLE ----------------------------------------------------
-
-//        InventoryFragment fragment = (InventoryFragment) fragmentManager.findFragmentById(R.id.fragment_container);
-
-        // dans cette hiérarchie, on récupère l'élément text_inventory
         final TextView textView = root.findViewById(R.id.text_inventory);
 
-        // De notre ViewModel, on appel un getter, sur lequel on place un observer, qui revient à attendre un chagment de la valeur
-        // À ce moment là, quand la valeur changera, on appliquera la valeur à l'élément textView dans le layout
-        // Une manière de garder la valeur actualiser même quand elle change
         minventoryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

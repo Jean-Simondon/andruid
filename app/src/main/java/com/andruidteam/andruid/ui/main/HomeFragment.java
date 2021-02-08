@@ -1,25 +1,20 @@
 package com.andruidteam.andruid.ui.main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.andruidteam.andruid.util.IOnBackPressed;
 import com.andruidteam.andruid.R;
-import com.andruidteam.andruid.controller.DungeonMasterActivity;
-import com.andruidteam.andruid.controller.PlayableCharacterActivity;
-import com.andruidteam.andruid.ui.inventory.InventoryViewModel;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements IOnBackPressed {
 
     public static final String TAG = "HomeFragment";
     public View root;
@@ -36,29 +31,34 @@ public class HomeFragment extends Fragment {
         FragmentManager fragmentManager = getFragmentManager();
 
         Button buttonToDM = view.findViewById(R.id.toDMPicking);
+        Button buttonToPC = view.findViewById(R.id.toPCPicking);
+
         buttonToDM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GamePickingFragment fragment = new GamePickingFragment();
                 fragmentManager.beginTransaction()
+                        .addToBackStack(null)
                         .replace(R.id.fragment_container_main, fragment, GamePickingFragment.TAG)
                         .commit();
             }
         });
 
-        Button buttonToPC = view.findViewById(R.id.toPCPicking);
         buttonToPC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CharacterPickingFragment fragment = new CharacterPickingFragment();
                 fragmentManager.beginTransaction()
+                        .addToBackStack(null)
                         .replace(R.id.fragment_container_main, fragment, CharacterPickingFragment.TAG)
                         .commit();
             }
         });
 
     }
+
+    @Override
+    public boolean onBackPressed() {
+        return true;
+    }
 }
-
-
-

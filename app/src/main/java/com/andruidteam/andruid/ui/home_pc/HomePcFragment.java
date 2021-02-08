@@ -16,17 +16,9 @@ import com.andruidteam.andruid.R;
 
 public class HomePcFragment extends Fragment {
 
+    public static final String TAG = "ProductListFragment";
+
     private HomePcViewModel mHomePcViewModel;
-
-    // La méthode onCreateView est appelé quand le Fragment doit sa hiérarchie d'objet/view
-    // Que ce soit dynamiquement ou vie un layout XML
-
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // initialiation de données
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

@@ -10,10 +10,11 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
-import com.andruidteam.andruid.IOnBackPressed;
+import com.andruidteam.andruid.util.IOnBackPressed;
 import com.andruidteam.andruid.R;
-import com.andruidteam.andruid.controller.PlayableCharacterActivity;
+import com.andruidteam.andruid.ui.PlayableCharacterActivity;
 
 public class CharacterPickingFragment extends Fragment implements IOnBackPressed {
 
@@ -36,9 +37,6 @@ public class CharacterPickingFragment extends Fragment implements IOnBackPressed
          * Un bouton pour chaque personnage
          */
 
-
-
-
         /**
          * Un bouton pour créer un nouveau personnage
          */
@@ -54,7 +52,17 @@ public class CharacterPickingFragment extends Fragment implements IOnBackPressed
 
     @Override
     public boolean onBackPressed() {
-        return false;
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.popBackStack();
+        /*
+        FragmentManager fragmentManager = getFragmentManager();
+        HomeFragment fragment = new HomeFragment();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragment_container_main, fragment, HomeFragment.TAG)
+                .commit();
+
+         */
+        return true;
     }
 
 }

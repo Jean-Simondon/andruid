@@ -1,4 +1,4 @@
-package com.andruidteam.andruid;
+package com.andruidteam.andruid.util;
 
 public interface IOnBackPressed {
     /**

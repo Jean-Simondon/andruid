@@ -1,4 +1,4 @@
-package com.andruidteam.andruid.controller;
+package com.andruidteam.andruid.ui;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -6,19 +6,20 @@ import android.view.Menu;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.LiveData;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.room.Query;
+import androidx.room.Room;
 
 import com.andruidteam.andruid.R;
+import com.andruidteam.andruid.db.AppDatabase;
+import com.andruidteam.andruid.db.entity.GameEntity;
 import com.google.android.material.navigation.NavigationView;
 
-/**
- * Main activity for the PC part of the app
- * Holds the Navigation Host Fragment, Drawer, Toolbar etc.
- */
 public class PlayableCharacterActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
@@ -27,45 +28,40 @@ public class PlayableCharacterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pc); // layout principal avec drawer, toolbar, fragment, et navigation view
-        mDrawerLayout = findViewById(R.id.drawer_layout_pc); // drawer : container général de activity_main_pc
-        setSupportActionBar(findViewById(R.id.toolbar_pc)); // la toolbar au dessus du fragment
+        setContentView(R.layout.activity_pc);
+        mDrawerLayout = findViewById(R.id.drawer_layout_pc);
+        setSupportActionBar(findViewById(R.id.toolbar_pc));
 
-        NavigationView navigationView = findViewById(R.id.nav_view_pc); // tout en bas de activity_main_pc, c'est le panneau latéral contenant le menu
+        NavigationView navigationView = findViewById(R.id.nav_view_pc);
 
-        // On récupère chaque item du menu à l'aide de leur ID
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.HomePcFragment, R.id.diceFragment, R.id.detailCaractereFragment, R.id.inventoryFragment, R.id.journalFragment, R.id.skillFragment, R.id.spellFragment)
                 .setOpenableLayout(mDrawerLayout)
                 .build();
 
-        // Acquisition du nav controller par FragmentManager > navHostFragment > navController
         FragmentManager fragmentManager = getSupportFragmentManager();
         NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.nav_host_fragment_pc);
         NavController navController = navHostFragment.getNavController();
 
-        // On connecte le navController avec la toolbar, de manière à afficher le nom du bon menu, et à dynamiser le menu burger (ouvre le panneau ou fait un retour vers le fragment précédent)
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        // On connecte le navController avec le navigation View de manière à afficher les menu dans le panneau latéral
         NavigationUI.setupWithNavController(navigationView, navController);
 
+
+
         /**
-         * NavigationUI est une bibliothèque qui gère les Options Menu, Bottom Navigation, Navigation View, Navigation Drawer, Action Bar, Toolbar, Collapsing Toolbar
-         *
+         * Instance de la base de données
          */
+        AppDatabase db = Room
+                .databaseBuilder(getApplicationContext(), AppDatabase.class, "andruid-db")
+                .build();
 
     }
 
-    /**
-     * menu settings dans le coin supérieur droit
-     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_pc, menu);
         return true;
     }
-
 
     @Override
     public boolean onSupportNavigateUp() {

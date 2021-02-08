@@ -1,22 +1,20 @@
 package com.andruidteam.andruid.ui.main;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.andruidteam.andruid.IOnBackPressed;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+import com.andruidteam.andruid.util.IOnBackPressed;
 import com.andruidteam.andruid.R;
-import com.andruidteam.andruid.controller.DungeonMasterActivity;
+import com.andruidteam.andruid.ui.DungeonMasterActivity;
 
 public class GamePickingFragment extends Fragment implements IOnBackPressed {
 
@@ -35,13 +33,9 @@ public class GamePickingFragment extends Fragment implements IOnBackPressed {
 
         // TODO récupérer toutes les parties dans la bdd et les proposer ici sous leur nom
 
-
         /**
          * Un bouton pour chaque partie existante
          */
-
-
-
 
         /**
          * Un bouton pour créer une nouvelle partie
@@ -54,12 +48,19 @@ public class GamePickingFragment extends Fragment implements IOnBackPressed {
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
     public boolean onBackPressed() {
-        return false;
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.popBackStack();
+        /*        FragmentManager fragmentManager = getFragmentManager();
+        HomeFragment fragment = new HomeFragment();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragment_container_main, fragment, HomeFragment.TAG)
+                .commit();
+ */
+        return true;
     }
 
 }

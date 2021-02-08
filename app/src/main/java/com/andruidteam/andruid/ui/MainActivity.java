@@ -1,11 +1,11 @@
-package com.andruidteam.andruid.controller;
+package com.andruidteam.andruid.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
-import com.andruidteam.andruid.IOnBackPressed;
+import com.andruidteam.andruid.util.IOnBackPressed;
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.ui.main.HomeFragment;
 

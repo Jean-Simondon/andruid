@@ -17,7 +17,7 @@ import androidx.room.Room;
 
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.db.AppDatabase;
-import com.andruidteam.andruid.db.entity.GameEntity;
+import com.andruidteam.andruid.db.entity.Game;
 import com.google.android.material.navigation.NavigationView;
 
 public class PlayableCharacterActivity extends AppCompatActivity {
@@ -47,13 +47,6 @@ public class PlayableCharacterActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-
-        /**
-         * Instance de la base de données
-         */
-        AppDatabase db = Room
-                .databaseBuilder(getApplicationContext(), AppDatabase.class, "andruid-db")
-                .build();
 
     }
 

@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 
 import com.andruidteam.andruid.db.AppDatabase;
-import com.andruidteam.andruid.db.entity.GameEntity;
-import com.andruidteam.andruid.db.entity.CharacterEntity;
+import com.andruidteam.andruid.db.entity.Game;
+import com.andruidteam.andruid.db.entity.Character;
 
 import java.util.List;
 
@@ -18,22 +18,24 @@ public class DataRepository {
 
     private final AppDatabase mDatabase;
 
-    private MediatorLiveData<List<GameEntity>> mObservableGame;
-    private MediatorLiveData<List<CharacterEntity>> mObservableCharacters;
+    private MediatorLiveData<List<Game>> mObservableGame;
+    private MediatorLiveData<List<Character>> mObservableCharacters;
+
+
 
     private DataRepository(final AppDatabase database) {
         mDatabase = database;
         mObservableGame = new MediatorLiveData<>();
         mObservableCharacters = new MediatorLiveData<>();
 
-        mObservableGame.addSource(mDatabase.mGameDao().loadAllGame(),
+        mObservableGame.addSource(mDatabase.mGameDao().getAll(),
                 gameEntities -> {
                     if( mDatabase.getDatabaseCreated().getValue() != null) {
                         mObservableGame.postValue(gameEntities);
                     }
                 });
 
-        mObservableCharacters.addSource(mDatabase.mCharacterDao().loadAllCharacters(),
+        mObservableCharacters.addSource(mDatabase.mCharacterDao().getAll(),
                 characterEntities -> {
                     if( mDatabase.getDatabaseCreated().getValue() != null) {
                         mObservableCharacters.postValue(characterEntities);
@@ -41,6 +43,8 @@ public class DataRepository {
                 });
 
     }
+
+
 
     public static DataRepository getInstance(final AppDatabase database) {
         if (sInstance == null) {
@@ -53,27 +57,33 @@ public class DataRepository {
         return sInstance;
     }
 
+
+
+
     /**
      * Get the list of games from the database and get notified when the data changes.
      */
-    public LiveData<List<GameEntity>> getGames() {
+    public LiveData<List<Game>> getGames() {
         return mObservableGame;
     }
 
-    public LiveData<GameEntity> loadGame(final int gameId) {
-        return mDatabase.mGameDao().loadGame(gameId);
+    public LiveData<Game> loadGame(final int gameId) {
+        return mDatabase.mGameDao().loadAllByIds(gameId);
     }
 
     /**
      * Get the list of characters from the database and get notified when the data changes.
      */
-    public LiveData<List<CharacterEntity>> getCharacter() {
+    public LiveData<List<Character>> getCharacters() {
         return mObservableCharacters;
     }
 
-    public LiveData<CharacterEntity> loadCharacter(final int characterId) {
-        return mDatabase.mCharacterDao().loadCharacter(characterId);
+    public LiveData<Character> loadCharacter(final int characterId) {
+        return mDatabase.mCharacterDao().getAllByIds(characterId);
     }
+
+
+
 
 
 }

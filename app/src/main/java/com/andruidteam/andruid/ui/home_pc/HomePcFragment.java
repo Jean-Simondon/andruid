@@ -8,60 +8,96 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.andruidteam.andruid.DataRepository;
 import com.andruidteam.andruid.R;
+import com.andruidteam.andruid.databinding.FragmentHomePcBinding;
+import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 
 public class HomePcFragment extends Fragment {
 
-    public static final String TAG = "ProductListFragment";
+    public static final String TAG = "HomePcFragment";
 
-    private HomePcViewModel mHomePcViewModel;
+    private static final String KEY_CHARACTER_ID = "character_id";
+
+    private FragmentHomePcBinding mBinding;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mBinding = FragmentHomePcBinding.inflate(inflater, container, false);
+
+        View view = mBinding.getRoot();
+
+        return view;
+    }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
-        mHomePcViewModel = new ViewModelProvider(this).get(HomePcViewModel.class);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        View root = inflater.inflate(R.layout.fragment_home_pc, container, false);
+        CharacterViewModel.Factory factory = new CharacterViewModel.Factory(requireActivity().getApplication(), requireArguments().getInt(KEY_CHARACTER_ID));
 
-        final TextView textView = root.findViewById(R.id.text_home_pc);
+        final CharacterViewModel mCharacterViewModel = new ViewModelProvider(this, factory).get(CharacterViewModel.class);
 
-        mHomePcViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+//        mBinding.setLifecycleOwner(getViewLifecycleOwner());
+//        mBinding.setProductViewModel(model);
+//        subscribeToModel(model);
+
+
+
+        mBinding.firstName.setText("Ici le fragment Home PC");
+
+        /**
+         * Ci dessous, initialisation des valeurs de la vue avec les éléments du view model
+         */
+
+        mBinding.firstName.setText(mCharacterViewModel.getFirstName());
+
+
+
+
+    /*
+        final TextView textView = view.findViewById(R.id.name);
+        mCharacterViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
 
-        // On renvoie une vue, root, qui est obtenue en récupénant le layout du fragment en question, son parent(container),
-        return root;
-    }
+     */
+
+//        mBinding.setLifecycleOwner(getViewLifecycleOwner());
+//        mBinding.setProductViewModel(model);
 
 
-    // appelés juste après la création
-    // Tout les setup de vue doivent avoir lieux ici
-    // Que ce soit la recherche de vue comme de l'attache d'event Listener
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        // Setup any handles to view objects here
-        // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
-
-
-        /*
-        // Remplacement de fragment
-        // Begin the transaction
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        // Replace the contents of the container with the new fragment
-        ft.replace(R.id.your_placeholder, new FooFragment());
-        // or ft.add(R.id.your_placeholder, new FooFragment());
-        // Complete the changes added above
-        ft.commit();
+        /**
+         * Ici on ajoute des listeners sur les éléments du mBinding
+         * Comme un bouton par exemple
          */
 
 
     }
+
+    @Override
+    public void onDestroy() {
+        mBinding = null;
+        super.onDestroy();
+    }
+
+    /** Creates product fragment for specific product ID */
+    public static HomePcFragment forCharacter(int characterId) {
+        HomePcFragment fragment = new HomePcFragment();
+        Bundle args = new Bundle();
+        args.putInt(KEY_CHARACTER_ID, characterId);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
 }

@@ -18,12 +18,14 @@ public class HomeDmFragment extends Fragment {
 
     private HomeDmViewModel mHomeDmViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        mHomeDmViewModel =
-                new ViewModelProvider(this).get(HomeDmViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mHomeDmViewModel = new ViewModelProvider(this).get(HomeDmViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_home_dm, container, false);
+
         final TextView textView = root.findViewById(R.id.text_home_dm);
+
         mHomeDmViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

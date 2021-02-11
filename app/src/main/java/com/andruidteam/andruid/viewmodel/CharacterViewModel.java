@@ -11,13 +11,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.andruidteam.andruid.AndruidApp;
 import com.andruidteam.andruid.DataRepository;
-import com.andruidteam.andruid.db.entity.CharacterEntity;
+import com.andruidteam.andruid.db.entity.Character;
 
-import java.util.List;
 
 public class CharacterViewModel extends AndroidViewModel {
 
-    private final LiveData<CharacterEntity> mObservableCharacter;
+    private final LiveData<Character> mObservableCharacter;
 
     private final int mCharacterId;
 
@@ -31,12 +30,35 @@ public class CharacterViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData Comments query so the UI can observe it.
      */
-    public LiveData<CharacterEntity> getCharacter() {
+    public LiveData<Character> getCharacter() {
         return mObservableCharacter;
     }
 
+    public String getFirstName() {
+        return mObservableCharacter.getValue().firstName;
+    }
+
+    public String getLastName() {
+        return mObservableCharacter.getValue().lastName;
+    }
+
+    public String getClasse() {
+        return mObservableCharacter.getValue().classe;
+    }
+
+    public String getRace() {
+        return mObservableCharacter.getValue().race;
+    }
+
+    public int getLevel() {
+        return mObservableCharacter.getValue().level;
+    }
+
+
+
+
     /**
-     * A creator is used to inject the character ID into the ViewModel
+     * A creator is used to inject the game ID into the ViewModel
      * <p>
      * This creator is to showcase how to inject dependencies into ViewModels. It's not
      * actually necessary in this case, as the product ID can be passed in a public method.
@@ -65,17 +87,3 @@ public class CharacterViewModel extends AndroidViewModel {
     }
 
 }
-
-
-
-
-
-    /*
-    private MutableLiveData<String> profilPic;
-    private MutableLiveData<String> mLastName;
-    private MutableLiveData<String> mFirstName;
-    private MutableLiveData<String> mClasse;
-    private MutableLiveData<String> mRace;
-    private MutableLiveData<Integer> mLevel;
-    private MutableLiveData<Integer> mExperience;
-     */

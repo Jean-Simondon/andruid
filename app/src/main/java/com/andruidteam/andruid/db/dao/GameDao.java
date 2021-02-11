@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.andruidteam.andruid.db.entity.GameEntity;
+import com.andruidteam.andruid.db.entity.Game;
 
 import java.util.List;
 
@@ -15,15 +14,24 @@ import java.util.List;
 public interface GameDao {
 
     @Query("SELECT * FROM games")
-    LiveData<List<GameEntity>> loadAllGame();
+    LiveData<List<Game>> getAll();
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<GameEntity> games);
+    @Query("SELECT * FROM games WHERE id IN (:gameIds)")
+    LiveData<Game> loadAllByIds(int gameIds);
 
-    @Query("select * from games where id = :gameId")
-    LiveData<GameEntity> loadGame(int gameId);
+    @Query("SELECT * FROM games WHERE id = (:gameId)")
+    LiveData<Game> getByID(int gameId);
 
-    @Query("select * from games where id = :gameId")
-    GameEntity loadGameSync(int gameId);
+    @Query("SELECT * FROM games WHERE title LIKE :title LIMIT 1")
+    LiveData<Game> findByTitle(String title);
+
+    @Insert
+    void insertAll(Game... games);
+
+    @Insert
+    void insert(Game... games);
+
+    @Delete
+    void delete(Game game);
 
 }

@@ -1,32 +1,34 @@
 package com.andruidteam.andruid.db.dao;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.andruidteam.andruid.db.entity.CharacterEntity;
+import com.andruidteam.andruid.db.entity.Character;
 
 import java.util.List;
 
+@Dao
 public interface CharacterDao {
 
-    /**
-     * Data access object
-     * Main component of room
-     * Utile pour l'accès à la base de données plutôt que des queryBuilder ou direct queries
-     *
-     */
     @Query("SELECT * FROM characters")
-    LiveData<List<CharacterEntity>> loadAllCharacters();
+    LiveData<List<Character>> getAll();
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<CharacterEntity> characters);
+    @Query("SELECT * FROM characters WHERE id IN (:characterIds)")
+    LiveData<Character> getAllByIds(int characterIds);
 
-    @Query("select * from characters where id = :characterId")
-    LiveData<CharacterEntity> loadCharacter(int characterId);
+    @Query("SELECT * FROM characters WHERE id = (:characterId)")
+    LiveData<Character> getByID(int characterId);
 
-    @Query("select * from characters where id = :characterId")
-    CharacterEntity loadCharacterSync(int characterId);
+    @Insert
+    void insertAll(Character... characters);
+
+    @Insert
+    void insert(Character... characters);
+
+    @Delete
+    void delete(Character character);
 
 }

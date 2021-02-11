@@ -11,12 +11,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.andruidteam.andruid.AndruidApp;
 import com.andruidteam.andruid.DataRepository;
-import com.andruidteam.andruid.db.entity.GameEntity;
+import com.andruidteam.andruid.db.entity.Game;
 
 
 public class GameViewModel extends AndroidViewModel {
 
-    private final LiveData<GameEntity> mObservableGame;
+    private final LiveData<Game> mObservableGame;
 
     private final int mGameId;
 
@@ -30,7 +30,7 @@ public class GameViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData Comments query so the UI can observe it.
      */
-    public LiveData<GameEntity> getGame() {
+    public LiveData<Game> getGame() {
         return mObservableGame;
     }
 

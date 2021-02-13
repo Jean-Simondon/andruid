@@ -29,8 +29,9 @@ public class HomePcFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = FragmentHomePcBinding.inflate(inflater, container, false);
 
+//        mBinding = FragmentHomePcBinding.inflate(inflater, container, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_pc, container, false);
         View view = mBinding.getRoot();
 
         return view;
@@ -40,9 +41,11 @@ public class HomePcFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        CharacterViewModel.Factory factory = new CharacterViewModel.Factory(requireActivity().getApplication(), requireArguments().getInt(KEY_CHARACTER_ID));
+//        requireActivity().getApplication();
+        this.requireArguments().getInt(KEY_CHARACTER_ID);
 
-        final CharacterViewModel mCharacterViewModel = new ViewModelProvider(this, factory).get(CharacterViewModel.class);
+//        CharacterViewModel.Factory factory = new CharacterViewModel.Factory(requireActivity().getApplication(), this.requireArguments().getInt(KEY_CHARACTER_ID));
+//        final CharacterViewModel mCharacterViewModel = new ViewModelProvider(this, factory).get(CharacterViewModel.class);
 
 //        mBinding.setLifecycleOwner(getViewLifecycleOwner());
 //        mBinding.setProductViewModel(model);
@@ -50,27 +53,15 @@ public class HomePcFragment extends Fragment {
 
 
 
-        mBinding.firstName.setText("Ici le fragment Home PC");
+//        mBinding.firstName.setText("Ici le fragment Home PC");
 
         /**
          * Ci dessous, initialisation des valeurs de la vue avec les éléments du view model
          */
 
-        mBinding.firstName.setText(mCharacterViewModel.getFirstName());
+//        mBinding.firstName.setText(mCharacterViewModel.getFirstName());
 
 
-
-
-    /*
-        final TextView textView = view.findViewById(R.id.name);
-        mCharacterViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-
-     */
 
 //        mBinding.setLifecycleOwner(getViewLifecycleOwner());
 //        mBinding.setProductViewModel(model);
@@ -90,7 +81,10 @@ public class HomePcFragment extends Fragment {
         super.onDestroy();
     }
 
+
+
     /** Creates product fragment for specific product ID */
+/*
     public static HomePcFragment forCharacter(int characterId) {
         HomePcFragment fragment = new HomePcFragment();
         Bundle args = new Bundle();
@@ -98,6 +92,10 @@ public class HomePcFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+ */
+
+
 
 
 }

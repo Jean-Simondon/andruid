@@ -28,28 +28,30 @@ public class PlayableCharacterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pc);
-        mDrawerLayout = findViewById(R.id.drawer_layout_pc);
-        setSupportActionBar(findViewById(R.id.toolbar_pc));
+        setContentView(R.layout.activity_pc); // récupération du layout de l'application
+        mDrawerLayout = findViewById(R.id.drawer_layout_pc); // récupération du composent XML qui emglobe toute la navigation (drawer layout)
+        setSupportActionBar(findViewById(R.id.toolbar_pc)); // la barre d'action au dessus des fragments (toolbar)
 
-        NavigationView navigationView = findViewById(R.id.nav_view_pc);
+        // TODO en arrivant ici, il faut faire récupérer l'arguement dans l'intent qui nous vient du fragment CharacterPickintFragment et s'en servir pour instancier le Characer dont les données nous suivront tout au long des fragments
+
+        NavigationView navigationView = findViewById(R.id.nav_view_pc); // récupération du panneau menu latérale (navigation view)
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.HomePcFragment, R.id.diceFragment, R.id.detailCaractereFragment, R.id.inventoryFragment, R.id.journalFragment, R.id.skillFragment, R.id.spellFragment)
                 .setOpenableLayout(mDrawerLayout)
-                .build();
+                .build(); // connexion des éléments du menu à la barre d'action pour voir s'afficher le nom du fragment courant
 
+        // construction du Navigation Component, un framework gérant la navigation de fragment à fragment à l'aide des graph dans res > navigation,
         FragmentManager fragmentManager = getSupportFragmentManager();
         NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.nav_host_fragment_pc);
         NavController navController = navHostFragment.getNavController();
 
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-
-
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration); // connexion toolbar et navigation
+        NavigationUI.setupWithNavController(navigationView, navController); // connexion panneau menu latéral avec navigation
 
     }
 
+    // Mise en place du menu en haut à droite (settings)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_pc, menu);

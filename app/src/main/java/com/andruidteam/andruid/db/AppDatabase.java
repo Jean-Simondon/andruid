@@ -59,7 +59,6 @@ public abstract class AppDatabase extends RoomDatabase {
               .build();
     }
 
-
     /**
      * Si on veut emplir la base de donnée
      * @param database
@@ -73,15 +72,7 @@ public abstract class AppDatabase extends RoomDatabase {
             database.mCharacterDao().insertAll(characters);
         });
     }
-
      */
-
-
-
-
-
-
-    /** -
 
     /**
      * Check whether the database already exists and expose it via {@link #getDatabaseCreated()}
@@ -98,7 +89,6 @@ public abstract class AppDatabase extends RoomDatabase {
     private void setDatabaseCreated() {
         mIsDatabaseCreated.postValue(true);
     }
-
 
     /**
      * Vérifier que la base de données est créée

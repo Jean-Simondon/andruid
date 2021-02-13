@@ -55,8 +55,6 @@ public class CharacterViewModel extends AndroidViewModel {
     }
 
 
-
-
     /**
      * A creator is used to inject the game ID into the ViewModel
      * <p>

@@ -16,18 +16,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // ne contient qu'un fragment container pour le remplir aussitôt
 
+        /**
+         * A peine commencé, on remplit le fragment container du layout par le fragment qui contient les 2 boutons pour choisir Dungeon Master ou Playable Character
+         */
         if (savedInstanceState == null) {
             HomeFragment fragment = new HomeFragment();
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.fragment_container_main, fragment, HomeFragment.TAG)
+                    .add(R.id.fragment_container_main, fragment, HomeFragment.TAG) // la classe de ce fragment et tous ceux de la mainActivity sont dans ui > main
                     .commit();
         }
 
     }
 
+    // Gestion du dépilement des fragments quand appuie sur retour arrière, sinon on sort de l'activité, donc de l'application plutôt que de revenir au fragment précédent
     @Override public void onBackPressed() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container_main);
         if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {

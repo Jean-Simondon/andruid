@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -18,21 +19,28 @@ import androidx.room.Room;
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.db.AppDatabase;
 import com.andruidteam.andruid.db.entity.Game;
+import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 public class PlayableCharacterActivity extends AppCompatActivity {
 
+    public static final String INPUT_CHARACTER_ID = "input_character_id";
+
     private DrawerLayout mDrawerLayout;
     private AppBarConfiguration mAppBarConfiguration;
+    private CharacterViewModel mCharacterViewModel; // À instancier pour l'avoir de manière globale dans l'appli côté Playable Character
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pc); // récupération du layout de l'application
+
+        // TODO en arrivant ici, il faut faire récupérer l'arguement dans l'intent qui nous vient du fragment CharacterPickintFragment et s'en servir pour instancier le Character dont les données nous suivront tout au long des fragments
+        CharacterViewModel.Factory factory = new CharacterViewModel.Factory(getApplication(), getIntent().getExtras().getInt(INPUT_CHARACTER_ID));
+//        mCharacterViewModel = new ViewModelProvider(this, factory).get(CharacterViewModel.class);
+
         mDrawerLayout = findViewById(R.id.drawer_layout_pc); // récupération du composent XML qui emglobe toute la navigation (drawer layout)
         setSupportActionBar(findViewById(R.id.toolbar_pc)); // la barre d'action au dessus des fragments (toolbar)
-
-        // TODO en arrivant ici, il faut faire récupérer l'arguement dans l'intent qui nous vient du fragment CharacterPickintFragment et s'en servir pour instancier le Characer dont les données nous suivront tout au long des fragments
 
         NavigationView navigationView = findViewById(R.id.nav_view_pc); // récupération du panneau menu latérale (navigation view)
 

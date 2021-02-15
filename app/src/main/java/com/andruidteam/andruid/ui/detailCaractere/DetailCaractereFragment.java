@@ -8,34 +8,33 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.andruidteam.andruid.R;
+import com.andruidteam.andruid.databinding.FragmentDetailCaractereBinding;
+import com.andruidteam.andruid.databinding.FragmentHomePcBinding;
 
 public class DetailCaractereFragment extends Fragment {
 
-    private DetailCaractereViewModel mdetailCaractereViewModel;
-    private View mRoot;
+    public static final String TAG = "DetailCaractereFragment";
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mdetailCaractereViewModel = new ViewModelProvider(this).get(DetailCaractereViewModel.class);
-        mRoot = inflater.inflate(R.layout.fragment_detail_caractere, container, false);
-        return mRoot;
+    private FragmentDetailCaractereBinding mBinding;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_caractere, container, false);
+        View view = mBinding.getRoot();
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final TextView textView = mRoot.findViewById(R.id.text_detail_caractere);
-        mdetailCaractereViewModel.getFirstName().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
     }
 }

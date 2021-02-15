@@ -8,7 +8,7 @@ public class InventoryRepository {
      * et une classe pour faire des requêtes API.
      */
 
-    private InventoryModel mInventoryModel;
-    private InventoryRemoteDataSource mInventoryRemoteDataSource;
+//    private InventoryModel mInventoryModel;
+//    private InventoryRemoteDataSource mInventoryRemoteDataSource;
 
 }

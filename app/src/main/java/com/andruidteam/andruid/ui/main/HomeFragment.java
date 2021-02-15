@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import com.andruidteam.andruid.util.IOnBackPressed;
 import com.andruidteam.andruid.R;
 
-public class HomeFragment extends Fragment implements IOnBackPressed {
+public class HomeFragment extends Fragment {
 
     public static final String TAG = "HomeFragment";
     public View root;
@@ -74,8 +74,9 @@ public class HomeFragment extends Fragment implements IOnBackPressed {
 
     }
 
-    @Override
-    public boolean onBackPressed() {
-        return true;
-    }
+//    @Override
+//    public boolean onBackPressed() {
+//        return true;
+//    }
+
 }

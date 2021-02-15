@@ -84,6 +84,17 @@ public class DataRepository {
     /**
      * Get the list of characters from the database and get notified when the data changes.
      */
+    public void createNewCharacter() {
+        Character character = new Character();
+        character.setFirstName("John");
+        character.setLastName("Do");
+        character.setRace("humain");
+        character.setClasse("barde");
+        character.setLevel(0);
+        mDatabase.mCharacterDao().insert(character);
+    }
+
+
     public LiveData<List<Character>> getCharacters() {
         return mObservableCharacters;
     }

@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); // ne contient qu'un fragment container pour le remplir aussitôt
+        super.onCreate(savedInstanceState); // la base
+        setContentView(R.layout.activity_main); // layout qui ne contient qu'un fragment container (pour le remplir aussitôt après)
 
         /**
          * A peine commencé, on remplit le fragment container du layout par le fragment qui contient les 2 boutons pour choisir Dungeon Master ou Playable Character

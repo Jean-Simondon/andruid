@@ -45,7 +45,6 @@ public class InventoryViewModel extends ViewModel {
 
         state = savedStatedHandle;
 
-
         mText = new MutableLiveData<>();
         mText = state.get("ma_variable");
 //        mText.setValue("This is inventory fragment");

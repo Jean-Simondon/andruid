@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,11 +28,8 @@ public class HomePcFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-//        mBinding = FragmentHomePcBinding.inflate(inflater, container, false);
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_pc, container, false);
         View view = mBinding.getRoot();
-
         return view;
     }
 
@@ -42,7 +38,7 @@ public class HomePcFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 //        requireActivity().getApplication();
-        this.requireArguments().getInt(KEY_CHARACTER_ID);
+//        this.requireArguments().getInt(KEY_CHARACTER_ID);
 
 //        CharacterViewModel.Factory factory = new CharacterViewModel.Factory(requireActivity().getApplication(), this.requireArguments().getInt(KEY_CHARACTER_ID));
 //        final CharacterViewModel mCharacterViewModel = new ViewModelProvider(this, factory).get(CharacterViewModel.class);

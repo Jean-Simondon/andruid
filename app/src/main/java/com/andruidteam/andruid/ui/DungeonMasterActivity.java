@@ -20,6 +20,8 @@ public class DungeonMasterActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private AppBarConfiguration mAppBarConfiguration;
 
+    public static final String TAG = "DungeonMasterActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

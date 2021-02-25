@@ -15,7 +15,11 @@
         android:id="@+id/diceFragment"
         android:name="com.andruidteam.andruid.ui.dice.DiceFragment"
         android:label="@string/menu_dice"
-        tools:layout="@layout/fragment_dice" />
+        tools:layout="@layout/fragment_dice" >
+        <action
+            android:id="@+id/action_diceFragment_to_detailCaractereFragment"
+            app:destination="@id/detailCaractereFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/detailCaractereFragment"
@@ -37,9 +41,6 @@
         <action
             android:id="@+id/action_fragmentInventory_to_nav_example"
             app:destination="@id/exampleFragment" />
-        <action
-            android:id="@+id/action_fragmentInventory_to_blankFragment"
-            app:destination="@id/blankFragment" />
     </fragment>
 
     <fragment
@@ -59,14 +60,5 @@
         android:name="com.andruidteam.andruid.ui.spell.SpellFragment"
         android:label="@string/menu_spell"
         tools:layout="@layout/fragment_spell" />
-    <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.andruidteam.andruid.BlankFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" >
-        <action
-            android:id="@+id/action_blankFragment_to_fragmentInventory"
-            app:destination="@id/inventoryFragment" />
-    </fragment>
 
 </navigation>

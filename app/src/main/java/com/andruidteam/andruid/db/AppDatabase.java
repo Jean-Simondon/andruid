@@ -14,17 +14,16 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.andruidteam.andruid.AppExecutors;
 import com.andruidteam.andruid.db.dao.GameDao;
 import com.andruidteam.andruid.db.dao.CharacterDao;
-import com.andruidteam.andruid.db.entity.Game;
-import com.andruidteam.andruid.db.entity.Character;
+import com.andruidteam.andruid.db.entity.GameEntity;
+import com.andruidteam.andruid.db.entity.CharacterEntity;
 
 import java.util.List;
 
-@Database(entities = {Game.class, Character.class}, version = 1)
+@Database(entities = {GameEntity.class, CharacterEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase sIntance;
     public static final String DATABASE_NAME = "andruid-db";
-
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 
     public abstract GameDao mGameDao();
@@ -56,6 +55,7 @@ public abstract class AppDatabase extends RoomDatabase {
      */
     private static AppDatabase buildDatabase(final Context appContext, final AppExecutors executors) {
         return Room.databaseBuilder(appContext, AppDatabase.class, DATABASE_NAME)
+                // rajouter de la création d'entité à cet endroit là
               .build();
     }
 
@@ -66,7 +66,7 @@ public abstract class AppDatabase extends RoomDatabase {
      * @param characters
      */
     /*
-    private static void insertData(final AppDatabase database, final List<Game> games, final List<Character> characters) {
+    private static void insertData(final AppDatabase database, final List<Game> games, final List<CharacterEntity> characters) {
         database.runInTransaction(() -> {
             database.mGameDao().insertAll(games);
             database.mCharacterDao().insertAll(characters);

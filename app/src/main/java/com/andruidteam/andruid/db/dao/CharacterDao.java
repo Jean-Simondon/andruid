@@ -6,7 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.andruidteam.andruid.db.entity.Character;
+import com.andruidteam.andruid.db.entity.CharacterEntity;
 
 import java.util.List;
 
@@ -14,21 +14,30 @@ import java.util.List;
 public interface CharacterDao {
 
     @Query("SELECT * FROM characters")
-    LiveData<List<Character>> getAll();
+    LiveData<List<CharacterEntity>> getAll();
 
     @Query("SELECT * FROM characters WHERE id IN (:characterIds)")
-    LiveData<Character> getAllByIds(int characterIds);
+    LiveData<CharacterEntity> loadCharacter(int characterIds);
+
+
+
+
+
+
 
     @Query("SELECT * FROM characters WHERE id = (:characterId)")
-    LiveData<Character> getByID(int characterId);
+    LiveData<CharacterEntity> getByID(int characterId);
+
+    @Query("SELECT id, firstName, lastName FROM characters")
+    LiveData<List<CharacterEntity>> getOverview();
 
     @Insert
-    void insertAll(Character... characters);
+    void insertAll(CharacterEntity... characters);
 
     @Insert
-    void insert(Character... characters);
+    void insert(CharacterEntity... characters);
 
     @Delete
-    void delete(Character character);
+    void delete(CharacterEntity character);
 
 }

@@ -3,6 +3,7 @@ package com.andruidteam.andruid.viewmodel;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -11,49 +12,30 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.andruidteam.andruid.AndruidApp;
 import com.andruidteam.andruid.DataRepository;
-import com.andruidteam.andruid.db.entity.Character;
+import com.andruidteam.andruid.db.entity.CharacterEntity;
 
+import java.util.List;
 
 public class CharacterViewModel extends AndroidViewModel {
 
-    private final LiveData<Character> mObservableCharacter;
+    private final LiveData<CharacterEntity> mObservableCharacter;
 
     private final int mCharacterId;
+
+    // Ici peut-être un attribut qui est une liste de Character
 
     public CharacterViewModel(@NonNull Application application, DataRepository repository, final int characterId) {
         super(application);
         mCharacterId = characterId;
-
         mObservableCharacter = repository.loadCharacter(mCharacterId);
     }
 
     /**
      * Expose the LiveData Comments query so the UI can observe it.
      */
-    public LiveData<Character> getCharacter() {
+    public LiveData<CharacterEntity> getCharacter() {
         return mObservableCharacter;
     }
-
-    public String getFirstName() {
-        return mObservableCharacter.getValue().firstName;
-    }
-
-    public String getLastName() {
-        return mObservableCharacter.getValue().lastName;
-    }
-
-    public String getClasse() {
-        return mObservableCharacter.getValue().classe;
-    }
-
-    public String getRace() {
-        return mObservableCharacter.getValue().race;
-    }
-
-    public int getLevel() {
-        return mObservableCharacter.getValue().level;
-    }
-
 
     /**
      * A creator is used to inject the game ID into the ViewModel
@@ -70,11 +52,12 @@ public class CharacterViewModel extends AndroidViewModel {
 
         private final DataRepository mRepository;
 
-        public Factory(@NonNull Application application, int characterId) {
+        public Factory(@NonNull Application application, @Nullable int characterId) {
             mApplication = application;
             mCharacterId = characterId;
             mRepository = ((AndruidApp) application).getRepository();
         }
+
 
         @SuppressWarnings("unchecked")
         @Override

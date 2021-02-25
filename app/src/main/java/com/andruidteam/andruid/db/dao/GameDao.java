@@ -6,7 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.andruidteam.andruid.db.entity.Game;
+import com.andruidteam.andruid.db.entity.GameEntity;
 
 import java.util.List;
 
@@ -14,24 +14,30 @@ import java.util.List;
 public interface GameDao {
 
     @Query("SELECT * FROM games")
-    LiveData<List<Game>> getAll();
+    LiveData<List<GameEntity>> getAll();
 
     @Query("SELECT * FROM games WHERE id IN (:gameIds)")
-    LiveData<Game> loadAllByIds(int gameIds);
+    LiveData<GameEntity> loadGame(int gameIds);
+
+
+
+
+
+
 
     @Query("SELECT * FROM games WHERE id = (:gameId)")
-    LiveData<Game> getByID(int gameId);
+    LiveData<GameEntity> getByID(int gameId);
 
     @Query("SELECT * FROM games WHERE title LIKE :title LIMIT 1")
-    LiveData<Game> findByTitle(String title);
+    LiveData<GameEntity> findByTitle(String title);
 
     @Insert
-    void insertAll(Game... games);
+    void insertAll(GameEntity... games);
 
     @Insert
-    void insert(Game... games);
+    void insert(GameEntity... games);
 
     @Delete
-    void delete(Game game);
+    void delete(GameEntity game);
 
 }

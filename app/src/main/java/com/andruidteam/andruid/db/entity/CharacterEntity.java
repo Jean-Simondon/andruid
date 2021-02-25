@@ -6,8 +6,10 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.andruidteam.andruid.model.Character;
+
 @Entity(tableName = "characters")
-public class Character {
+public class CharacterEntity implements Character {
 
     @PrimaryKey
     public int id;
@@ -66,11 +68,10 @@ public class Character {
         this.level = level;
     }
 
-    public Character() {
-    }
+    public CharacterEntity() {}
 
     @Ignore
-    public Character(int id, String firstName, String lastName, String race, String classe, int level) {
+    public CharacterEntity(int id, String firstName, String lastName, String race, String classe, int level) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -79,7 +80,7 @@ public class Character {
         this.level = level;
     }
 
-    public Character(Character character) {
+    public CharacterEntity(CharacterEntity character) {
         this.id = character.getId();
         this.firstName = character.getFirstName();
         this.lastName = character.getLastName();
@@ -87,4 +88,5 @@ public class Character {
         this.classe = character.getClasse();
         this.level = character.getLevel();
     }
+
 }

@@ -10,6 +10,9 @@
         android:name="com.andruidteam.andruid.ui.home_dm.HomeDmFragment"
         android:label="@string/menu_home_dm"
         tools:layout="@layout/fragment_home_dm" >
+        <action
+            android:id="@+id/action_nav_home_dm_to_nav_codex"
+            app:destination="@id/nav_codex" />
     </fragment>
 
     <fragment

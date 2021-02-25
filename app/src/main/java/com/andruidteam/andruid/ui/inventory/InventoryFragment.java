@@ -62,8 +62,8 @@ public class InventoryFragment extends Fragment implements LifecycleOwner {
             int example = 10;
             @Override
             public void onClick(View v) {
-                NavDirections action = InventoryFragmentDirections.actionFragmentInventoryToBlankFragment();
-                Navigation.findNavController(v).navigate(action);
+//                NavDirections action = InventoryFragmentDirections.actionFragmentInventoryToBlankFragment();
+  //              Navigation.findNavController(v).navigate(action);
             }
         });
 

@@ -13,6 +13,12 @@ import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Tout commence ici, la Main activity, point de départ de l'application
+     * Ceci dit, l'application a déjà appelé la class AndruidApp pour un singleton de l'application
+     * qui elle-même a instancié le DataRepository et AppDatabase
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); // la base
@@ -27,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     .beginTransaction()
                     .add(R.id.fragment_container_main, fragment, HomeFragment.TAG) // la classe de ce fragment et tous ceux de la mainActivity sont dans ui > main
                     .commit();
+            // Après ça, tous les fragements de la MainActyvity sont dans res > main, il y en a 3.
         }
 
     }

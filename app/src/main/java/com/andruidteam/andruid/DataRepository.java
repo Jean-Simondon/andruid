@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 
 import com.andruidteam.andruid.db.AppDatabase;
-import com.andruidteam.andruid.db.entity.Game;
-import com.andruidteam.andruid.db.entity.Character;
+import com.andruidteam.andruid.db.entity.GameEntity;
+import com.andruidteam.andruid.db.entity.CharacterEntity;
 
 import java.util.List;
 
@@ -18,8 +18,8 @@ public class DataRepository {
 
     private final AppDatabase mDatabase;
 
-    private MediatorLiveData<List<Game>> mObservableGame;
-    private MediatorLiveData<List<Character>> mObservableCharacters;
+    private MediatorLiveData<List<GameEntity>> mObservableGame;
+    private MediatorLiveData<List<CharacterEntity>> mObservableCharacters;
 
     /**
      * Construit le singleton de DataRepository en instanciant la base de données et en chargeant directement les Game et Character, à retirer peut-être plus tard car pas besoin de tous
@@ -70,41 +70,44 @@ public class DataRepository {
     /**
      * Get the list of games from the database and get notified when the data changes.
      */
-    public LiveData<List<Game>> getGames() {
+    public LiveData<List<GameEntity>> getGames() {
         return mObservableGame;
     }
 
     /**
      * Récupérer un game en fonction de son ID
      */
-    public LiveData<Game> loadGame(final int gameId) {
-        return mDatabase.mGameDao().loadAllByIds(gameId);
+    public LiveData<GameEntity> loadGame(final int gameId) {
+        return mDatabase.mGameDao().loadGame(gameId);
     }
 
-    /**
-     * Get the list of characters from the database and get notified when the data changes.
-     */
-    public void createNewCharacter() {
-        Character character = new Character();
-        character.setFirstName("John");
-        character.setLastName("Do");
-        character.setRace("humain");
-        character.setClasse("barde");
-        character.setLevel(0);
-        mDatabase.mCharacterDao().insert(character);
-    }
-
-
-    public LiveData<List<Character>> getCharacters() {
+    public LiveData<List<CharacterEntity>> getCharacters() {
         return mObservableCharacters;
     }
 
     /**
      * Récupérer un character à l'aide d'un id
      */
-    public LiveData<Character> loadCharacter(final int characterId) {
-        return mDatabase.mCharacterDao().getAllByIds(characterId);
+    public LiveData<CharacterEntity> loadCharacter(final int characterId) {
+        return mDatabase.mCharacterDao().loadCharacter(characterId);
     }
 
+
+
+
+
+
+    /**
+     * Get the list of characters from the database and get notified when the data changes.
+     */
+    public void createNewCharacter() {
+        CharacterEntity character = new CharacterEntity();
+        character.setFirstName("John");
+        character.setLastName("Do");
+        character.setRace("humain");
+        character.setClasse("barde");
+        character.setLevel(0);
+        mDatabase.mCharacterDao().insert(character);
+     }
 
 }

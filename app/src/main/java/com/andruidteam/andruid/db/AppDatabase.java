@@ -3,12 +3,12 @@ package com.andruidteam.andruid.db;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.andruidteam.andruid.AppExecutors;
@@ -23,11 +23,14 @@ import java.util.List;
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase sIntance;
-    public static final String DATABASE_NAME = "andruid-db";
-    private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 
-    public abstract GameDao mGameDao();
-    public abstract CharacterDao mCharacterDao();
+    @VisibleForTesting
+    public static final String DATABASE_NAME = "andruid-db";
+
+    public abstract GameDao gameDao();
+    public abstract CharacterDao characterDao();
+
+    private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 
     /**
      * Si l'instance de la base de données n'exite pas encore, on la crée et on la renvoie dans sInstance
@@ -55,24 +58,32 @@ public abstract class AppDatabase extends RoomDatabase {
      */
     private static AppDatabase buildDatabase(final Context appContext, final AppExecutors executors) {
         return Room.databaseBuilder(appContext, AppDatabase.class, DATABASE_NAME)
-                // rajouter de la création d'entité à cet endroit là
+                .addCallback(new Callback() {
+                    @Override
+                    public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                        super.onCreate(db);
+                        executors.diskIO().execute(() -> {
+                            addDelay();
+                            AppDatabase database = AppDatabase.getInstance(appContext, executors);
+                            List<CharacterEntity> characters = DataGenerator.generateCharacters();
+                            insertData(database, characters);
+                            database.setDatabaseCreated();
+                        });
+                    }
+                })
               .build();
     }
 
     /**
      * Si on veut emplir la base de donnée
      * @param database
-     * @param games
      * @param characters
      */
-    /*
-    private static void insertData(final AppDatabase database, final List<Game> games, final List<CharacterEntity> characters) {
+    private static void insertData(final AppDatabase database, final List<CharacterEntity> characters) {
         database.runInTransaction(() -> {
-            database.mGameDao().insertAll(games);
-            database.mCharacterDao().insertAll(characters);
+            database.characterDao().insertAll(characters);
         });
     }
-     */
 
     /**
      * Check whether the database already exists and expose it via {@link #getDatabaseCreated()}
@@ -83,10 +94,17 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     }
 
+    private static void addDelay() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ignored) {
+        }
+    }
+
     /**
      * Fait passer la valeur de la création de base de données à vrai
      */
-    private void setDatabaseCreated() {
+    private void setDatabaseCreated(){
         mIsDatabaseCreated.postValue(true);
     }
 
@@ -97,5 +115,4 @@ public abstract class AppDatabase extends RoomDatabase {
     public LiveData<Boolean> getDatabaseCreated() {
         return mIsDatabaseCreated;
     }
-
 }

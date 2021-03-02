@@ -2,14 +2,14 @@ package com.andruidteam.andruid.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
 import com.andruidteam.andruid.util.IOnBackPressed;
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.ui.main.HomeFragment;
-import com.andruidteam.andruid.viewmodel.CharacterViewModel;
+
+import com.andruidteam.andruid.model.Character;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
             super.onBackPressed();
         }
+    }
+
+    public void pickCharacter(Character character) {
+//        HomePcFragment homePcFragment = HomePcFragment.forCharacter(character.getId());
+        // Alors on utilise l'intent pour aller vers la nouvelle activity
     }
 
 }

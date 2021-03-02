@@ -18,23 +18,21 @@ import java.util.List;
 
 public class CharacterViewModel extends AndroidViewModel {
 
-    private final LiveData<CharacterEntity> mObservableCharacter;
+    private final CharacterEntity mCharacter;
 
     private final int mCharacterId;
-
-    // Ici peut-être un attribut qui est une liste de Character
 
     public CharacterViewModel(@NonNull Application application, DataRepository repository, final int characterId) {
         super(application);
         mCharacterId = characterId;
-        mObservableCharacter = repository.loadCharacter(mCharacterId);
+        mCharacter = repository.getCharacter(mCharacterId);
     }
 
     /**
      * Expose the LiveData Comments query so the UI can observe it.
      */
-    public LiveData<CharacterEntity> getCharacter() {
-        return mObservableCharacter;
+    public CharacterEntity getCharacter() {
+        return mCharacter;
     }
 
     /**

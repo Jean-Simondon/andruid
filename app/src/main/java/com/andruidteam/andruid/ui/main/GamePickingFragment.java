@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LiveData;
 
-import com.andruidteam.andruid.db.entity.Game;
+import com.andruidteam.andruid.db.entity.GameEntity;
 import com.andruidteam.andruid.util.IOnBackPressed;
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.ui.DungeonMasterActivity;
@@ -24,7 +24,7 @@ public class GamePickingFragment extends Fragment implements IOnBackPressed {
 
     public static final String TAG = "GamePickingFragment";
     public View root;
-    public LiveData<List<Game>> allGames;
+    public LiveData<List<GameEntity>> allGames;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

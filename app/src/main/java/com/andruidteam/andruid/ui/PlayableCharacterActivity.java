@@ -18,7 +18,7 @@ import androidx.room.Room;
 
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.db.AppDatabase;
-import com.andruidteam.andruid.db.entity.Game;
+import com.andruidteam.andruid.db.entity.GameEntity;
 import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 import com.google.android.material.navigation.NavigationView;
 

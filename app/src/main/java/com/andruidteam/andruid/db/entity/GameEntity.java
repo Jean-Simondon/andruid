@@ -32,4 +32,11 @@ public class GameEntity implements Game {
         return null;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

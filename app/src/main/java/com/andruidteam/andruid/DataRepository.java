@@ -6,6 +6,7 @@ import androidx.lifecycle.MediatorLiveData;
 import com.andruidteam.andruid.db.AppDatabase;
 import com.andruidteam.andruid.db.entity.GameEntity;
 import com.andruidteam.andruid.db.entity.CharacterEntity;
+import com.andruidteam.andruid.model.Character;
 
 import java.util.List;
 
@@ -18,34 +19,10 @@ public class DataRepository {
 
     private final AppDatabase mDatabase;
 
-    private MediatorLiveData<List<GameEntity>> mObservableGame;
-    private MediatorLiveData<List<CharacterEntity>> mObservableCharacters;
-
-    /**
-     * Construit le singleton de DataRepository en instanciant la base de données et en chargeant directement les Game et Character, à retirer peut-être plus tard car pas besoin de tous
-     */
     private DataRepository(final AppDatabase database) {
         mDatabase = database;
-        mObservableGame = new MediatorLiveData<>();
-        mObservableCharacters = new MediatorLiveData<>();
-
-        mObservableGame.addSource(mDatabase.mGameDao().getAll(),
-                gameEntities -> {
-                    if( mDatabase.getDatabaseCreated().getValue() != null) {
-                        mObservableGame.postValue(gameEntities);
-                    }
-                });
-
-        mObservableCharacters.addSource(mDatabase.mCharacterDao().getAll(),
-                characterEntities -> {
-                    if( mDatabase.getDatabaseCreated().getValue() != null) {
-                        mObservableCharacters.postValue(characterEntities);
-                    }
-                });
-
     }
 
-    // Vérifie que le datarepository n'est pas déjà instancier, afin de travailler avec un singleton
     public static DataRepository getInstance(final AppDatabase database) {
         if (sInstance == null) {
             synchronized (DataRepository.class) {
@@ -57,57 +34,42 @@ public class DataRepository {
         return sInstance;
     }
 
+    // ---------------- CHARACTER --------------------------------
 
-    /**
-     *
-     * ICI !!!! C'est ici là dessous que l'on rajoute nos méthode pour RECUPERER des données sur la BASE DE DONNEES
-     * On utilise l'attribut mDatabase (une instance de la base de données),
-     * qui elle même utilise les classes GameDao et CharacterDAO pour appeler leur méthode
-     * Si on veut rajouter des ATTRIBUTS, c'est dans DB > ENTITY
-     */
-
-
-    /**
-     * Get the list of games from the database and get notified when the data changes.
-     */
-    public LiveData<List<GameEntity>> getGames() {
-        return mObservableGame;
+    public CharacterEntity getCharacter(int id) {
+        return mDatabase.characterDao().loadCharacter(id);
     }
 
-    /**
-     * Récupérer un game en fonction de son ID
-     */
-    public LiveData<GameEntity> loadGame(final int gameId) {
-        return mDatabase.mGameDao().loadGame(gameId);
+    public List<CharacterEntity> getAllCharacters() {
+        return mDatabase.characterDao().loadAllCharacters();
     }
 
-    public LiveData<List<CharacterEntity>> getCharacters() {
-        return mObservableCharacters;
-    }
-
-    /**
-     * Récupérer un character à l'aide d'un id
-     */
-    public LiveData<CharacterEntity> loadCharacter(final int characterId) {
-        return mDatabase.mCharacterDao().loadCharacter(characterId);
-    }
-
-
-
-
-
-
-    /**
-     * Get the list of characters from the database and get notified when the data changes.
-     */
-    public void createNewCharacter() {
+    public CharacterEntity createNewCharacter() {
         CharacterEntity character = new CharacterEntity();
-        character.setFirstName("John");
-        character.setLastName("Do");
-        character.setRace("humain");
-        character.setClasse("barde");
-        character.setLevel(0);
-        mDatabase.mCharacterDao().insert(character);
+        character.setFirstName("drizzt");
+        character.setLastName("do'urden");
+        character.setClasse("clerc");
+        character.setLevel(10);
+        character.setRace("Elfe noir");
+//        mDatabase.characterDao().insert(character);
+        return character;
      }
 
+    // ---------------- GAME --------------------------------
+
+    public GameEntity getGame(int id) {
+        return mDatabase.gameDao().loadGame(id);
+    }
+
+    public List<GameEntity> getAllGames() {
+        return mDatabase.gameDao().loadAllGames();
+    }
+
+    public GameEntity createNewGames() {
+        GameEntity game = new GameEntity();
+        game.setTitle("Un titre");
+        game.setDescription("Une description");
+        mDatabase.gameDao().insert(game);
+        return game;
+    }
 }

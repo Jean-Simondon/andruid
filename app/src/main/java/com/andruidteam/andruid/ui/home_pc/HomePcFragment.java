@@ -92,6 +92,9 @@ public class HomePcFragment extends Fragment {
  */
 
 
+    public void forCharacter(int characterId) {
+
+    }
 
 
 }

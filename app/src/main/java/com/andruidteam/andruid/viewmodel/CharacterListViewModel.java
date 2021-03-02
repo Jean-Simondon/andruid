@@ -7,6 +7,7 @@ import com.andruidteam.andruid.AndruidApp;
 import com.andruidteam.andruid.DataRepository;
 import com.andruidteam.andruid.db.entity.CharacterEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -20,28 +21,22 @@ public class CharacterListViewModel extends AndroidViewModel {
 
     private final SavedStateHandle mSavedStateHandler;
     private final DataRepository mRepository;
-    private final LiveData<List<CharacterEntity>> mCharacters;
+    private ArrayList<CharacterEntity> mCharacters;
 
     public CharacterListViewModel(@NonNull Application application, @NonNull SavedStateHandle savedStateHandle) {
         super(application);
         mSavedStateHandler = savedStateHandle;
         mRepository = ((AndruidApp) application).getRepository();
-        mCharacters = mRepository.getCharacters();
+        mCharacters = new ArrayList<>();
     }
 
-    /**
-     * Expose the LiveData Products query so the UI can observe it.
-     */
-    public LiveData<List<CharacterEntity>> getCharacters() {
+    public ArrayList<CharacterEntity> getCharacters() {
         return mCharacters;
     }
 
-    public LiveData<List<CharacterEntity>> addCharacter()
+    public void addCharacter()
     {
-        mRepository.createNewCharacter();
-        // Créer un nouveau personnage et renvoier la liste de character
-        return getCharacters();
+        mCharacters.add(mRepository.createNewCharacter());
     }
-
 
 }

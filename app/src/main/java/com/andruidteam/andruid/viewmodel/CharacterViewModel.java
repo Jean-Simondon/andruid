@@ -1,6 +1,7 @@
 package com.andruidteam.andruid.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,8 @@ import java.util.List;
 
 public class CharacterViewModel extends AndroidViewModel {
 
+    public static final String TAG = "CharacterViewModel";
+
     private final CharacterEntity mCharacter;
 
     private final int mCharacterId;
@@ -25,7 +28,8 @@ public class CharacterViewModel extends AndroidViewModel {
     public CharacterViewModel(@NonNull Application application, DataRepository repository, final int characterId) {
         super(application);
         mCharacterId = characterId;
-        mCharacter = repository.getCharacter(mCharacterId);
+        Log.d(TAG, "charactere ID : " + characterId);
+        mCharacter = repository.getCharacterById(mCharacterId);
     }
 
     /**
@@ -55,7 +59,6 @@ public class CharacterViewModel extends AndroidViewModel {
             mCharacterId = characterId;
             mRepository = ((AndruidApp) application).getRepository();
         }
-
 
         @SuppressWarnings("unchecked")
         @Override

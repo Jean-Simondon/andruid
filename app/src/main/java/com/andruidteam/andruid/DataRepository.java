@@ -1,13 +1,17 @@
 package com.andruidteam.andruid;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 
 import com.andruidteam.andruid.db.AppDatabase;
+import com.andruidteam.andruid.db.DataGenerator;
 import com.andruidteam.andruid.db.entity.GameEntity;
 import com.andruidteam.andruid.db.entity.CharacterEntity;
 import com.andruidteam.andruid.model.Character;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,12 +19,19 @@ import java.util.List;
  */
 public class DataRepository {
 
+    public static final String TAG = "DataRepository";
+
     private static DataRepository sInstance;
 
     private final AppDatabase mDatabase;
 
+    private static ArrayList<CharacterEntity> mCharacters;
+
     private DataRepository(final AppDatabase database) {
         mDatabase = database;
+        if(mCharacters == null) {
+            mCharacters = DataGenerator.generateCharacters(); // on charge tous les personnages de la BDD (le data Generator en réalité)
+        }
     }
 
     public static DataRepository getInstance(final AppDatabase database) {
@@ -36,23 +47,23 @@ public class DataRepository {
 
     // ---------------- CHARACTER --------------------------------
 
-    public CharacterEntity getCharacter(int id) {
-        return mDatabase.characterDao().loadCharacter(id);
+    public CharacterEntity getCharacterById(int id) {
+        return mCharacters.get(id - 1); // - 1 pour s'accorder avec la taille de la lsite comme les ID commencent à 1
     }
 
-    public List<CharacterEntity> getAllCharacters() {
-        return mDatabase.characterDao().loadAllCharacters();
+    public ArrayList<CharacterEntity> getAllCharacters() {
+        return mCharacters;
     }
 
-    public CharacterEntity createNewCharacter() {
-        CharacterEntity character = new CharacterEntity();
-        character.setFirstName("drizzt");
-        character.setLastName("do'urden");
-        character.setClasse("clerc");
-        character.setLevel(10);
-        character.setRace("Elfe noir");
-//        mDatabase.characterDao().insert(character);
-        return character;
+    public void createNewCharacter() {
+        mCharacters.add(new CharacterEntity(
+                mCharacters.size() + 1,
+                "FirstName",
+                "LastName",
+                "Ma classe",
+                "Humain",
+                0
+        ));
      }
 
     // ---------------- GAME --------------------------------
@@ -72,4 +83,5 @@ public class DataRepository {
         mDatabase.gameDao().insert(game);
         return game;
     }
+
 }

@@ -1,6 +1,8 @@
 package com.andruidteam.andruid.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +13,15 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.databinding.FragmentCharacterListBinding;
-import com.andruidteam.andruid.ui.MainActivity;
+import com.andruidteam.andruid.ui.CharacterActivity;
+import com.andruidteam.andruid.ui.DungMasterActivity;
 import com.andruidteam.andruid.viewmodel.CharacterListViewModel;
 
 import com.andruidteam.andruid.util.IOnBackPressed;
-
-import java.util.ArrayList;
 
 public class CharacterListFragment extends Fragment implements IOnBackPressed {
 
@@ -52,14 +52,23 @@ public class CharacterListFragment extends Fragment implements IOnBackPressed {
             @Override
             public void onClick(View v) {
                 viewModel.addCharacter();
-                mCharacterAdapter.setCharacterList(viewModel.getCharacters());
+                mCharacterAdapter.update();
             }
         });
 
+        /**
+         * Au clic sur un élément de la liste, c'est un choix de personnage, et on continue vers l'activity PlayableCharacterActivity
+         */
         mBinding.charactersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mCharacterAdapter.getItemId(position);
+                Intent intent = new Intent(getActivity(), CharacterActivity.class);
+                Bundle bundle = new Bundle();
+                Log.d("CharacterListFragment", "on Item Click" + String.valueOf(mCharacterAdapter.getItemId(position)));
+                bundle.putInt(CharacterActivity.INPUT_CHARACTER_ID, (int) mCharacterAdapter.getItemId(position));
+                intent.putExtras(bundle);
+                Log.d(TAG, "onItemClick:");
+                startActivity(intent);
             }
         });
 
@@ -67,29 +76,15 @@ public class CharacterListFragment extends Fragment implements IOnBackPressed {
 
     @Override
     public void onDestroyView() {
-        mBinding = null;
-        mCharacterAdapter = null;
+//        mBinding = null;
+//        mCharacterAdapter = null;
         super.onDestroyView();
     }
-
-    private final CharacterClickCallback mCharacterClickCallback = myCharacter -> {
-        if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
-            ((MainActivity) requireActivity()).pickCharacter(myCharacter);
-        }
-    };
 
     @Override
     public boolean onBackPressed() {
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.popBackStack();
-        /*
-        FragmentManager fragmentManager = getFragmentManager();
-        HomeFragment fragment = new HomeFragment();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container_main, fragment, HomeFragment.TAG)
-                .commit();
-
-         */
         return true;
     }
 

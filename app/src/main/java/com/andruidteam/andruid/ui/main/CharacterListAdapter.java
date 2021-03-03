@@ -1,6 +1,7 @@
 package com.andruidteam.andruid.ui.main;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,18 +11,19 @@ import androidx.databinding.DataBindingUtil;
 
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.databinding.FragmentCharacterItemBinding;
+import com.andruidteam.andruid.db.entity.CharacterEntity;
 import com.andruidteam.andruid.model.Character;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CharacterListAdapter extends BaseAdapter {
 
-    private LayoutInflater layoutInflater;
-    private ArrayList<? extends Character> mCharacterList;
+    public static final String TAG = "CharacterListAdapter";
 
-    public CharacterListAdapter(Context context, ArrayList<? extends Character> characters)
-    {
+    private LayoutInflater layoutInflater;
+    private ArrayList<CharacterEntity> mCharacterList;
+
+    public CharacterListAdapter(Context context, ArrayList<CharacterEntity> characters) {
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.mCharacterList = characters;
         notifyDataSetChanged();
@@ -42,15 +44,19 @@ public class CharacterListAdapter extends BaseAdapter {
         return mCharacterList.get(position).getId();
     }
 
-    public void setCharacterList(ArrayList<? extends Character> characters)
-    {
+    public void setCharacterList(ArrayList<CharacterEntity> characters) {
         this.mCharacterList = characters;
+        notifyDataSetChanged();
+    }
+
+    public void update() {
         notifyDataSetChanged();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         FragmentCharacterItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.fragment_character_item, parent, false);
+        binding.setCharacter(mCharacterList.get(position));
         return binding.getRoot();
     }
 }

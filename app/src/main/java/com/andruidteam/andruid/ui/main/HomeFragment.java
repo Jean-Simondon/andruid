@@ -15,6 +15,7 @@ import com.andruidteam.andruid.R;
 public class HomeFragment extends Fragment {
 
     public static final String TAG = "HomeFragment";
+
     public View root;
 
     /**
@@ -38,16 +39,16 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.toDMPicking).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GamePickingFragment fragment = new GamePickingFragment();
+                GameListFragment fragment = new GameListFragment();
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.fragment_container_main, fragment, GamePickingFragment.TAG)
+                        .replace(R.id.fragment_container_main, fragment, GameListFragment.TAG)
                         .commit();
             }
         });
 
         /**
-         * Même chose que pour les games mais pour les personnages
+         * Même chose que pour les games mais pour les characters
          */
         view.findViewById(R.id.toPCPicking).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,10 +62,5 @@ public class HomeFragment extends Fragment {
         });
 
     }
-
-//    @Override
-//    public boolean onBackPressed() {
-//        return true;
-//    }
 
 }

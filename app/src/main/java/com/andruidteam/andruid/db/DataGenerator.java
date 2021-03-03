@@ -10,18 +10,47 @@ import java.util.List;
  */
 public class DataGenerator {
 
-    public static List<CharacterEntity> generateCharacters() {
-        List<CharacterEntity> character = new ArrayList<>();
+    public static ArrayList<CharacterEntity> generateCharacters() {
 
-        CharacterEntity first = new CharacterEntity();
-        first.setFirstName("drizzt");
-        first.setLastName("do'urden");
-        first.setClasse("clerc");
-        first.setLevel(10);
-        first.setRace("Elfe noir");
+        ArrayList<CharacterEntity> listCharacter = new ArrayList<>();
 
-        character.add(first);
-        return character;
+        listCharacter.add(new CharacterEntity(
+                1,
+                "Acérérak",
+                "Le dévoreur",
+                "Cambion",
+                "Clerc",
+                1
+        ));
+
+        listCharacter.add(new CharacterEntity(
+                2,
+                "Drizzt",
+                "Do'urden",
+                "Elfe noir",
+                "Rôdeur",
+                1
+        ));
+
+        listCharacter.add(new CharacterEntity(
+                3,
+                "Minsc",
+                null,
+                "Humain",
+                "Ranger",
+                1
+        ));
+
+        listCharacter.add(new CharacterEntity(
+                4,
+                "Imoen",
+                null,
+                "Humaine",
+                "Voleuse",
+                1
+        ));
+
+        return listCharacter;
     }
 
 

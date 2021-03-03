@@ -16,11 +16,11 @@ import androidx.lifecycle.LiveData;
 import com.andruidteam.andruid.db.entity.GameEntity;
 import com.andruidteam.andruid.util.IOnBackPressed;
 import com.andruidteam.andruid.R;
-import com.andruidteam.andruid.ui.DungeonMasterActivity;
+import com.andruidteam.andruid.ui.DungMasterActivity;
 
 import java.util.List;
 
-public class GamePickingFragment extends Fragment implements IOnBackPressed {
+public class GameListFragment extends Fragment implements IOnBackPressed {
 
     public static final String TAG = "GamePickingFragment";
     public View root;
@@ -62,7 +62,7 @@ public class GamePickingFragment extends Fragment implements IOnBackPressed {
         buttonToDM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), DungeonMasterActivity.class);
+                Intent intent = new Intent(getActivity(), DungMasterActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,12 +1,15 @@
 package com.andruidteam.andruid.ui.home_pc;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -15,38 +18,37 @@ import androidx.lifecycle.ViewModelProvider;
 import com.andruidteam.andruid.DataRepository;
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.databinding.FragmentHomePcBinding;
+import com.andruidteam.andruid.ui.CharacterActivity;
 import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 
 public class HomePcFragment extends Fragment {
 
     public static final String TAG = "HomePcFragment";
 
-    private static final String KEY_CHARACTER_ID = "character_id";
-
     private FragmentHomePcBinding mBinding;
+
+    private CharacterActivity parentActivity;
+
+    private CharacterViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView");
+        parentActivity = (CharacterActivity) getActivity();
+        viewModel = parentActivity.mCharacterViewModel;
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_pc, container, false);
-        View view = mBinding.getRoot();
-        return view;
+        return mBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-//        requireActivity().getApplication();
-//        this.requireArguments().getInt(KEY_CHARACTER_ID);
-
-//        CharacterViewModel.Factory factory = new CharacterViewModel.Factory(requireActivity().getApplication(), this.requireArguments().getInt(KEY_CHARACTER_ID));
-//        final CharacterViewModel mCharacterViewModel = new ViewModelProvider(this, factory).get(CharacterViewModel.class);
+        mBinding.setCharacter(viewModel.getCharacter());
 
 //        mBinding.setLifecycleOwner(getViewLifecycleOwner());
 //        mBinding.setProductViewModel(model);
 //        subscribeToModel(model);
-
 
 
 //        mBinding.firstName.setText("Ici le fragment Home PC");
@@ -90,11 +92,6 @@ public class HomePcFragment extends Fragment {
     }
 
  */
-
-
-    public void forCharacter(int characterId) {
-
-    }
 
 
 }

@@ -15,12 +15,13 @@ import androidx.navigation.ui.NavigationUI;
 import com.andruidteam.andruid.R;
 import com.google.android.material.navigation.NavigationView;
 
-public class DungeonMasterActivity extends AppCompatActivity {
-
-    private DrawerLayout mDrawerLayout;
-    private AppBarConfiguration mAppBarConfiguration;
+public class DungMasterActivity extends AppCompatActivity {
 
     public static final String TAG = "DungeonMasterActivity";
+
+    private DrawerLayout mDrawerLayout;
+
+    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

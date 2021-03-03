@@ -13,6 +13,8 @@ import com.andruidteam.andruid.model.Character;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TAG = "MainActivity";
+
     /**
      * Tout commence ici, la Main activity, point de départ de l'application
      * Ceci dit, l'application a déjà appelé la class AndruidApp pour un singleton de l'application
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                     .beginTransaction()
                     .add(R.id.fragment_container_main, fragment, HomeFragment.TAG) // la classe de ce fragment et tous ceux de la mainActivity sont dans ui > main
                     .commit();
-            // Après ça, tous les fragements de la MainActyvity sont dans res > main, il y en a 3.
+            // Après ça, tous les fragements de la MainActyvity sont dans res > main.
         }
 
     }
@@ -44,11 +46,6 @@ public class MainActivity extends AppCompatActivity {
         if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
             super.onBackPressed();
         }
-    }
-
-    public void pickCharacter(Character character) {
-//        HomePcFragment homePcFragment = HomePcFragment.forCharacter(character.getId());
-        // Alors on utilise l'intent pour aller vers la nouvelle activity
     }
 
 }

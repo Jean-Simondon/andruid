@@ -1,6 +1,7 @@
 package com.andruidteam.andruid.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,25 +20,28 @@ import androidx.room.Room;
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.db.AppDatabase;
 import com.andruidteam.andruid.db.entity.GameEntity;
+import com.andruidteam.andruid.viewmodel.CharacterListViewModel;
 import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 import com.google.android.material.navigation.NavigationView;
 
-public class PlayableCharacterActivity extends AppCompatActivity {
+public class CharacterActivity extends AppCompatActivity {
+
+    public static final String TAG = "CharacterActivity";
 
     public static final String INPUT_CHARACTER_ID = "input_character_id";
 
     private DrawerLayout mDrawerLayout;
     private AppBarConfiguration mAppBarConfiguration;
-    private CharacterViewModel mCharacterViewModel; // À instancier pour l'avoir de manière globale dans l'appli côté Playable Character
+    public CharacterViewModel mCharacterViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pc); // récupération du layout de l'application
+        setContentView(R.layout.activity_pc);
 
-        // TODO en arrivant ici, il faut faire récupérer l'arguement dans l'intent qui nous vient du fragment CharacterPickintFragment et s'en servir pour instancier le Character dont les données nous suivront tout au long des fragments
+        // On instancie le viewModel à l'aide de l'ID que l'on reçoit de la précédente Activité en ayant cliqué sur un élément de la liste de character
         CharacterViewModel.Factory factory = new CharacterViewModel.Factory(getApplication(), getIntent().getExtras().getInt(INPUT_CHARACTER_ID));
-//        mCharacterViewModel = new ViewModelProvider(this, factory).get(CharacterViewModel.class);
+        mCharacterViewModel = new ViewModelProvider(this, factory).get(CharacterViewModel.class);
 
         mDrawerLayout = findViewById(R.id.drawer_layout_pc); // récupération du composent XML qui emglobe toute la navigation (drawer layout)
         setSupportActionBar(findViewById(R.id.toolbar_pc)); // la barre d'action au dessus des fragments (toolbar)
@@ -56,7 +60,6 @@ public class PlayableCharacterActivity extends AppCompatActivity {
 
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration); // connexion toolbar et navigation
         NavigationUI.setupWithNavController(navigationView, navController); // connexion panneau menu latéral avec navigation
-
     }
 
     // Mise en place du menu en haut à droite (settings)

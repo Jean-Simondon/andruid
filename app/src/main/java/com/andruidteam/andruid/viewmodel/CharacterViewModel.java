@@ -6,16 +6,12 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.andruidteam.andruid.AndruidApp;
-import com.andruidteam.andruid.DataRepository;
+import com.andruidteam.andruid.app.AndruidApp;
+import com.andruidteam.andruid.app.DataRepository;
 import com.andruidteam.andruid.db.entity.CharacterEntity;
-
-import java.util.List;
 
 public class CharacterViewModel extends AndroidViewModel {
 

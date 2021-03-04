@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.team_info.TeamInfoFragment">
+    tools:context=".ui.fragment.team_info.TeamInfoFragment">
 
     <TextView
         android:id="@+id/text_team_info"

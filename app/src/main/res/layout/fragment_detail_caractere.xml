@@ -14,7 +14,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.detailCaractere.DetailCaractereFragment">
+        tools:context=".ui.fragment.detailCaractere.DetailCaractereFragment">
 
         <TextView
             android:id="@+id/text_detail_caractere"

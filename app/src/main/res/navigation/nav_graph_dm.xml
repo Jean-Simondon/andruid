@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home_dm"
-        android:name="com.andruidteam.andruid.ui.home_dm.HomeDmFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.home_dm.HomeDmFragment"
         android:label="@string/menu_home_dm"
         tools:layout="@layout/fragment_home_dm" >
         <action
@@ -17,44 +17,44 @@
 
     <fragment
         android:id="@+id/nav_codex"
-        android:name="com.andruidteam.andruid.ui.codex.CodexFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.codex.CodexFragment"
         android:label="@string/menu_codex"
         tools:layout="@layout/fragment_codex" />
 
     <fragment
         android:id="@+id/diceFragment"
-        android:name="com.andruidteam.andruid.ui.dice.DiceFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.dice.DiceFragment"
         android:label="@string/menu_dice"
         tools:layout="@layout/fragment_dice" />
 
     <fragment
         android:id="@+id/nav_fight"
-        android:name="com.andruidteam.andruid.ui.fight.FightFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.fight.FightFragment"
         android:label="@string/menu_fight"
         tools:layout="@layout/fragment_fight" >
     </fragment>
 
     <fragment
         android:id="@+id/nav_map"
-        android:name="com.andruidteam.andruid.ui.map.MapFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.map.MapFragment"
         android:label="@string/menu_map"
         tools:layout="@layout/fragment_map" />
 
     <fragment
         android:id="@+id/nav_music"
-        android:name="com.andruidteam.andruid.ui.music.MusicFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.music.MusicFragment"
         android:label="@string/menu_music"
         tools:layout="@layout/fragment_music" />
 
     <fragment
         android:id="@+id/nav_script"
-        android:name="com.andruidteam.andruid.ui.dice.DiceFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.dice.DiceFragment"
         android:label="@string/menu_dice"
         tools:layout="@layout/fragment_dice" />
 
     <fragment
         android:id="@+id/nav_team_info"
-        android:name="com.andruidteam.andruid.ui.team_info.TeamInfoFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.team_info.TeamInfoFragment"
         android:label="@string/menu_team_info"
         tools:layout="@layout/fragment_team_info" />
 

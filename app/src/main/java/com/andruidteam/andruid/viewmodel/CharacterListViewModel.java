@@ -1,22 +1,16 @@
 package com.andruidteam.andruid.viewmodel;
 
 import android.app.Application;
-import android.text.TextUtils;
 
-import com.andruidteam.andruid.AndruidApp;
-import com.andruidteam.andruid.DataRepository;
+import com.andruidteam.andruid.app.AndruidApp;
+import com.andruidteam.andruid.app.DataRepository;
 import com.andruidteam.andruid.db.entity.CharacterEntity;
-import com.andruidteam.andruid.model.Character;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.arch.core.util.Function;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.SavedStateHandle;
-import androidx.lifecycle.Transformations;
 
 public class CharacterListViewModel extends AndroidViewModel {
 

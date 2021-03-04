@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/HomePcFragment"
-        android:name="com.andruidteam.andruid.ui.home_pc.HomePcFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.home_pc.HomePcFragment"
         android:label="@string/menu_home_pc"
         tools:layout="@layout/fragment_home_pc" />
 
     <fragment
         android:id="@+id/diceFragment"
-        android:name="com.andruidteam.andruid.ui.dice.DiceFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.dice.DiceFragment"
         android:label="@string/menu_dice"
         tools:layout="@layout/fragment_dice" >
         <action
@@ -23,19 +23,19 @@
 
     <fragment
         android:id="@+id/detailCaractereFragment"
-        android:name="com.andruidteam.andruid.ui.detailCaractere.DetailCaractereFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.detailCaractere.DetailCaractereFragment"
         android:label="@string/menu_detail_caractere"
         tools:layout="@layout/fragment_detail_caractere" />
 
     <fragment
         android:id="@+id/journalFragment"
-        android:name="com.andruidteam.andruid.ui.journal.JournalFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.journal.JournalFragment"
         android:label="@string/menu_journal"
         tools:layout="@layout/fragment_journal" />
 
     <fragment
         android:id="@+id/inventoryFragment"
-        android:name="com.andruidteam.andruid.ui.inventory.InventoryFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.inventory.InventoryFragment"
         android:label="@string/menu_inventory"
         tools:layout="@layout/fragment_inventory" >
         <action
@@ -45,19 +45,19 @@
 
     <fragment
         android:id="@+id/exampleFragment"
-        android:name="com.andruidteam.andruid.ui.inventory.InventoryFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.inventory.InventoryFragment"
         android:label="@string/menu_inventory"
         tools:layout="@layout/fragment_example" />
 
     <fragment
         android:id="@+id/skillFragment"
-        android:name="com.andruidteam.andruid.ui.skill.SkillFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.skill.SkillFragment"
         android:label="@string/menu_skill"
         tools:layout="@layout/fragment_skill" />
 
     <fragment
         android:id="@+id/spellFragment"
-        android:name="com.andruidteam.andruid.ui.spell.SpellFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.spell.SpellFragment"
         android:label="@string/menu_spell"
         tools:layout="@layout/fragment_spell" />
 

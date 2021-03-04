@@ -11,7 +11,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.andruidteam.andruid.AppExecutors;
+import com.andruidteam.andruid.app.AppExecutors;
 import com.andruidteam.andruid.db.dao.GameDao;
 import com.andruidteam.andruid.db.dao.CharacterDao;
 import com.andruidteam.andruid.db.entity.GameEntity;

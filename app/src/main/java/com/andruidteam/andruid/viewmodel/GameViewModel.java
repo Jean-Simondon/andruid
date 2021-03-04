@@ -4,13 +4,11 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.andruidteam.andruid.AndruidApp;
-import com.andruidteam.andruid.DataRepository;
+import com.andruidteam.andruid.app.AndruidApp;
+import com.andruidteam.andruid.app.DataRepository;
 import com.andruidteam.andruid.db.entity.GameEntity;
 
 

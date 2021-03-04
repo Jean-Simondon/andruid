@@ -12,7 +12,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home_pc.HomePcFragment">
+        tools:context=".ui.fragment.home_pc.HomePcFragment">
 
         <LinearLayout
             android:layout_marginStart="@dimen/item_horizontal_margin"

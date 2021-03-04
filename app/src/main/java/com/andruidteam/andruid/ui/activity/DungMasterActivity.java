@@ -1,6 +1,7 @@
 package com.andruidteam.andruid.ui.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,12 +33,12 @@ public class DungMasterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dm);
 
         GameViewModel.Factory factory = new GameViewModel.Factory(getApplication(), getIntent().getExtras().getInt(INPUT_GAME_ID));
         mGameViewModel = new ViewModelProvider(this, factory).get(GameViewModel.class);
-
 
         mDrawerLayout = findViewById(R.id.drawer_layout_dm);
         setSupportActionBar(findViewById(R.id.toolbar_dm));

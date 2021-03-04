@@ -20,7 +20,7 @@ public class GameEntity implements Game {
 
     @Override
     public int getId() {
-        return 0;
+        return id;
     }
 
     @Override
@@ -45,17 +45,19 @@ public class GameEntity implements Game {
         this.description = description;
     }
 
+    public GameEntity() {};
+
     @Ignore
-    public GameEntity(int id, String description, String title) {
+    public GameEntity(int id, String title, String description) {
         this.id = id;
-        this.description = description;
         this.title = title;
+        this.description = description;
     }
 
     public GameEntity(GameEntity game) {
         this.id = game.getId();
-        this.description = game.getDescription();
         this.title = game.getTitle();
+        this.description = game.getDescription();
     }
 
 

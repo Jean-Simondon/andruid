@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.andruidteam.andruid.util.IOnBackPressed;
 import com.andruidteam.andruid.R;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState); // la base
         setContentView(R.layout.activity_main); // layout qui ne contient qu'un fragment container (pour le remplir aussitôt après)
 
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Gestion du dépilement des fragments quand appuie sur retour arrière, sinon on sort de l'activité, donc de l'application plutôt que de revenir au fragment précédent
     @Override public void onBackPressed() {
+        Log.d(TAG, "onBackPressed: ");
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container_main);
         if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
             super.onBackPressed();

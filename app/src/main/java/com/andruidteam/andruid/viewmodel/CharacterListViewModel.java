@@ -43,11 +43,6 @@ public class CharacterListViewModel extends AndroidViewModel {
         mRepository.createNewCharacter();
     }
 
-
-
-
-
-
     public LiveData<ArrayList<CharacterEntity>> getObservableCharacters() {
         if( mObservableCharacters == null ) {
             mObservableCharacters = new MutableLiveData<ArrayList<CharacterEntity>>();

@@ -2,6 +2,7 @@ package com.andruidteam.andruid.ui.fragment.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,6 @@ import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.ui.activity.DungMasterActivity;
 import com.andruidteam.andruid.viewmodel.GameListViewModel;
 
-
 public class GameListFragment extends Fragment implements IOnBackPressed {
 
     public static final String TAG = "GameListFragment";
@@ -32,6 +32,7 @@ public class GameListFragment extends Fragment implements IOnBackPressed {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView: ");
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_game_list, container, false);
         return mBinding.getRoot();
     }
@@ -39,6 +40,7 @@ public class GameListFragment extends Fragment implements IOnBackPressed {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onViewCreated: ");
         super.onViewCreated(view, savedInstanceState);
         GameListViewModel viewModel = new ViewModelProvider(this).get(GameListViewModel.class);
 
@@ -50,6 +52,7 @@ public class GameListFragment extends Fragment implements IOnBackPressed {
         mBinding.newGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: ");
                 viewModel.addGame();
                 mGameAdapter.update();
             }
@@ -58,6 +61,7 @@ public class GameListFragment extends Fragment implements IOnBackPressed {
         mBinding.gamesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG, "onItemClick: ");
                 Intent intent = new Intent(getActivity(), DungMasterActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt(DungMasterActivity.INPUT_GAME_ID, (int) mGameAdapter.getItemId(position));

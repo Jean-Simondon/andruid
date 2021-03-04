@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- LE DRAWER LAYOUT QUI VA CREER LA STRUCTURE DE NAVIGATION-->
+
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,54 +7,38 @@
     android:id="@+id/drawer_layout_dm"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    tools:context=".ui.activity.DungMasterActivity"
     tools:openDrawer="start">
 
-    <!-- CONTENEUR DE BARRE D'OUTIL ET DU FRAGMENT -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.activity.DungMasterActivity">
 
-        <!-- CONTENEUR DE LA BARRE D'OUTIL -->
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/Theme.andruid.AppBarOverlay">
-            <!-- BARRE D'OUTIL AU DESSUS DU MENU -->
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_dm"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/Theme.andruid.PopupOverlay" />
-        <!-- FIN DU CONTENEUR DE LA BARRE D'OUTIL -->
+
         </com.google.android.material.appbar.AppBarLayout>
 
-        <!-- CONTENEUR DU FRAGMENT HOST -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-            <!-- LE FRAGMENT PLACE HOLDER QUI SERA REMPLACE AU MOMENT DU CLIC SUR LES LIEN DU MENU -->
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/nav_host_fragment_dm"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:defaultNavHost="true"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:navGraph="@navigation/nav_graph_dm" />
-        <!-- FIN CONTENEUR DU FRAGMENT -->
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- FIN DU CONTENEUR DE BARRE D'OUTIL ET DU FRAGMENT -->
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <!-- LE PANNEAUX GLISSANT DE LA GAUCHE (LE NAVIGATION VIEW)  -->
-    <!--CONTIENT LE HEADER DU MENU (NAV HEADER DM) ET LA LISTE DE MENU EN DESSOUS (MENU DM DRAWER)  -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view_dm"
         android:layout_width="wrap_content"

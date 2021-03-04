@@ -38,7 +38,7 @@ public class JournalFragment extends Fragment {
         mBinding.setCharacter(viewModel.getCharacter());
 
         /**
-         * TO DO
+         * TODO : Permettre d'écrire dans un textEdit puis d'ajouter l'élément à une liste de commentaires
          *
          */
 

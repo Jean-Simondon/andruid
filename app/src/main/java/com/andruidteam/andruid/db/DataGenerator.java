@@ -57,7 +57,22 @@ public class DataGenerator {
     }
 
     public static ArrayList<GameEntity> generateGames() {
-        return new ArrayList<GameEntity>();
+
+        ArrayList<GameEntity> listGame = new ArrayList<>();
+
+        listGame.add(new GameEntity(
+            1,
+            "Il était une fois des dragons",
+            "Une rapide description"
+        ));
+
+        listGame.add(new GameEntity(
+            2,
+            "Il était une fois des dongeons",
+            "Une rapide description"
+        ));
+
+        return listGame;
     }
 
 

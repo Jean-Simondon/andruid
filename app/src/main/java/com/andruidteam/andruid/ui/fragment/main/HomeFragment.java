@@ -1,6 +1,7 @@
 package com.andruidteam.andruid.ui.fragment.main;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +24,14 @@ public class HomeFragment extends Fragment {
      * On commence ici, en connectant le layout correspondant à la classe HomeFragment
      */
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView: ");
         root = inflater.inflate(R.layout.fragment_main, container, false);
         return root;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onViewCreated: ");
         super.onViewCreated(view, savedInstanceState);
         FragmentManager fragmentManager = getFragmentManager(); // le fragment Manager, qui permet d'ajouter, retirer ou remplacer des fragments (leur gestion en général)
 
@@ -39,6 +42,7 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.toDMPicking).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: ");
                 GameListFragment fragment = new GameListFragment();
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)
@@ -53,6 +57,7 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.toPCPicking).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: ");
                 CharacterListFragment fragment = new CharacterListFragment();
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)

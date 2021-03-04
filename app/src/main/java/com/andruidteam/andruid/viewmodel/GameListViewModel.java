@@ -1,6 +1,7 @@
 package com.andruidteam.andruid.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -29,6 +30,7 @@ public class GameListViewModel extends AndroidViewModel {
         mSavedStateHandler = savedStateHandle;
         mRepository = ((AndruidApp) application).getRepository();
         mGame = mRepository.getAllGames();
+        Log.d(TAG, "GameListViewModel: ");
     }
 
     public ArrayList<GameEntity> getGames() {

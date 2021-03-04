@@ -24,7 +24,6 @@ public class CharacterViewModel extends AndroidViewModel {
     public CharacterViewModel(@NonNull Application application, DataRepository repository, final int characterId) {
         super(application);
         mCharacterId = characterId;
-        Log.d(TAG, "charactere ID : " + characterId);
         mCharacter = repository.getCharacterById(mCharacterId);
     }
 
@@ -36,10 +35,10 @@ public class CharacterViewModel extends AndroidViewModel {
     }
 
     /**
-     * A creator is used to inject the game ID into the ViewModel
+     * A creator is used to inject the character ID into the ViewModel
      * <p>
      * This creator is to showcase how to inject dependencies into ViewModels. It's not
-     * actually necessary in this case, as the product ID can be passed in a public method.
+     * actually necessary in this case, as the character ID can be passed in a public method.
      */
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
 

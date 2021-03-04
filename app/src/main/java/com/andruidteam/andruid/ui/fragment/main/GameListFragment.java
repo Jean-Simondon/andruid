@@ -5,79 +5,80 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.andruidteam.andruid.db.entity.GameEntity;
+import com.andruidteam.andruid.databinding.FragmentGameListBinding;
 import com.andruidteam.andruid.util.IOnBackPressed;
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.ui.activity.DungMasterActivity;
+import com.andruidteam.andruid.viewmodel.GameListViewModel;
 
-import java.util.List;
 
 public class GameListFragment extends Fragment implements IOnBackPressed {
 
-    public static final String TAG = "GamePickingFragment";
-    public View root;
-    public LiveData<List<GameEntity>> allGames;
+    public static final String TAG = "GameListFragment";
 
+    private GameListAdapter mGameAdapter;
+
+    private FragmentGameListBinding mBinding;
+
+    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.game_picking_fragment, container, false);
-
-        // ici, on doit instancier tous les jeux depuis la base de données, et les
-
-
-        return root;
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_game_list, container, false);
+        return mBinding.getRoot();
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        GameListViewModel viewModel = new ViewModelProvider(this).get(GameListViewModel.class);
 
+        mGameAdapter = new GameListAdapter(requireActivity(), viewModel.getGames());
+        mBinding.gamesList.setAdapter(mGameAdapter);
 
+        mGameAdapter.setGameList(viewModel.getGames());
 
-
-        // TODO Ici, récupérer tous les Games existant et les passer en argument au prochain fragment pour les présenter comme une liste
-        // Piste : récupérer le DataRepository qui instancie la base de données (mDatabase) qui elle même contient le gameDAO (mGameDAO)
-        // écrire la méthode getAllCharacter() dans le DataReposotiry, qui appellera mDatabase.mGameDao().getAll() et faire un setArgument sur l'instance du fragment ci dessous, tel que :
-
-
-
-        // TODO récupérer toutes les parties dans la bdd et les proposer ici sous leur nom
-
-        /**
-         * Un bouton pour chaque partie existante
-         */
-
-        /**
-         * Un bouton pour créer une nouvelle partie
-         */
-        Button buttonToDM = view.findViewById(R.id.toDMActivity);
-        buttonToDM.setOnClickListener(new View.OnClickListener() {
+        mBinding.newGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                viewModel.addGame();
+                mGameAdapter.update();
+            }
+        });
+
+        mBinding.gamesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), DungMasterActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt(DungMasterActivity.INPUT_GAME_ID, (int) mGameAdapter.getItemId(position));
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
+
+    }
+
+    @Override
+    public void onDestroyView() {
+//        mBinding = null;
+//        mGameAdapter = null;
+        super.onDestroyView();
     }
 
     @Override
     public boolean onBackPressed() {
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.popBackStack();
-        /*        FragmentManager fragmentManager = getFragmentManager();
-        HomeFragment fragment = new HomeFragment();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container_main, fragment, HomeFragment.TAG)
-                .commit();
- */
         return true;
     }
 

@@ -1,41 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.fragment.inventory.InventoryFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Scroll View avec tous les item déjà ajouté -->
+    <data>
+        <variable name="character"
+            type="com.andruidteam.andruid.db.entity.CharacterEntity"/>
+    </data>
 
-    <!-- Au long clic sur un item, on devra pouvoir atteindre sa page personnel -->
-
-    <!-- -->
-
-    <TextView
-        android:id="@+id/text_inventory"
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.inventory.InventoryFragment">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/searchForItemButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="80dp"
-        android:layout_gravity="bottom"
-        android:text="Search for new Item To add" />
+        <!-- Scroll View avec tous les item déjà ajouté -->
+
+        <!-- Au long clic sur un item, on devra pouvoir atteindre sa page personnel -->
+
+        <!-- -->
+
+        <TextView
+            android:id="@+id/text_inventory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/searchForItemButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="80dp"
+            android:layout_gravity="bottom"
+            android:text="Search for new Item To add" />
 
 
-</FrameLayout>
+    </FrameLayout>
+
+</layout>

@@ -16,9 +16,6 @@
         android:name="com.andruidteam.andruid.ui.fragment.dice.DiceFragment"
         android:label="@string/menu_dice"
         tools:layout="@layout/fragment_dice" >
-        <action
-            android:id="@+id/action_diceFragment_to_detailCaractereFragment"
-            app:destination="@id/detailCaractereFragment" />
     </fragment>
 
     <fragment
@@ -38,9 +35,6 @@
         android:name="com.andruidteam.andruid.ui.fragment.inventory.InventoryFragment"
         android:label="@string/menu_inventory"
         tools:layout="@layout/fragment_inventory" >
-        <action
-            android:id="@+id/action_fragmentInventory_to_nav_example"
-            app:destination="@id/exampleFragment" />
     </fragment>
 
     <fragment

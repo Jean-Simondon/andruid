@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 
 public class CharacterListViewModel extends AndroidViewModel {
@@ -19,6 +21,8 @@ public class CharacterListViewModel extends AndroidViewModel {
     private final SavedStateHandle mSavedStateHandler;
     private final DataRepository mRepository;
     private static ArrayList<CharacterEntity> mCharacters;
+
+    private MutableLiveData<ArrayList<CharacterEntity>> mObservableCharacters;
 
     public CharacterListViewModel(@NonNull Application application, @NonNull SavedStateHandle savedStateHandle) {
         super(application);
@@ -38,5 +42,27 @@ public class CharacterListViewModel extends AndroidViewModel {
     public void addCharacter() {
         mRepository.createNewCharacter();
     }
+
+
+
+
+
+
+    public LiveData<ArrayList<CharacterEntity>> getObservableCharacters() {
+        if( mObservableCharacters == null ) {
+            mObservableCharacters = new MutableLiveData<ArrayList<CharacterEntity>>();
+            loadCharacters();
+        }
+        return mObservableCharacters;
+    }
+
+    public void loadCharacters() {
+//        mObservableCharacters = mRepository.getAllCharacters();
+    }
+
+
+
+
+
 
 }

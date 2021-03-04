@@ -2,6 +2,7 @@ package com.andruidteam.andruid.db.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.andruidteam.andruid.model.Game;
@@ -24,12 +25,16 @@ public class GameEntity implements Game {
 
     @Override
     public String getTitle() {
-        return null;
+        return title;
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return description;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {
@@ -39,4 +44,19 @@ public class GameEntity implements Game {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Ignore
+    public GameEntity(int id, String description, String title) {
+        this.id = id;
+        this.description = description;
+        this.title = title;
+    }
+
+    public GameEntity(GameEntity game) {
+        this.id = game.getId();
+        this.description = game.getDescription();
+        this.title = game.getTitle();
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package com.andruidteam.andruid.db;
 
 import com.andruidteam.andruid.db.entity.CharacterEntity;
+import com.andruidteam.andruid.db.entity.GameEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,8 @@ import java.util.List;
  * Equivalent des Fixtures chez symphony
  */
 public class DataGenerator {
+
+    public static final String TAG = "DataGenerator";
 
     public static ArrayList<CharacterEntity> generateCharacters() {
 
@@ -51,6 +54,10 @@ public class DataGenerator {
         ));
 
         return listCharacter;
+    }
+
+    public static ArrayList<GameEntity> generateGames() {
+        return new ArrayList<GameEntity>();
     }
 
 

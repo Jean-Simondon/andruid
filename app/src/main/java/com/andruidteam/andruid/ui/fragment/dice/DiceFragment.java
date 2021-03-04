@@ -8,28 +8,40 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.andruidteam.andruid.R;
+import com.andruidteam.andruid.databinding.FragmentDiceBinding;
+import com.andruidteam.andruid.databinding.FragmentJournalBinding;
+import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 
 public class DiceFragment extends Fragment {
 
-    private DiceViewModel mDiceViewModel;
+    public static final String TAG = "DiceFragment";
+
+    private FragmentDiceBinding mBinding;
+
+    private CharacterViewModel viewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        mDiceViewModel =  new ViewModelProvider(this).get(DiceViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dice, container, false);
-        final TextView textView = root.findViewById(R.id.text_dice);
-
-        mDiceViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_dice, container, false);
+        return mBinding.getRoot();
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        viewModel = new ViewModelProvider(requireActivity()).get(CharacterViewModel.class);
+        mBinding.setCharacter(viewModel.getCharacter());
+
+        /**
+         * TO DO
+         *
+         */
+
+    }
+
 }

@@ -11,7 +11,6 @@ import com.andruidteam.andruid.app.AndruidApp;
 import com.andruidteam.andruid.app.DataRepository;
 import com.andruidteam.andruid.db.entity.GameEntity;
 
-
 public class GameViewModel extends AndroidViewModel {
 
     public static final String TAG = "GameViewModel";
@@ -23,7 +22,7 @@ public class GameViewModel extends AndroidViewModel {
     public GameViewModel(@NonNull Application application, DataRepository repository, final int gameId) {
         super(application);
         mGameId = gameId;
-        mGame = repository.getGame(mGameId);
+        mGame = repository.getGameById(mGameId);
     }
 
     /**

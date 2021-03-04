@@ -8,32 +8,40 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.andruidteam.andruid.R;
+import com.andruidteam.andruid.databinding.FragmentCodexBinding;
+import com.andruidteam.andruid.viewmodel.CharacterListViewModel;
+import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 
 public class CodexFragment extends Fragment {
 
-    private CodexViewModel codexViewModel;
+    public static final String TAG = "CodexFragment";
+
+    private FragmentCodexBinding mBinding;
+
+    private CharacterViewModel viewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_codex, container, false);
+        return mBinding.getRoot();
+    }
 
-        codexViewModel = new ViewModelProvider(this).get(CodexViewModel.class);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        viewModel = new ViewModelProvider(requireActivity()).get(CharacterViewModel.class);
+        mBinding.setCharacter(viewModel.getCharacter());
 
-        View root = inflater.inflate(R.layout.fragment_codex, container, false);
-
-        final TextView textView = root.findViewById(R.id.text_codex);
-
-        codexViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-
-        return root;
+        /**
+         * TO DO
+         *
+         */
 
     }
+
 }

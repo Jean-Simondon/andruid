@@ -71,6 +71,16 @@ public class CharacterListFragment extends Fragment implements IOnBackPressed {
             }
         });
 
+
+
+
+
+
+
+
+
+
+
     }
 
     @Override

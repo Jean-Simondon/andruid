@@ -4,6 +4,7 @@ import com.andruidteam.andruid.db.AppDatabase;
 import com.andruidteam.andruid.db.DataGenerator;
 import com.andruidteam.andruid.db.entity.GameEntity;
 import com.andruidteam.andruid.db.entity.CharacterEntity;
+import com.andruidteam.andruid.model.Game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +22,15 @@ public class DataRepository {
 
     private static ArrayList<CharacterEntity> mCharacters;
 
+    private static ArrayList<GameEntity> mGames;
+
     private DataRepository(final AppDatabase database) {
         mDatabase = database;
         if(mCharacters == null) {
             mCharacters = DataGenerator.generateCharacters(); // on charge tous les personnages de la BDD (le data Generator en réalité)
+        }
+        if(mCharacters == null) {
+            mGames = DataGenerator.generateGames(); // on charge tous les games de la BDD (le data Generator en réalité)
         }
     }
 
@@ -62,20 +68,20 @@ public class DataRepository {
 
     // ---------------- GAME --------------------------------
 
-    public GameEntity getGame(int id) {
-        return mDatabase.gameDao().loadGame(id);
+    public GameEntity getGameById(int id) {
+        return mGames.get(id - 1);
     }
 
-    public List<GameEntity> getAllGames() {
-        return mDatabase.gameDao().loadAllGames();
+    public ArrayList<GameEntity> getAllGames() {
+        return mGames;
     }
 
-    public GameEntity createNewGames() {
-        GameEntity game = new GameEntity();
-        game.setTitle("Un titre");
-        game.setDescription("Une description");
-        mDatabase.gameDao().insert(game);
-        return game;
+    public void createNewGame() {
+        mGames.add(new GameEntity(
+                mGames.size() + 1,
+                "Un titre",
+                "Une description"
+        ));
     }
 
 }

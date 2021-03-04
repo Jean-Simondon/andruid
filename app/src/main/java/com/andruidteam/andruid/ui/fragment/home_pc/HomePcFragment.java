@@ -10,10 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.databinding.FragmentHomePcBinding;
 import com.andruidteam.andruid.ui.activity.CharacterActivity;
+import com.andruidteam.andruid.viewmodel.CharacterListViewModel;
 import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 
 public class HomePcFragment extends Fragment {
@@ -22,16 +24,11 @@ public class HomePcFragment extends Fragment {
 
     private FragmentHomePcBinding mBinding;
 
-    private CharacterActivity parentActivity;
-
     private CharacterViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.d(TAG, "onCreateView");
-        parentActivity = (CharacterActivity) getActivity();
-        viewModel = parentActivity.mCharacterViewModel;
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_pc, container, false);
         return mBinding.getRoot();
     }
@@ -39,12 +36,14 @@ public class HomePcFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        viewModel = new ViewModelProvider(requireActivity()).get(CharacterViewModel.class);
+
+
         mBinding.setCharacter(viewModel.getCharacter());
 
 //        mBinding.setLifecycleOwner(getViewLifecycleOwner());
-//        mBinding.setProductViewModel(model);
+//        mBinding.CharacterViewModel(model);
 //        subscribeToModel(model);
-
 
 //        mBinding.firstName.setText("Ici le fragment Home PC");
 
@@ -54,11 +53,8 @@ public class HomePcFragment extends Fragment {
 
 //        mBinding.firstName.setText(mCharacterViewModel.getFirstName());
 
-
-
 //        mBinding.setLifecycleOwner(getViewLifecycleOwner());
 //        mBinding.setProductViewModel(model);
-
 
         /**
          * Ici on ajoute des listeners sur les éléments du mBinding
@@ -73,20 +69,6 @@ public class HomePcFragment extends Fragment {
         mBinding = null;
         super.onDestroy();
     }
-
-
-
-    /** Creates product fragment for specific product ID */
-/*
-    public static HomePcFragment forCharacter(int characterId) {
-        HomePcFragment fragment = new HomePcFragment();
-        Bundle args = new Bundle();
-        args.putInt(KEY_CHARACTER_ID, characterId);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
- */
 
 
 }

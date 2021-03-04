@@ -3,11 +3,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <import type="android.view.View"/>
-        <variable
-            name="characterViewModel"
-            type="com.andruidteam.andruid.viewmodel.CharacterViewModel"/>
+        <variable name="character"
+            type="com.andruidteam.andruid.db.entity.CharacterEntity"/>
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"

@@ -24,7 +24,9 @@ public class CharacterActivity extends AppCompatActivity {
     public static final String INPUT_CHARACTER_ID = "input_character_id";
 
     private DrawerLayout mDrawerLayout;
+
     private AppBarConfiguration mAppBarConfiguration;
+
     public CharacterViewModel mCharacterViewModel;
 
     @Override

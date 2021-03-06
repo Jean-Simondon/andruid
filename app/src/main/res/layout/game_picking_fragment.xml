@@ -8,15 +8,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="@font/raleway_medium"
         android:text="Hello, ici l'écran de sélection des parties" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
+        android:id="@+id/toDMActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="80dp"
         android:layout_weight="1"
-        android:id="@+id/toDMActivity"
-        android:text="Créer une nouvelle partie">
-    </com.google.android.material.button.MaterialButton>
+        android:text="Créer une nouvelle partie"
+        style="@style/ButtonStyle"
+        ></Button>
 
 </FrameLayout>

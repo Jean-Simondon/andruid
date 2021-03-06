@@ -8,22 +8,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="80dp"
         android:layout_weight="1"
         android:id="@+id/toDMPicking"
-        android:text="Dungeons Master">
-    </com.google.android.material.button.MaterialButton>
+        android:text="Dungeons Master"
+        style="@style/ButtonStyle">
+    </Button>
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_margin="80dp"
         android:id="@+id/toPCPicking"
-        android:text="Player Caracter">
-    </com.google.android.material.button.MaterialButton>
+        android:text="Player Caracter"
+        style="@style/ButtonStyle">
+    </Button>
 
 </LinearLayout>

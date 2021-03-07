@@ -26,5 +26,4 @@ public interface CharacterDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(CharacterEntity character);
 
-
 }

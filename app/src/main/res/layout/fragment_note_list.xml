@@ -3,11 +3,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <variable name="note"
-            type="java.util.ArrayList"/>
-    </data>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,13 +17,12 @@
             />
 
         <EditText
-            android:id="@+id/newNotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/addNotes"
+            android:id="@+id/newNotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"

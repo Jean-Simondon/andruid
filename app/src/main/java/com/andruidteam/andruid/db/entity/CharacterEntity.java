@@ -8,6 +8,8 @@ import androidx.room.PrimaryKey;
 
 import com.andruidteam.andruid.model.Character;
 
+import java.util.ArrayList;
+
 @Entity(tableName = "characters")
 public class CharacterEntity implements Character {
 
@@ -23,6 +25,8 @@ public class CharacterEntity implements Character {
     public String classe;
     @ColumnInfo(name = "level")
     public int level;
+    @ColumnInfo(name= "notes")
+    public ArrayList<String> notes;
 
     public int getId() {
         return id;
@@ -46,6 +50,10 @@ public class CharacterEntity implements Character {
 
     public int getLevel() {
         return level;
+    }
+
+    public ArrayList<String> getNotes() {
+        return notes;
     }
 
     public void setId(int id) {
@@ -72,16 +80,21 @@ public class CharacterEntity implements Character {
         this.level = level;
     }
 
+    public void setNotes(ArrayList<String> notes) {
+        this.notes = notes;
+    }
+
     public CharacterEntity() {}
 
     @Ignore
-    public CharacterEntity(int id, String firstName, String lastName, String race, String classe, int level) {
+    public CharacterEntity(int id, String firstName, String lastName, String race, String classe, int level, ArrayList<String> notes) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.race = race;
         this.classe = classe;
         this.level = level;
+        this.notes = notes;
     }
 
     public CharacterEntity(CharacterEntity character) {
@@ -91,6 +104,7 @@ public class CharacterEntity implements Character {
         this.race = character.getRace();
         this.classe = character.getClasse();
         this.level = character.getLevel();
+        this.notes = character.getNotes();
     }
 
 }

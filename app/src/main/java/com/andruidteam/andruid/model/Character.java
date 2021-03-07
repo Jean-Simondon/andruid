@@ -1,5 +1,7 @@
 package com.andruidteam.andruid.model;
 
+import java.util.ArrayList;
+
 public interface Character {
 
     int getId();
@@ -8,5 +10,6 @@ public interface Character {
     String getRace();
     String getClasse();
     int getLevel();
+    ArrayList<String> getNotes();
 
 }

@@ -2,28 +2,45 @@
     <!-- Base application theme. -->
     <style name="Theme.andruid" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="buttonStyle">@style/ButtonStyle</item>
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
+        <item name="android:fontFamily">@font/raleway_medium</item>
+        <item name="actionBarTheme">@style/actionBar</item>
     </style>
 
 
     <style name="Theme.andruid.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.andruid.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Theme.andruid.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="buttonStyle">@style/ButtonStyle</item>
     </style>
 
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_border</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:color">@color/colorSecondary</item>
+    </style>
 
+    <style name="actionBar" >
+        <item name="android:fontFamily">@font/nova_cut</item>
+        <item name="android:textColorPrimary">#ffffffff</item>
+    </style>
 
 
 </resources>

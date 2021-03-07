@@ -15,9 +15,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="buttonStyle">@style/ButtonStyle</item>
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
         <item name="android:fontFamily">@font/raleway_medium</item>
-        <item name="android:actionBarStyle">@style/actionBar</item>
-        <item name="android:actionBarTheme">@style/actionBar</item>
+        <item name="actionBarTheme">@style/actionBar</item>
     </style>
 
 
@@ -35,13 +35,11 @@
         <item name="android:background">@drawable/button_border</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:color">@color/colorSecondary</item>
-        <item name="android:shadowColor">#000000</item>
-        <item name="android:shadowDx">2</item>
-        <item name="android:shadowDy">2</item>
     </style>
 
-    <style name="actionBar" parent="Widget.MaterialComponents.ActionBar.Primary">
-        <item name="android:fontFamily">@font/new_rocker</item>
+    <style name="actionBar" >
+        <item name="android:fontFamily">@font/nova_cut</item>
+        <item name="android:textColorPrimary">#ffffffff</item>
     </style>
 
 

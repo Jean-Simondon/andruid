@@ -4,38 +4,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="note"
-            type="java.util.ArrayList"/>
+        <variable
+            name="isLoading"
+            type="boolean" />
     </data>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ListView
-            android:id="@+id/notes_list"
-            android:contentDescription="Notes list"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="LinearLayoutManager"
-            />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/newNotes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="80dp"
+                android:layout_marginTop="60dp"
+                android:text="Créer une nouvelle notes">
+            </com.google.android.material.button.MaterialButton>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/addNotes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
-            android:layout_marginHorizontal="80dp"
-            android:text="Créer une nouvelle notes">
-        </com.google.android.material.button.MaterialButton>
+            <EditText
+                android:id="@+id/newNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="écrire ici votre note"
+                android:minHeight="50dp"/>
 
-    </LinearLayout>
+            <ListView
+                android:id="@+id/notes_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="LinearLayoutManager"
+                android:contentDescription="Notes list"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
 
 </layout>

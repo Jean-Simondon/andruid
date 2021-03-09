@@ -15,15 +15,14 @@ import com.andruidteam.andruid.db.entity.CharacterEntity;
 
 import java.util.ArrayList;
 
-public class NoteListAdapter /**  extends BaseAdapter  */{
+public class JournalAdapter extends BaseAdapter {
 
-    /*
     public static final String TAG = "NoteListAdapter";
 
 //    private LayoutInflater layoutInflater;
     private ArrayList<String> mNoteList;
 
-    public NoteListAdapter(Context context, ArrayList<String> notes) {
+    public JournalAdapter(Context context, ArrayList<String> notes) {
 //        this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mNoteList = notes;
         notifyDataSetChanged();
@@ -60,5 +59,5 @@ public class NoteListAdapter /**  extends BaseAdapter  */{
         return binding.getRoot();
     }
 
-     */
+
 }

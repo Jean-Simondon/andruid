@@ -13,6 +13,8 @@ import com.andruidteam.andruid.app.AndruidApp;
 import com.andruidteam.andruid.app.DataRepository;
 import com.andruidteam.andruid.db.entity.CharacterEntity;
 
+import java.util.ArrayList;
+
 public class CharacterViewModel extends AndroidViewModel {
 
     public static final String TAG = "CharacterViewModel";
@@ -21,10 +23,13 @@ public class CharacterViewModel extends AndroidViewModel {
 
     private final int mCharacterId;
 
+    private ArrayList<String> mJournal;
+
     public CharacterViewModel(@NonNull Application application, DataRepository repository, final int characterId) {
         super(application);
         mCharacterId = characterId;
         mCharacter = repository.getCharacterById(mCharacterId);
+        mJournal = new ArrayList<>();
     }
 
     /**
@@ -33,6 +38,15 @@ public class CharacterViewModel extends AndroidViewModel {
     public CharacterEntity getCharacter() {
         return mCharacter;
     }
+
+    public ArrayList<String> getJournal () {
+        return mJournal;
+    }
+
+    public void addToJournal(String note) {
+        mJournal.add(note);
+    }
+
 
     /**
      * A creator is used to inject the character ID into the ViewModel

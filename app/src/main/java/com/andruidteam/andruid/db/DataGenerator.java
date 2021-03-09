@@ -15,12 +15,6 @@ public class DataGenerator {
 
     public static ArrayList<CharacterEntity> generateCharacters() {
 
-        ArrayList<String> notes = new ArrayList<String>();
-
-        notes.add(new String("Lorem ipsum dolor sit, amet consectetur adipisicing elit."));
-        notes.add(new String("Adipisci ducimus quibusdam a beatae facere quasi assumenda distinctio dicta nihil!"));
-        notes.add(new String("Nemo dolor officia magnam ratione quasi cum quidem accusamus nostrum ex!"));
-
         ArrayList<CharacterEntity> listCharacter = new ArrayList<>();
 
         listCharacter.add(new CharacterEntity(
@@ -29,8 +23,7 @@ public class DataGenerator {
                 "Le dévoreur",
                 "Cambion",
                 "Clerc",
-                1,
-                new ArrayList<>(notes)
+                1
         ));
 
         listCharacter.add(new CharacterEntity(
@@ -39,8 +32,7 @@ public class DataGenerator {
                 "Do'urden",
                 "Elfe noir",
                 "Rôdeur",
-                1,
-                new ArrayList<>(notes)
+                1
         ));
 
         listCharacter.add(new CharacterEntity(
@@ -49,8 +41,7 @@ public class DataGenerator {
                 null,
                 "Humain",
                 "Ranger",
-                1,
-                new ArrayList<>(notes)
+                1
         ));
 
         listCharacter.add(new CharacterEntity(
@@ -59,8 +50,7 @@ public class DataGenerator {
                 null,
                 "Humaine",
                 "Voleuse",
-                1,
-                new ArrayList<>(notes)
+                1
         ));
 
         return listCharacter;

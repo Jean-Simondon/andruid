@@ -15,8 +15,9 @@ import com.andruidteam.andruid.db.entity.CharacterEntity;
 
 import java.util.ArrayList;
 
-public class NoteListAdapter extends BaseAdapter {
+public class NoteListAdapter /**  extends BaseAdapter  */{
 
+    /*
     public static final String TAG = "NoteListAdapter";
 
 //    private LayoutInflater layoutInflater;
@@ -58,4 +59,6 @@ public class NoteListAdapter extends BaseAdapter {
         binding.setNote(mNoteList.get(position));
         return binding.getRoot();
     }
+
+     */
 }

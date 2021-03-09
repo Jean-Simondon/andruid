@@ -10,6 +10,5 @@ public interface Character {
     String getRace();
     String getClasse();
     int getLevel();
-//    ArrayList<String> getNotes();
 
 }

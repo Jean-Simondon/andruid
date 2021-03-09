@@ -19,7 +19,7 @@ import com.andruidteam.andruid.db.entity.CharacterEntity;
 
 import java.util.List;
 
-@Database(entities = {GameEntity.class, CharacterEntity.class}, version = 1)
+@Database(entities = {GameEntity.class, CharacterEntity.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase sIntance;

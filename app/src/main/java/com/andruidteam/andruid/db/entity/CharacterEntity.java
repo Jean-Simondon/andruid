@@ -25,8 +25,8 @@ public class CharacterEntity implements Character {
     public String classe;
     @ColumnInfo(name = "level")
     public int level;
-    @ColumnInfo(name= "notes")
-    public ArrayList<String> notes;
+//    @ColumnInfo(name= "notes")
+//    public ArrayList<String> notes;
 
     public int getId() {
         return id;
@@ -52,9 +52,9 @@ public class CharacterEntity implements Character {
         return level;
     }
 
-    public ArrayList<String> getNotes() {
-        return notes;
-    }
+//    public ArrayList<String> getNotes() {
+//        return notes;
+//    }
 
     public void setId(int id) {
         this.id = id;
@@ -80,21 +80,21 @@ public class CharacterEntity implements Character {
         this.level = level;
     }
 
-    public void setNotes(ArrayList<String> notes) {
-        this.notes = notes;
-    }
+//    public void setNotes(ArrayList<String> notes) {
+//        this.notes = notes;
+//    }
 
     public CharacterEntity() {}
 
     @Ignore
-    public CharacterEntity(int id, String firstName, String lastName, String race, String classe, int level, ArrayList<String> notes) {
+    public CharacterEntity(int id, String firstName, String lastName, String race, String classe  /** int level, ArrayList<String> notes */) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.race = race;
         this.classe = classe;
         this.level = level;
-        this.notes = notes;
+//        this.notes = notes;
     }
 
     public CharacterEntity(CharacterEntity character) {
@@ -104,7 +104,7 @@ public class CharacterEntity implements Character {
         this.race = character.getRace();
         this.classe = character.getClasse();
         this.level = character.getLevel();
-        this.notes = character.getNotes();
+//        this.notes = character.getNotes();
     }
 
 }

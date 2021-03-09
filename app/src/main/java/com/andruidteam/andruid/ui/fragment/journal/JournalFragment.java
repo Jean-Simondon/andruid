@@ -39,6 +39,7 @@ public class JournalFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(CharacterViewModel.class);
 
+/*
         mNoteListAdapter = new NoteListAdapter(requireActivity(), viewModel.getCharacter().getNotes());
         mBinding.notesList.setAdapter(mNoteListAdapter);
 
@@ -54,6 +55,8 @@ public class JournalFragment extends Fragment {
             }
         });
 
+
+ */
 
         /**
          * TODO : Permettre d'écrire dans un textEdit puis d'ajouter l'élément à une liste de commentaires

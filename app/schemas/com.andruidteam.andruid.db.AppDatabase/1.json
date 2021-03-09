@@ -2,7 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
+<<<<<<< Updated upstream
     "identityHash": "46733de300aa7de86d6bc055dd2ea937",
+=======
+    "identityHash": "25e7d711683240a51f7fbf51b17a9989",
+>>>>>>> Stashed changes
     "entities": [
       {
         "tableName": "games",
@@ -38,7 +42,7 @@
       },
       {
         "tableName": "characters",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `firstName` TEXT, `lastName` TEXT, `race` TEXT, `classe` TEXT, `level` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `firstName` TEXT, `lastName` TEXT, `race` TEXT, `classe` TEXT, `level` INTEGER NOT NULL, `notes` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -75,6 +79,15 @@
             "columnName": "level",
             "affinity": "INTEGER",
             "notNull": true
+<<<<<<< Updated upstream
+=======
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT",
+            "notNull": false
+>>>>>>> Stashed changes
           }
         ],
         "primaryKey": {
@@ -90,7 +103,11 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+<<<<<<< Updated upstream
       "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '46733de300aa7de86d6bc055dd2ea937')"
+=======
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '25e7d711683240a51f7fbf51b17a9989')"
+>>>>>>> Stashed changes
     ]
   }
 }

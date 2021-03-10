@@ -1,12 +1,22 @@
 package com.andruidteam.andruid.app;
 
+import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.andruidteam.andruid.db.AppDatabase;
 import com.andruidteam.andruid.db.DataGenerator;
 import com.andruidteam.andruid.db.entity.GameEntity;
 import com.andruidteam.andruid.db.entity.CharacterEntity;
 import com.andruidteam.andruid.model.Game;
+import com.andruidteam.andruid.rds.RequestQueueSingleton;
+import com.andruidteam.andruid.rds.Requests;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,6 +103,20 @@ public class DataRepository {
                 "Un titre",
                 "Une description"
         ));
+    }
+
+    // ---------------- API CALLS --------------------------------
+
+    public void doGETJsonObject(String url, Response.Listener<JSONObject> responseListener, Context context) {
+        RequestQueue queue = RequestQueueSingleton.getInstance(context);
+        JsonObjectRequest req = Requests.GETJsonObject(url, responseListener);
+        queue.add(req);
+    }
+
+    public void doGETJsonArray(String url, Response.Listener<JSONArray> responseListener, Context context) {
+        RequestQueue queue = RequestQueueSingleton.getInstance(context);
+        JsonArrayRequest req = Requests.GETJsonArray(url, responseListener);
+        queue.add(req);
     }
 
 }

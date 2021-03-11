@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="character"
-            type="com.andruidteam.andruid.db.entity.CharacterEntity"/>
+        <variable
+            name="isLoading"
+            type="boolean" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragment.spell.SpellFragment">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text_spell"
+        <EditText
+            android:id="@+id/searchName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="80dp"
+            android:hint="@string/spell_fragment_search_placeholder"
+            android:inputType="text"
+            android:singleLine="true"
+            android:imeOptions="actionDone">
+        </EditText>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ListView
+            android:id="@+id/spells_list"
+            android:contentDescription="Spell list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager"
+            />
+
+    </LinearLayout>
 
 </layout>

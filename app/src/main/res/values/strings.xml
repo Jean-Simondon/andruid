@@ -36,6 +36,9 @@
     <!-- Header Menu DM  -->
     <string name="nav_header_title">Andruid</string>
 
+    <!-- Spell fragment -->
+    <string name="spell_fragment_search_placeholder">Enter a name of a spell</string>
+
     <!-- PC -->
     <string name="title_activity_main_pc">MainPcActivity</string>
     <!-- TODO: Remove or change this placeholder text -->

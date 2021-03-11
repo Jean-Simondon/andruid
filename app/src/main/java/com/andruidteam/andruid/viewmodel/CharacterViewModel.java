@@ -21,12 +21,14 @@ public class CharacterViewModel extends AndroidViewModel {
 
     private final CharacterEntity mCharacter;
 
+    private DataRepository repository;
     private final int mCharacterId;
 
     private ArrayList<String> mJournal;
 
     public CharacterViewModel(@NonNull Application application, DataRepository repository, final int characterId) {
         super(application);
+        this.repository = repository;
         mCharacterId = characterId;
         mCharacter = repository.getCharacterById(mCharacterId);
         mJournal = new ArrayList<>();
@@ -45,6 +47,10 @@ public class CharacterViewModel extends AndroidViewModel {
 
     public void addToJournal(String note) {
         mJournal.add(note);
+    }
+
+    public DataRepository getRepository() {
+        return repository;
     }
 
 

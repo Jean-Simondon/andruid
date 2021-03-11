@@ -45,6 +45,7 @@ public class InventoryFragment extends Fragment implements LifecycleOwner {
          *
          */
 
+
     }
 
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginHorizontal="30dp"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.codex.rules.Rules">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:text="RULES"
+            android:textSize="50dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical|center_horizontal"/>
+
+        <Button
+            android:id="@+id/rules"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:text="Rules"/>
+
+        <Button
+            android:id="@+id/rule_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:text="Rule Sections"/>
+
+    </LinearLayout>
+
+</layout>

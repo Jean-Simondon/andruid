@@ -10,16 +10,99 @@
         android:name="com.andruidteam.andruid.ui.fragment.home_dm.HomeDmFragment"
         android:label="@string/menu_home_dm"
         tools:layout="@layout/fragment_home_dm" >
-        <action
-            android:id="@+id/action_nav_home_dm_to_nav_codex"
-            app:destination="@id/nav_codex" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_codex"
         android:name="com.andruidteam.andruid.ui.fragment.codex.CodexFragment"
         android:label="@string/menu_codex"
-        tools:layout="@layout/fragment_codex" />
+        tools:layout="@layout/fragment_codex" >
+        <action
+            android:id="@+id/action_nav_codex_to_character_data_codex"
+            app:destination="@id/character_data_codex" />
+        <action
+            android:id="@+id/action_nav_codex_to_classes_codex"
+            app:destination="@id/classes_codex" />
+        <action
+            android:id="@+id/action_nav_codex_to_equipement_codex"
+            app:destination="@id/equipement_codex" />
+        <action
+            android:id="@+id/action_nav_codex_to_game_mechanics_codex"
+            app:destination="@id/game_mechanics_codex" />
+        <action
+            android:id="@+id/action_nav_codex_to_monsters_codex"
+            app:destination="@id/monsters_codex" />
+        <action
+            android:id="@+id/action_nav_codex_to_rules_codex"
+            app:destination="@id/rules_codex" />
+        <action
+            android:id="@+id/action_nav_codex_to_spells_codex"
+            app:destination="@id/spells_codex" />
+        <action
+            android:id="@+id/action_nav_codex_to_races_codex"
+            app:destination="@id/races_codex" />
+    </fragment>
+
+        <fragment
+            android:id="@+id/character_data_codex"
+            android:name="com.andruidteam.andruid.ui.fragment.codex.characterData.CharacterData"
+            android:label="@string/menu_codex"
+            tools:layout="@layout/fragment_character_data_codex" >
+        </fragment>
+
+        <fragment
+            android:id="@+id/classes_codex"
+            android:name="com.andruidteam.andruid.ui.fragment.codex.classes.Classes"
+            android:label="@string/menu_codex"
+            tools:layout="@layout/fragment_classes_codex" >
+        </fragment>
+
+        <fragment
+            android:id="@+id/equipement_codex"
+            android:name="com.andruidteam.andruid.ui.fragment.codex.equipment.Equipment"
+            android:label="@string/menu_codex"
+            tools:layout="@layout/fragment_equipement_codex" >
+        </fragment>
+
+        <fragment
+            android:id="@+id/game_mechanics_codex"
+            android:name="com.andruidteam.andruid.ui.fragment.codex.gameMechanics.GameMechanics"
+            android:label="@string/menu_codex"
+            tools:layout="@layout/fragment_game_mechanics_codex" >
+        </fragment>
+
+        <fragment
+            android:id="@+id/monsters_codex"
+            android:name="com.andruidteam.andruid.ui.fragment.codex.monsters.Monsters"
+            android:label="@string/menu_codex"
+            tools:layout="@layout/fragment_monsters_codex" >
+        </fragment>
+
+        <fragment
+            android:id="@+id/rules_codex"
+            android:name="com.andruidteam.andruid.ui.fragment.codex.rules.Rules"
+            android:label="@string/menu_codex"
+            tools:layout="@layout/fragment_rules_codex" >
+        </fragment>
+
+        <fragment
+            android:id="@+id/spells_codex"
+            android:name="com.andruidteam.andruid.ui.fragment.codex.spells.Spells"
+            android:label="@string/menu_codex"
+            tools:layout="@layout/fragment_spells_codex" >
+        </fragment>
+
+        <fragment
+            android:id="@+id/races_codex"
+            android:name="com.andruidteam.andruid.ui.fragment.codex.races.Races"
+            android:label="@string/menu_codex"
+            tools:layout="@layout/fragment_races_codex" >
+        </fragment>
+
+
+
+
+
 
     <fragment
         android:id="@+id/diceFragment"
@@ -50,7 +133,7 @@
         android:id="@+id/nav_script"
         android:name="com.andruidteam.andruid.ui.fragment.dice.DiceFragment"
         android:label="@string/menu_dice"
-        tools:layout="@layout/fragment_dice" />
+        tools:layout="@layout/fragment_script" />
 
     <fragment
         android:id="@+id/nav_team_info"

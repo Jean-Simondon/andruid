@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.databinding.FragmentScriptBinding;
-import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 import com.andruidteam.andruid.viewmodel.GameViewModel;
 
 public class ScriptFragment extends Fragment {
@@ -33,7 +32,7 @@ public class ScriptFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
-        mBinding.setGame(viewModel.getGame());
+//        mBinding.setGame(viewModel.getGame());
 
         /**
          * TO DO

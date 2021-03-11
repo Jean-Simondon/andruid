@@ -51,13 +51,6 @@ public class JournalFragment extends Fragment {
             }
         });
 
-
-
-        /**
-         * TODO : Permettre d'écrire dans un textEdit puis d'ajouter l'élément à une liste de commentaires
-         *
-         */
-
     }
 
 }

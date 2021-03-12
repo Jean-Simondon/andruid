@@ -24,24 +24,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:orientation="vertical">
+
                 <Button android:id="@+id/dice1D4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="0dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginStart="50dp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="@string/Dice1d4" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="0dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_gravity="center_horizontal"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/Dice1d4" />
 
 
                 <Button android:id="@+id/dice1D6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="0dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center_horizontal"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="@string/Dice1d6" />
 
@@ -49,8 +50,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="0dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center_horizontal"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="@string/Dice1d8" />
 
@@ -58,8 +59,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="0dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center_horizontal"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="@string/Dice1d10" />
 
@@ -67,8 +68,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="0dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center_horizontal"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="@string/Dice1d12" />
 
@@ -76,8 +77,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="0dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center_horizontal"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="@string/Dice1d20" />
 
@@ -85,16 +86,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="0dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center_horizontal"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="@string/Dice1d100" />
+
+                <Button android:id="@+id/diceHistoryEraser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="0dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center_horizontal"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/diceHistoryEraser" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:orientation="vertical">
 
                 <TextView
@@ -106,41 +116,14 @@
                     android:textSize="40sp" />
 
                 <TextView
-                    android:id="@+id/historic1"
+                    android:id="@+id/historic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="100dp"
                     android:text=""
-                    android:textSize="40sp" />
+                    android:textSize="40sp"
+                    android:scrollbars = "vertical"/>
 
-                <TextView
-                    android:id="@+id/historic2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:text=""
-                    android:textSize="40sp" />
-                <TextView
-                    android:id="@+id/historic3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:text=""
-                    android:textSize="40sp" />
-                <TextView
-                    android:id="@+id/historic4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:text=""
-                    android:textSize="40sp" />
-                <TextView
-                    android:id="@+id/historic5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:text=""
-                    android:textSize="40sp" />
 
             </LinearLayout>
         </LinearLayout>

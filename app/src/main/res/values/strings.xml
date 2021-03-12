@@ -50,5 +50,6 @@
     <string name="Dice1d12">1D12</string>
     <string name="Dice1d20">1D20</string>
     <string name="Dice1d100">1D100</string>
+    <string name="diceHistoryEraser">Erase</string>
 
 </resources>

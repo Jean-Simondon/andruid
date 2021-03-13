@@ -1,17 +1,9 @@
 package com.andruidteam.andruid.ui.fragment.spell;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,40 +11,25 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.databinding.FragmentSpellBinding;
-import com.andruidteam.andruid.rds.RequestQueueSingleton;
-import com.andruidteam.andruid.ui.activity.CharacterActivity;
-import com.andruidteam.andruid.ui.fragment.main.CharacterListAdapter;
 import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class SpellFragment extends Fragment {
-
     public static final String TAG = "SpellFragment";
 
     private FragmentSpellBinding mBinding;
 
     private CharacterViewModel viewModel;
 
-    private HashMap<String, String> spells = new HashMap<>();
+    private String spellKey;
 
-    private SpellListAdapter mSpellListAdapter;
+    private boolean isAdded;
+
+    private Spell spell;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_spell, container, false);
@@ -63,79 +40,173 @@ public class SpellFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(CharacterViewModel.class);
-        getAndDisplaySpells();
-//        mBinding.searchName.setOnEditorActionListener((textView, actionId, keyEvent) -> {
-//            textView
-//            String currentText = textView.getText().toString().trim();
-//            if (actionId == EditorInfo.IME_ACTION_DONE && !currentText.equals("")) {
-//                Map<String, String> filteredSpells = spells.entrySet()
-//                        .stream()
-//                        .filter(entry -> entry.getValue().toLowerCase().startsWith(currentText.toLowerCase()))
-//                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-//                mSpellListAdapter.setSpells(filteredSpells);
-//                return true;
-//            }
-//            return false;
-//        });
+        if (spellKey == null) {
+            spellKey = getArguments().getString("spellKey");
+        }
+        isAdded = viewModel.getCharacter().getSpells().containsKey(spellKey);
+        mBinding.setIsAdded(isAdded);
+        getAndDisplaySpell();
 
-        mBinding.searchName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String currentText = charSequence.toString().trim();
-                if (!currentText.equals("")) {
-                    Map<String, String> filteredSpells = spells.entrySet()
-                            .stream()
-                            .filter(entry -> entry.getValue().toLowerCase().startsWith(currentText.toLowerCase()))
-                            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-                    mSpellListAdapter.setSpells(filteredSpells);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
+        mBinding.addSpellButton.setOnClickListener(buttonView -> {
+            if (isAdded) {
+                viewModel.getCharacter().removeSpell(spell.getIndex());
+                isAdded = false;
+                mBinding.setIsAdded(isAdded);
+            } else {
+                viewModel.getCharacter().addSpell(spell.getIndex(), spell.getName());
+                isAdded = true;
+                mBinding.setIsAdded(isAdded);
             }
         });
     }
 
-    private void getAndDisplaySpells() {
-        if (spells.isEmpty()) {
-            mBinding.setIsLoading(true);
-            viewModel.getRepository().doGETJsonObject("https://www.dnd5eapi.co/api/spells", response -> {
-                try {
-                    JSONArray spellJsonArray = response.getJSONArray("results");
-                    for (int i = 0; i < spellJsonArray.length(); i++) {
-                        String index = spellJsonArray.getJSONObject(i).getString("index");
-                        String name = spellJsonArray.getJSONObject(i).getString("name");
-                        spells.put(index, name);
-                    }
-                    displaySpells();
-                    mBinding.setIsLoading(false);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+    private void getAndDisplaySpell() {
+        viewModel.getRepository().doGETJsonObject("https://www.dnd5eapi.co/api/spells/" + spellKey, response -> {
+            try {
+                spell = new Spell();
+                spell.setIndex(spellKey);
+                spell.setName(response.getString("name"));
+                spell.setRange(response.getString("range"));
+                StringBuilder description = new StringBuilder();
+                JSONArray descriptions = response.getJSONArray("desc");
+                for (int i = 0; i < descriptions.length(); i++) {
+                    description.append(descriptions.getString(i)).append("\n");
                 }
-            }, this.getContext());
-        } else {
-            displaySpells();
+                spell.setDescription(description.toString());
+                spell.setMaterial(response.getString("material"));
+                spell.setDuration(response.getString("duration"));
+                spell.setConcentration(response.getString("concentration"));
+                spell.setCastingTime(response.getString("casting_time"));
+                spell.setLevel(response.getString("level"));
+                spell.setSchool(response.getJSONObject("school").getString("name"));
+                StringBuilder components = new StringBuilder();
+                JSONArray componentsArray = response.getJSONArray("components");
+                for (int i = 0; i < componentsArray.length(); i++) {
+                    components.append(componentsArray.getString(i)).append(", ");
+                }
+                spell.setComponents(components.toString());
+                StringBuilder higherLevel = new StringBuilder();
+                JSONArray higherLevelArray = response.getJSONArray("higher_level");
+                for (int i = 0; i < higherLevelArray.length(); i++) {
+                    higherLevel.append(higherLevelArray.getString(i)).append("\n");
+                }
+                spell.setHigherLevel(higherLevel.toString());
+                mBinding.setSpell(spell);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, this.getContext());
+    }
+
+    public class Spell {
+        private String index = "";
+        private String name = "";
+        private String description = "";
+        private String higherLevel = "";
+        private String range = "";
+        private String components = "";
+        private String material = "";
+        private String duration = "";
+        private String concentration = "";
+        private String castingTime = "";
+        private String level = "";
+        private String school = "";
+
+        public String getMaterial() {
+            return material;
+        }
+
+        public void setMaterial(String material) {
+            this.material = material;
+        }
+
+        public void setIndex(String index) {
+            this.index = index;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public void setHigherLevel(String higherLevel) {
+            this.higherLevel = higherLevel;
+        }
+
+        public void setRange(String range) {
+            this.range = range;
+        }
+
+        public String getComponents() {
+            return components;
+        }
+
+        public void setComponents(String components) {
+            this.components = components;
+        }
+
+        public String getDuration() {
+            return duration;
+        }
+
+        public void setDuration(String duration) {
+            this.duration = duration;
+        }
+
+        public String getConcentration() {
+            return concentration;
+        }
+
+        public void setConcentration(String concentration) {
+            this.concentration = concentration;
+        }
+
+        public String getCastingTime() {
+            return castingTime;
+        }
+
+        public void setCastingTime(String castingTime) {
+            this.castingTime = castingTime;
+        }
+
+        public String getLevel() {
+            return level;
+        }
+
+        public void setLevel(String level) {
+            this.level = level;
+        }
+
+        public String getSchool() {
+            return school;
+        }
+
+        public void setSchool(String school) {
+            this.school = school;
+        }
+
+        public String getIndex() {
+            return index;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public String getHigherLevel() {
+            return higherLevel;
+        }
+
+        public String getRange() {
+            return range;
         }
     }
-
-    private void displaySpells() {
-        mSpellListAdapter = new SpellListAdapter(requireActivity(), spells);
-        mBinding.spellsList.setAdapter(mSpellListAdapter);
-
-        mBinding.spellsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(TAG, "on Item Click: " + mSpellListAdapter.getItem(position));
-            }
-        });
-    }
-
 
 }

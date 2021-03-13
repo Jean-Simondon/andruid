@@ -1,18 +1,20 @@
 package com.andruidteam.andruid.db.entity;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Database;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import com.andruidteam.andruid.model.Character;
+import com.andruidteam.andruid.util.StringListMapConverter;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Entity(tableName = "characters")
 public class CharacterEntity implements Character {
-
     @PrimaryKey
     public int id;
     @ColumnInfo(name = "firstName")
@@ -25,6 +27,22 @@ public class CharacterEntity implements Character {
     public String classe;
     @ColumnInfo(name = "level")
     public int level;
+
+    @TypeConverters(StringListMapConverter.class)
+    @ColumnInfo(name = "spells")
+    public Map<String, String> spells;
+
+    public Map<String, String> getSpells() {
+        return spells;
+    }
+
+    public void addSpell(String spellKey, String spellName) {
+        spells.put(spellKey, spellName);
+    }
+
+    public void removeSpell(String spellKey) {
+        spells.remove(spellKey);
+    }
 
     public int getId() {
         return id;
@@ -74,7 +92,8 @@ public class CharacterEntity implements Character {
         this.level = level;
     }
 
-    public CharacterEntity() {}
+    public CharacterEntity() {
+    }
 
     @Ignore
     public CharacterEntity(int id, String firstName, String lastName, String race, String classe, int level) {
@@ -84,6 +103,7 @@ public class CharacterEntity implements Character {
         this.race = race;
         this.classe = classe;
         this.level = level;
+        this.spells = new HashMap<>();
     }
 
     public CharacterEntity(CharacterEntity character) {
@@ -93,6 +113,7 @@ public class CharacterEntity implements Character {
         this.race = character.getRace();
         this.classe = character.getClasse();
         this.level = character.getLevel();
+        this.spells = character.getSpells();
     }
 
 }

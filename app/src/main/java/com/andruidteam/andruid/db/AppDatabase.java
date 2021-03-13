@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.andruidteam.andruid.app.AppExecutors;
@@ -16,10 +17,12 @@ import com.andruidteam.andruid.db.dao.GameDao;
 import com.andruidteam.andruid.db.dao.CharacterDao;
 import com.andruidteam.andruid.db.entity.GameEntity;
 import com.andruidteam.andruid.db.entity.CharacterEntity;
+import com.andruidteam.andruid.util.StringListMapConverter;
 
 import java.util.List;
 
 @Database(entities = {GameEntity.class, CharacterEntity.class}, version = 2)
+@TypeConverters(StringListMapConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase sIntance;

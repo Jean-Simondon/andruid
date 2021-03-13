@@ -49,7 +49,6 @@ public class SpellListAdapter extends BaseAdapter {
         return position;
     }
 
-
     public void setSpells(Map<String, String> spells) {
         this.spells = spells;
         this.keys = new ArrayList<>();

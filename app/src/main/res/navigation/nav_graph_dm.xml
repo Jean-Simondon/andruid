@@ -48,6 +48,9 @@
             android:name="com.andruidteam.andruid.ui.fragment.codex.characterData.CharacterData"
             android:label="@string/menu_codex"
             tools:layout="@layout/fragment_character_data_codex" >
+            <action
+                android:id="@+id/action_character_data_codex_to_result_list"
+                app:destination="@id/result_list" />
         </fragment>
 
         <fragment
@@ -55,6 +58,9 @@
             android:name="com.andruidteam.andruid.ui.fragment.codex.classes.Classes"
             android:label="@string/menu_codex"
             tools:layout="@layout/fragment_classes_codex" >
+            <action
+                android:id="@+id/action_classes_codex_to_result_list"
+                app:destination="@id/result_list" />
         </fragment>
 
         <fragment
@@ -62,6 +68,9 @@
             android:name="com.andruidteam.andruid.ui.fragment.codex.equipment.Equipment"
             android:label="@string/menu_codex"
             tools:layout="@layout/fragment_equipement_codex" >
+            <action
+                android:id="@+id/action_equipement_codex_to_result_list"
+                app:destination="@id/result_list" />
         </fragment>
 
         <fragment
@@ -69,6 +78,9 @@
             android:name="com.andruidteam.andruid.ui.fragment.codex.gameMechanics.GameMechanics"
             android:label="@string/menu_codex"
             tools:layout="@layout/fragment_game_mechanics_codex" >
+            <action
+                android:id="@+id/action_game_mechanics_codex_to_result_list"
+                app:destination="@id/result_list" />
         </fragment>
 
         <fragment
@@ -76,6 +88,9 @@
             android:name="com.andruidteam.andruid.ui.fragment.codex.monsters.Monsters"
             android:label="@string/menu_codex"
             tools:layout="@layout/fragment_monsters_codex" >
+            <action
+                android:id="@+id/action_monsters_codex_to_result_list"
+                app:destination="@id/result_list" />
         </fragment>
 
         <fragment
@@ -83,6 +98,9 @@
             android:name="com.andruidteam.andruid.ui.fragment.codex.rules.Rules"
             android:label="@string/menu_codex"
             tools:layout="@layout/fragment_rules_codex" >
+            <action
+                android:id="@+id/action_rules_codex_to_result_list"
+                app:destination="@id/result_list" />
         </fragment>
 
         <fragment
@@ -90,6 +108,9 @@
             android:name="com.andruidteam.andruid.ui.fragment.codex.spells.Spells"
             android:label="@string/menu_codex"
             tools:layout="@layout/fragment_spells_codex" >
+            <action
+                android:id="@+id/action_spells_codex_to_result_list"
+                app:destination="@id/result_list" />
         </fragment>
 
         <fragment
@@ -97,9 +118,27 @@
             android:name="com.andruidteam.andruid.ui.fragment.codex.races.Races"
             android:label="@string/menu_codex"
             tools:layout="@layout/fragment_races_codex" >
+            <action
+                android:id="@+id/action_races_codex_to_result_list"
+                app:destination="@id/result_list" />
         </fragment>
 
+        <fragment
+            android:id="@+id/result_list"
+            android:name="com.andruidteam.andruid.ui.fragment.codex.CodexResultList"
+            android:label="@string/menu_codex"
+            tools:layout="@layout/fragment_codex_result_list" >
+            <action
+                android:id="@+id/action_result_list_to_result_detail_item"
+                app:destination="@id/result_detail_item" />
+        </fragment>
 
+        <fragment
+            android:id="@+id/result_detail_item"
+            android:name="com.andruidteam.andruid.ui.fragment.codex.CodexResultDetailItem"
+            android:label="@string/menu_codex"
+            tools:layout="@layout/fragment_codex_result_detail_item" >
+        </fragment>
 
 
 

@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.databinding.FragmentRacesCodexBinding;
@@ -50,6 +51,10 @@ public class Races extends Fragment {
         });
 
 
+    }
+
+    private void goToListResult(View view) {
+        Navigation.findNavController(view).navigate(R.id.action_races_codex_to_result_list);
     }
 
 }

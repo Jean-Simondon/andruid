@@ -1,6 +1,7 @@
 package com.andruidteam.andruid.ui.fragment.codex;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,17 +27,20 @@ public class CodexFragment extends Fragment {
     private FragmentCodexBinding mBinding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView: ");
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_codex, container, false);
         return mBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onViewCreated: ");
         super.onViewCreated(view, savedInstanceState);
 
         mBinding.characterData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: To character data");
                 Navigation.findNavController(view).navigate(R.id.action_nav_codex_to_character_data_codex);
             }
         });
@@ -44,6 +48,7 @@ public class CodexFragment extends Fragment {
         mBinding.classes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: To classes");
                 Navigation.findNavController(view).navigate(R.id.action_nav_codex_to_classes_codex);
             }
         });
@@ -51,6 +56,7 @@ public class CodexFragment extends Fragment {
         mBinding.equipment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: to equipment");
                 Navigation.findNavController(view).navigate(R.id.action_nav_codex_to_equipement_codex);
             }
         });
@@ -58,6 +64,7 @@ public class CodexFragment extends Fragment {
         mBinding.races.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: to races");
                 Navigation.findNavController(view).navigate(R.id.action_nav_codex_to_races_codex);
             }
         });
@@ -65,6 +72,7 @@ public class CodexFragment extends Fragment {
         mBinding.spells.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: to spells");
                 Navigation.findNavController(view).navigate(R.id.action_nav_codex_to_spells_codex);
             }
         });
@@ -72,6 +80,7 @@ public class CodexFragment extends Fragment {
         mBinding.monsters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: to monster");
                 Navigation.findNavController(view).navigate(R.id.action_nav_codex_to_monsters_codex);
             }
         });
@@ -79,6 +88,7 @@ public class CodexFragment extends Fragment {
         mBinding.gameMechanics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: to game mechanics");
                 Navigation.findNavController(view).navigate(R.id.action_nav_codex_to_game_mechanics_codex);
             }
         });
@@ -86,6 +96,7 @@ public class CodexFragment extends Fragment {
         mBinding.rules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: to rules");
                 Navigation.findNavController(view).navigate(R.id.action_nav_codex_to_rules_codex);
             }
         });

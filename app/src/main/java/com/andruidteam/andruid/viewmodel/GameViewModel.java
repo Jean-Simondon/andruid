@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.andruidteam.andruid.app.AndruidApp;
 import com.andruidteam.andruid.app.DataRepository;
 import com.andruidteam.andruid.db.entity.GameEntity;
+import com.andruidteam.andruid.ui.fragment.codex.CodexResultAdapter;
 
 public class GameViewModel extends AndroidViewModel {
 
@@ -17,12 +18,19 @@ public class GameViewModel extends AndroidViewModel {
 
     private final GameEntity mGame;
 
+    private DataRepository mRepository;
+
     private final int mGameId;
+
+    private CodexResultAdapter mCodexResultAdapter;
+
+    private String mCurrentCodexSearch;
 
     public GameViewModel(@NonNull Application application, DataRepository repository, final int gameId) {
         super(application);
         mGameId = gameId;
         mGame = repository.getGameById(mGameId);
+        mRepository = repository;
     }
 
     /**
@@ -30,6 +38,26 @@ public class GameViewModel extends AndroidViewModel {
      */
     public GameEntity getGame() {
         return mGame;
+    }
+
+    public DataRepository getRepository() {
+        return mRepository;
+    }
+
+    public void setCurrentCodexSearch(String search) {
+        this.mCurrentCodexSearch = search;
+    }
+
+    public String getCurrentCodexSearch() {
+        return this.mCurrentCodexSearch;
+    }
+
+    public void setCodexResultAdapter(CodexResultAdapter cra) {
+        this.mCodexResultAdapter = cra;
+    }
+
+    public CodexResultAdapter getCodexResultAdapter() {
+        return this.mCodexResultAdapter;
     }
 
     /**

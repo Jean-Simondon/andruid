@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/detailCaractereFragment"
         android:name="com.andruidteam.andruid.ui.fragment.detailCaractere.DetailCaractereFragment"
-        android:label="@string/menu_detail_caractere"
+        android:label="@string/menu_detail_character"
         tools:layout="@layout/fragment_detail_caractere" />
 
     <fragment

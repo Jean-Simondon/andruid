@@ -15,7 +15,7 @@
         <item
             android:id="@+id/detailCaractereFragment"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_detail_caractere" />
+            android:title="@string/menu_detail_character" />
         <item
             android:id="@+id/journalFragment"
             android:icon="@drawable/ic_menu_gallery"

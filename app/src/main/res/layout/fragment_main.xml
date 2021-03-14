@@ -14,7 +14,7 @@
         android:layout_margin="80dp"
         android:layout_weight="1"
         android:id="@+id/toDMPicking"
-        android:text="@string/dungeons_master"
+        android:text="@string/dungeon_master"
         style="@style/ButtonStyle">
     </Button>
 
@@ -24,7 +24,7 @@
         android:layout_weight="1"
         android:layout_margin="80dp"
         android:id="@+id/toPCPicking"
-        android:text="@string/player_caracter"
+        android:text="@string/player_character"
         style="@style/ButtonStyle">
     </Button>
 

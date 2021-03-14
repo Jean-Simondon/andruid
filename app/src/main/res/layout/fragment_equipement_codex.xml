@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="@string/equipement_categories"/>
+            android:text="@string/equipment_categories"/>
 
         <Button
             android:id="@+id/weapons"
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="@string/equipement_packs"/>
+            android:text="@string/equipment_packs"/>
 
         <Button
             android:id="@+id/magic_items"

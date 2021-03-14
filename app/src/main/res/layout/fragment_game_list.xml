@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="80dp"
-            android:text="@string/cr_er_une_nouvelle_partie">
+            android:text="@string/create_a_new_campaign">
         </com.google.android.material.button.MaterialButton>
 
         <ListView

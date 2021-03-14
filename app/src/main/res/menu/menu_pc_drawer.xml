@@ -25,7 +25,7 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_inventory" />
         <item
-            android:id="@+id/skillFragment"
+            android:id="@+id/skillsFragment"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_skill" />
         <item

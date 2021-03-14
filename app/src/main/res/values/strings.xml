@@ -26,6 +26,8 @@
     <string name="menu_inventory">Inventory</string>
     <string name="menu_skill">Skill</string>
     <string name="menu_spell">Spell</string>
+    <string name="menu_skills">Skills</string>
+    <string name="menu_spells">Spells</string>
 
     <!-- Item Menu DM & PC -->
     <string name="menu_dice">Dice</string>
@@ -51,6 +53,16 @@
     <string name="material">Material:</string>
     <string name="higher_level">Higher level:</string>
     <string name="all_spells_switch">All spells</string>
+
+    <!-- Skill fragment-->
+    <string name="fragment_spell_list">Spell list</string>
+    <string name="fragment_skill_list">Skill list</string>
+    <string name="fragment_skill_input_placeholder">Enter a name of a Skill</string>
+    <string name="fragment_skill_all_skills">All skills</string>
+    <string name="fragment_skill_ability_score">Ability score:</string>
+    <string name="fragment_skill_description">Description:</string>
+    <string name="skill_fragment_add_skill_button">Add to your character</string>
+    <string name="skill_fragment_remove_skill_button">Remove to your character</string>
 
     <!-- PC -->
     <string name="title_activity_main_pc">MainPcActivity</string>
@@ -113,5 +125,6 @@
     <string name="rule_sections">Rule Sections</string>
     <string name="spell_list">Spell list</string>
     <string name="spells_maj">SPELLS</string>
+
 
 </resources>

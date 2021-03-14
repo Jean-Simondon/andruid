@@ -1,33 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable name="character"
-            type="com.andruidteam.andruid.db.entity.CharacterEntity"/>
+
+        <variable
+            name="skill"
+            type="com.andruidteam.andruid.ui.fragment.skill.SkillFragment.Skill" />
+        <variable
+            name="isAdded"
+            type="boolean" />
+
+        <import type="android.view.View" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.fragment.skill.SkillFragment">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text_skill"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/skillName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="70dp"
+                android:layout_marginBottom="10dp"
+                android:text="@{skill.name, default=name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                 />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{skill.abilityScore.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/abilityScoreTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="@string/fragment_skill_ability_score" />
+
+                <TextView
+                    android:id="@+id/skillAbilityScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{skill.abilityScore, default=abilityScore}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{skill.description.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/descriptionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:text="@string/fragment_skill_description" />
+
+                <TextView
+                    android:id="@+id/skillDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{skill.description, default=description}" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/addSkillButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@{!isAdded ? @string/skill_fragment_add_skill_button : @string/skill_fragment_remove_skill_button}" />
+        </LinearLayout>
+    </ScrollView>
 
 </layout>

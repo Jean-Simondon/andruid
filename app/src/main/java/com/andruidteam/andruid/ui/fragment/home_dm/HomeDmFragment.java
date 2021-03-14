@@ -1,6 +1,7 @@
 package com.andruidteam.andruid.ui.fragment.home_dm;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class HomeDmFragment extends Fragment {
     private GameViewModel viewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView: ");
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_dm, container, false);
         return mBinding.getRoot();
     }
@@ -35,6 +37,7 @@ public class HomeDmFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.d(TAG, "onViewCreated: ");
         viewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
         mBinding.setGame(viewModel.getGame());
 

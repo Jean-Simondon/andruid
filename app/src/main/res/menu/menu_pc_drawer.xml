@@ -29,7 +29,7 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_skill" />
         <item
-            android:id="@+id/spellFragment"
+            android:id="@+id/spellsFragment"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_spell" />
     </group>

@@ -1,40 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
-            name="isLoading"
+            name="spell"
+            type="com.andruidteam.andruid.ui.fragment.spell.SpellFragment.Spell" />
+        <variable
+            name="isAdded"
             type="boolean" />
+
+        <import type="android.view.View" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/searchName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginHorizontal="80dp"
-            android:hint="@string/spell_fragment_search_placeholder"
-            android:inputType="text"
-            android:singleLine="true"
-            android:imeOptions="actionDone">
-        </EditText>
+            android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/spells_list"
-            android:contentDescription="@string/spell_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="LinearLayoutManager"
-            />
+            <TextView
+                android:id="@+id/spellName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="70dp"
+                android:layout_marginBottom="10dp"
+                android:text="@{spell.name, default=name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                 />
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{spell.level.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/levelTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="@string/level" />
+
+                <TextView
+                    android:id="@+id/spellLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{spell.level, default=level}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{spell.range.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/rangeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_margin="10dp"
+                    android:text="@string/range" />
+
+                <TextView
+                    android:id="@+id/spellRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{spell.range , default=range}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{spell.duration.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/durationTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_margin="10dp"
+                    android:text="@string/duration" />
+
+                <TextView
+                    android:id="@+id/spellDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{spell.duration , default=duration}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{spell.castingTime.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/castingTimeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_margin="10dp"
+                    android:text="@string/casting_time" />
+
+                <TextView
+                    android:id="@+id/spellCastingTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{spell.castingTime , default=castingTime}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{spell.concentration.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/concentrationTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_margin="10dp"
+                    android:text="@string/concentration" />
+
+                <TextView
+                    android:id="@+id/spellConcentration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{spell.concentration , default=concentration}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{spell.school.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/schoolTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_margin="10dp"
+                    android:text="@string/school" />
+
+                <TextView
+                    android:id="@+id/spellSchool"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{spell.school , default=school}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{spell.material.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/materialTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_margin="10dp"
+                    android:text="@string/material" />
+
+                <TextView
+                    android:id="@+id/spellMaterial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{spell.material , default=material}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{spell.higherLevel.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/higherLevelTitle"
+                    android:layout_width="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/higher_level" />
+
+                <TextView
+                    android:id="@+id/spellHigherLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{spell.higherLevel , default=higherLevel}" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{spell.description.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/descriptionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:text="@string/spell_fragment_description_title" />
+
+                <TextView
+                    android:id="@+id/spellDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{spell.description, default=description}" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/addSpellButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@{!isAdded ? @string/spell_fragment_add_spell_button : @string/spell_fragment_remove_spell_button}" />
+        </LinearLayout>
+    </ScrollView>
 
 </layout>

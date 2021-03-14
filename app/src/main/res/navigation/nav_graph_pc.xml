@@ -44,6 +44,16 @@
         tools:layout="@layout/fragment_skill" />
 
     <fragment
+        android:id="@+id/spellsFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.spell.SpellsFragment"
+        android:label="@string/menu_spell"
+        tools:layout="@layout/fragment_spells" >
+        <action
+            android:id="@+id/action_spellsFragment_to_spellFragment"
+            app:destination="@id/spellFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/spellFragment"
         android:name="com.andruidteam.andruid.ui.fragment.spell.SpellFragment"
         android:label="@string/menu_spell"

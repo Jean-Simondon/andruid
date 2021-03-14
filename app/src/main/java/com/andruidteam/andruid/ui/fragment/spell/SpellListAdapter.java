@@ -44,6 +44,10 @@ public class SpellListAdapter extends BaseAdapter {
         return spells.get(keys.get(position));
     }
 
+    public String getItemKey(int position) {
+        return keys.get(position);
+    }
+
     @Override
     public long getItemId(int position) {
         return position;

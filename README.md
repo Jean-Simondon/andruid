@@ -1,7 +1,7 @@
 # andruid
 A android app project
 
-Le projet d'application Android a été réalisé dans le cadre de la formation APIDAE de l'IUT de Montpellier Sète.
+Le projet d'application AnDruid a été réalisé dans le cadre de la formation APIDAE de l'IUT de Montpellier Sète.
 
 Elle compte pour participant Jean Simondon, Basile Savouret, Camille Bernadas et Romain Cadarsi.
 

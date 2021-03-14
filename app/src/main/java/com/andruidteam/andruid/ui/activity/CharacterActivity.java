@@ -46,7 +46,7 @@ public class CharacterActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view_pc); // récupération du panneau menu latérale (navigation view)
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.HomePcFragment, R.id.diceFragment, R.id.detailCaractereFragment, R.id.inventoryFragment, R.id.journalFragment, R.id.skillFragment, R.id.spellFragment)
+                R.id.HomePcFragment, R.id.diceFragment, R.id.detailCaractereFragment, R.id.inventoryFragment, R.id.journalFragment, R.id.skillsFragment, R.id.spellFragment)
                 .setOpenableLayout(mDrawerLayout)
                 .build(); // connexion des éléments du menu à la barre d'action pour voir s'afficher le nom du fragment courant
 

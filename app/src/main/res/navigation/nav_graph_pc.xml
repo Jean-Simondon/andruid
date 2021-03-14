@@ -38,6 +38,16 @@
     </fragment>
 
     <fragment
+        android:id="@+id/skillsFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.skill.SkillsFragment"
+        android:label="@string/menu_skills"
+        tools:layout="@layout/fragment_skills" >
+        <action
+            android:id="@+id/action_skillsFragment_to_skillFragment"
+            app:destination="@id/skillFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/skillFragment"
         android:name="com.andruidteam.andruid.ui.fragment.skill.SkillFragment"
         android:label="@string/menu_skill"
@@ -46,7 +56,7 @@
     <fragment
         android:id="@+id/spellsFragment"
         android:name="com.andruidteam.andruid.ui.fragment.spell.SpellsFragment"
-        android:label="@string/menu_spell"
+        android:label="@string/menu_spells"
         tools:layout="@layout/fragment_spells" >
         <action
             android:id="@+id/action_spellsFragment_to_spellFragment"

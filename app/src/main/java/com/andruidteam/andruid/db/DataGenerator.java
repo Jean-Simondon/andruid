@@ -1,5 +1,7 @@
 package com.andruidteam.andruid.db;
 
+import android.util.Log;
+
 import com.andruidteam.andruid.db.entity.CharacterEntity;
 import com.andruidteam.andruid.db.entity.GameEntity;
 
@@ -14,6 +16,8 @@ public class DataGenerator {
     public static final String TAG = "DataGenerator";
 
     public static ArrayList<CharacterEntity> generateCharacters() {
+
+        Log.d(TAG, "generateCharacters: ");
 
         ArrayList<CharacterEntity> listCharacter = new ArrayList<>();
 
@@ -57,6 +61,8 @@ public class DataGenerator {
     }
 
     public static ArrayList<GameEntity> generateGames() {
+
+        Log.d(TAG, "generateGames: ");
 
         ArrayList<GameEntity> listGame = new ArrayList<>();
 

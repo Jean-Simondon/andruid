@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Repository handling the work with games and characters.
+ * DataReposotory afin de charger les viewModel en variable depuis la BDD, le DataGenerator, ou les appels API
  */
 public class DataRepository {
 
@@ -37,6 +37,7 @@ public class DataRepository {
     private static ArrayList<GameEntity> mGames;
 
     private DataRepository(final AppDatabase database) {
+        Log.d(TAG, "DataRepository: ");
         mDatabase = database;
         if(mCharacters == null) {
             Log.d(TAG, "DataRepository: chargement des characters");
@@ -108,12 +109,14 @@ public class DataRepository {
     // ---------------- API CALLS --------------------------------
 
     public void doGETJsonObject(String url, Response.Listener<JSONObject> responseListener, Context context) {
+        Log.d(TAG, "doGETJsonObject: ");
         RequestQueue queue = RequestQueueSingleton.getInstance(context);
         JsonObjectRequest req = Requests.GETJsonObject(url, responseListener);
         queue.add(req);
     }
 
     public void doGETJsonArray(String url, Response.Listener<JSONArray> responseListener, Context context) {
+        Log.d(TAG, "doGETJsonArray: ");
         RequestQueue queue = RequestQueueSingleton.getInstance(context);
         JsonArrayRequest req = Requests.GETJsonArray(url, responseListener);
         queue.add(req);

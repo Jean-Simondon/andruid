@@ -1,6 +1,7 @@
 package com.andruidteam.andruid.db;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
@@ -22,6 +23,8 @@ import java.util.List;
 @Database(entities = {GameEntity.class, CharacterEntity.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
 
+    public static final String TAG = "AppDatabase";
+
     private static AppDatabase sIntance;
 
     @VisibleForTesting
@@ -40,6 +43,7 @@ public abstract class AppDatabase extends RoomDatabase {
      * @return une instance singleton de la base de données
      */
     public static AppDatabase getInstance(final Context context, final AppExecutors executors) {
+        Log.d(TAG, "getInstance: ");
         if(sIntance == null) {
             synchronized (AppDatabase.class) {
                 if( sIntance == null ) {
@@ -57,6 +61,7 @@ public abstract class AppDatabase extends RoomDatabase {
      * The SQLite database is only created when it's accessed for the first time.
      */
     private static AppDatabase buildDatabase(final Context appContext, final AppExecutors executors) {
+        Log.d(TAG, "buildDatabase: ");
         return Room.databaseBuilder(appContext, AppDatabase.class, DATABASE_NAME)
                 .addCallback(new Callback() {
                     @Override
@@ -80,6 +85,7 @@ public abstract class AppDatabase extends RoomDatabase {
      * @param characters
      */
     private static void insertData(final AppDatabase database, final List<CharacterEntity> characters) {
+        Log.d(TAG, "insertData: ");
         database.runInTransaction(() -> {
             database.characterDao().insertAll(characters);
         });
@@ -89,12 +95,14 @@ public abstract class AppDatabase extends RoomDatabase {
      * Check whether the database already exists and expose it via {@link #getDatabaseCreated()}
      */
     private void updateDatabaseCreated(final Context context) {
+        Log.d(TAG, "updateDatabaseCreated: ");
         if (context.getDatabasePath(DATABASE_NAME).exists()) {
             setDatabaseCreated();
         }
     }
 
     private static void addDelay() {
+        Log.d(TAG, "addDelay: ");
         try {
             Thread.sleep(4000);
         } catch (InterruptedException ignored) {
@@ -104,7 +112,8 @@ public abstract class AppDatabase extends RoomDatabase {
     /**
      * Fait passer la valeur de la création de base de données à vrai
      */
-    private void setDatabaseCreated(){
+    private void setDatabaseCreated() {
+        Log.d(TAG, "setDatabaseCreated: ");
         mIsDatabaseCreated.postValue(true);
     }
 
@@ -113,6 +122,7 @@ public abstract class AppDatabase extends RoomDatabase {
      * @return
      */
     public LiveData<Boolean> getDatabaseCreated() {
+        Log.d(TAG, "getDatabaseCreated: ");
         return mIsDatabaseCreated;
     }
 }

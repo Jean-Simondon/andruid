@@ -62,12 +62,14 @@ public class CharacterActivity extends AppCompatActivity {
     // Mise en place du menu en haut à droite (settings)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG, "onCreateOptionsMenu: ");
         getMenuInflater().inflate(R.menu.main_pc, menu);
         return true;
     }
 
     @Override
     public boolean onSupportNavigateUp() {
+        Log.d(TAG, "onSupportNavigateUp: ");
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_pc);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();

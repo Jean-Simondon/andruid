@@ -60,12 +60,14 @@ public class DungMasterActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG, "onCreateOptionsMenu: ");
         getMenuInflater().inflate(R.menu.main_dm, menu);
         return true;
     }
 
     @Override
     public boolean onSupportNavigateUp() {
+        Log.d(TAG, "onSupportNavigateUp: ");
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_dm);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();

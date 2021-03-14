@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="CHARACTER DATA"
+            android:text="@string/character_data"
             android:textSize="40dp"
             android:layout_marginBottom="10dp"
             android:gravity="center_vertical|center_horizontal"/>
@@ -26,35 +26,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Ability Score"/>
+            android:text="@string/ability_score"/>
 
         <Button
             android:id="@+id/skills"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Skills"/>
+            android:text="@string/skills"/>
 
         <Button
             android:id="@+id/proficiencies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Proficiencies"/>
+            android:text="@string/proficiencies"/>
 
         <Button
             android:id="@+id/languages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Languages"/>
+            android:text="@string/languages"/>
 
         <Button
             android:id="@+id/alignments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Alignments"/>
+            android:text="@string/alignments"/>
 
     </LinearLayout>
 

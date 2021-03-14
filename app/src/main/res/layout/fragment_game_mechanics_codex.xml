@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="GAME MECHANICS"
+            android:text="@string/game_mechanics"
             android:textSize="35dp"
             android:layout_marginBottom="10dp"
             android:gravity="center_vertical|center_horizontal"/>
@@ -29,21 +29,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Conditions"/>
+            android:text="@string/conditions"/>
 
         <Button
             android:id="@+id/damage_types"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Damage Types"/>
+            android:text="@string/damage_types"/>
 
         <Button
             android:id="@+id/magic_schools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Magic Schools"/>
+            android:text="@string/magic_schools"/>
 
     </LinearLayout>
 

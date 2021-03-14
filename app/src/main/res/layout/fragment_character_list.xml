@@ -20,12 +20,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="20dp"
                 android:layout_marginHorizontal="80dp"
-                android:text="Créer un nouveaux personnage">
+                android:text="@string/cr_er_un_nouveaux_personnage">
             </com.google.android.material.button.MaterialButton>
 
             <ListView
                 android:id="@+id/characters_list"
-                android:contentDescription="Character list"
+                android:contentDescription="@string/character_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="LinearLayoutManager"/>

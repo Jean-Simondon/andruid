@@ -20,12 +20,12 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="80dp"
-            android:text="Créer une nouvelle partie">
+            android:text="@string/cr_er_une_nouvelle_partie">
         </com.google.android.material.button.MaterialButton>
 
         <ListView
             android:id="@+id/games_list"
-            android:contentDescription="Game list"
+            android:contentDescription="@string/game_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="LinearLayoutManager"

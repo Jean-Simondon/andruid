@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="EQUIPMENT"
+            android:text="@string/equipment"
             android:textSize="50dp"
             android:layout_marginBottom="10dp"
             android:gravity="center_vertical|center_horizontal"/>
@@ -25,49 +25,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Equipement Categories"/>
+            android:text="@string/equipement_categories"/>
 
         <Button
             android:id="@+id/weapons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Weapons"/>
+            android:text="@string/weapons"/>
 
         <Button
             android:id="@+id/armor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Armor"/>
+            android:text="@string/armor"/>
 
         <Button
             android:id="@+id/aventuring_gear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Adventuring Gear"/>
+            android:text="@string/adventuring_gear"/>
 
         <Button
             android:id="@+id/equipement_packs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Equipement Packs"/>
+            android:text="@string/equipement_packs"/>
 
         <Button
             android:id="@+id/magic_items"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Magic Items"/>
+            android:text="@string/magic_items"/>
 
         <Button
             android:id="@+id/weapon_properties"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Weapon Properties"/>
+            android:text="@string/weapon_properties"/>
 
     </LinearLayout>
 

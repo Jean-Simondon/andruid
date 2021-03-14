@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:text="CODEX RESULT LIST"
+                android:text="@string/codex_result_list"
                 android:textSize="50dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical|center_horizontal"/>

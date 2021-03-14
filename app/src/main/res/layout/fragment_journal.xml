@@ -20,14 +20,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="80dp"
                 android:layout_marginTop="60dp"
-                android:text="Créer une nouvelle notes">
+                android:text="@string/cr_er_une_nouvelle_notes">
             </com.google.android.material.button.MaterialButton>
 
             <EditText
                 android:id="@+id/newNotes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="écrire ici votre note"
+                android:hint="@string/crire_ici_votre_note"
                 android:minHeight="50dp"/>
 
             <ListView
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="LinearLayoutManager"
-                android:contentDescription="Notes list"
+                android:contentDescription="@string/notes_list"
                 android:textAlignment="center"/>
 
         </LinearLayout>

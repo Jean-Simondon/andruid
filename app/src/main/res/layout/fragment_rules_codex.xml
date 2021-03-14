@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="RULES"
+            android:text="@string/rules_maj"
             android:textSize="50dp"
             android:layout_marginBottom="10dp"
             android:gravity="center_vertical|center_horizontal"/>
@@ -25,14 +25,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Rules"/>
+            android:text="@string/rules"/>
 
         <Button
             android:id="@+id/rule_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:text="Rule Sections"/>
+            android:text="@string/rule_sections"/>
 
     </LinearLayout>
 

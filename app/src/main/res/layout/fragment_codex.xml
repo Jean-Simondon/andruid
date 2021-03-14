@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:text="CODEX"
+                android:text="@string/codex"
                 android:textSize="60dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical|center_horizontal"/>
@@ -30,56 +30,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:text="Character Data"/>
+                android:text="@string/character_data"/>
 
             <Button
                 android:id="@+id/classes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:text="Classes"/>
+                android:text="@string/classes"/>
 
             <Button
                 android:id="@+id/equipment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:text="Equipement"/>
+                android:text="@string/equipement"/>
 
             <Button
                 android:id="@+id/races"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:text="Races"/>
+                android:text="@string/races"/>
 
             <Button
                 android:id="@+id/spells"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:text="Spells"/>
+                android:text="@string/spells"/>
 
             <Button
                 android:id="@+id/monsters"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:text="Monsters"/>
+                android:text="@string/monsters"/>
 
             <Button
                 android:id="@+id/game_mechanics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:text="Game Mechanic"/>
+                android:text="@string/game_mechanic"/>
 
             <Button
                 android:id="@+id/rules"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:text="Rules"/>
+                android:text="@string/rules"/>
 
         </LinearLayout>
 

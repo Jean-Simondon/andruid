@@ -17,7 +17,6 @@ public class GameEntity implements Game {
     @ColumnInfo(name = "description")
     public String description;
 
-
     @Override
     public int getId() {
         return id;

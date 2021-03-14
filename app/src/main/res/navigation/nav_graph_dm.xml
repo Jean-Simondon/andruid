@@ -140,9 +140,6 @@
             tools:layout="@layout/fragment_codex_result_detail_item" >
         </fragment>
 
-
-
-
     <fragment
         android:id="@+id/diceFragment"
         android:name="com.andruidteam.andruid.ui.fragment.dice.DiceFragment"
@@ -170,8 +167,8 @@
 
     <fragment
         android:id="@+id/nav_script"
-        android:name="com.andruidteam.andruid.ui.fragment.dice.DiceFragment"
-        android:label="@string/menu_dice"
+        android:name="com.andruidteam.andruid.ui.fragment.script.ScriptFragment"
+        android:label="@string/menu_script"
         tools:layout="@layout/fragment_script" />
 
     <fragment

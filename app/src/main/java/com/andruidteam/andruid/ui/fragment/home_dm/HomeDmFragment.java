@@ -40,7 +40,7 @@ public class HomeDmFragment extends Fragment {
 
         /**
          * TO DO
-         *
+         * méthode pour modifier le contenu des champs textView, peut-être avec un OnLongClickListener
          */
 
     }

@@ -45,7 +45,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:contentDescription="@string/cd_character_name"
-                android:text="@{game.description, default=description}" />
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{game.description, default=description_description_description_description_description_description_description_description_description_description}" />
 
         </LinearLayout>
 

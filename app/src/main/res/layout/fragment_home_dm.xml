@@ -8,26 +8,32 @@
             type="com.andruidteam.andruid.db.entity.GameEntity"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal"
         tools:context=".ui.fragment.home_dm.HomeDmFragment">
 
         <TextView
-            android:id="@+id/text_home_dm"
-            android:layout_width="match_parent"
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_margin="5dp"
+            android:textSize="40dp"
+            android:inputType="textMultiLine"
+            android:text="@{game.title, default=Title}" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:inputType="textMultiLine"
+            android:text="@{game.description, default=description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description}" />
+
+    </LinearLayout>
 
 </layout>

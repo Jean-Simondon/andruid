@@ -28,6 +28,7 @@
     <string name="menu_spell">Spell</string>
     <string name="menu_skills">Skills</string>
     <string name="menu_spells">Spells</string>
+    <string name="menu_equipment">Equipment</string>
 
     <!-- Item Menu DM & PC -->
     <string name="menu_dice">Dice</string>
@@ -63,6 +64,21 @@
     <string name="fragment_skill_description">Description:</string>
     <string name="skill_fragment_add_skill_button">Add to your character</string>
     <string name="skill_fragment_remove_skill_button">Remove to your character</string>
+
+    <!-- Inventory fragment-->
+    <string name="fragment_inventory_all_equipments">All equipments</string>
+    <string name="fragment_inventory_enter_a_name">Enter a name</string>
+    <string name="fragment_inventory_list">Equipment list</string>
+    <string name="category">Category:</string>
+    <string name="cost">Cost:</string>
+    <string name="weight">Weight:</string>
+    <string name="quantity">Quantity:</string>
+    <string name="gear_category">Gear category:</string>
+    <string name="tool_category">Tool category:</string>
+    <string name="vehicle_category">Vehicle category:</string>
+    <string name="fragment_equipment_description">Description:</string>
+    <string name="equipment_fragment_add_equipment_button">Add to your character</string>
+    <string name="equipment_fragment_remove_equipment_button">Remove to your character</string>
 
     <!-- PC -->
     <string name="title_activity_main_pc">MainPcActivity</string>

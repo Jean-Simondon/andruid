@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "09c584eb7ff2994b66a5e30cefe6ad46",
+    "identityHash": "a7fc52bf154ad6f613e0b19af48a58c6",
     "entities": [
       {
         "tableName": "games",
@@ -38,7 +38,7 @@
       },
       {
         "tableName": "characters",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `firstName` TEXT, `lastName` TEXT, `race` TEXT, `classe` TEXT, `level` INTEGER NOT NULL, `spells` TEXT, `skills` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `firstName` TEXT, `lastName` TEXT, `race` TEXT, `classe` TEXT, `level` INTEGER NOT NULL, `spells` TEXT, `skills` TEXT, `equipments` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -87,6 +87,12 @@
             "columnName": "skills",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "equipments",
+            "columnName": "equipments",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -102,7 +108,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '09c584eb7ff2994b66a5e30cefe6ad46')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a7fc52bf154ad6f613e0b19af48a58c6')"
     ]
   }
 }

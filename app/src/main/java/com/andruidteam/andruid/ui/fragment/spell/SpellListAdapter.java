@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class SpellListAdapter extends BaseAdapter {
 
-    public static final String TAG = "CharacterListAdapter";
+    public static final String TAG = "SpellListAdapter";
 
     private Map<String, String> spells;
     private ArrayList<String> keys;

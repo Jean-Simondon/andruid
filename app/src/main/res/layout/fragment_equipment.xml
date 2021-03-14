@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="equipment"
+            type="com.andruidteam.andruid.ui.fragment.inventory.EquipmentFragment.Equipment" />
+        <variable
+            name="isAdded"
+            type="boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/equipmentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="70dp"
+                android:layout_marginBottom="10dp"
+                android:text="@{equipment.name, default=name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                 />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{equipment.category.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/categoryTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="@string/category" />
+
+                <TextView
+                    android:id="@+id/equipmentCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{equipment.category, default=category}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{equipment.cost.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/costTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="@string/cost" />
+
+                <TextView
+                    android:id="@+id/equipmentCost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{equipment.cost, default=cost}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{equipment.weight.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/weightTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="@string/weight" />
+
+                <TextView
+                    android:id="@+id/equipmentWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{equipment.weight, default=weight}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{equipment.quantity.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/quantityTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="@string/quantity" />
+
+                <TextView
+                    android:id="@+id/equipmentQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{equipment.quantity, default=quantity}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{equipment.gearCategory.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/gearCategoryTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="@string/gear_category" />
+
+                <TextView
+                    android:id="@+id/equipmentGearCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{equipment.gearCategory, default=gearCategory}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{equipment.toolCategory.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/toolCategoryTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="@string/tool_category" />
+
+                <TextView
+                    android:id="@+id/equipmentToolCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{equipment.toolCategory, default=toolCategory}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{equipment.vehicleCategory.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/vehicleCategoryTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="@string/vehicle_category" />
+
+                <TextView
+                    android:id="@+id/equipmentVehicleCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{equipment.vehicleCategory, default=vehicleCategory}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{equipment.description.isEmpty() ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/descriptionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:text="@string/fragment_equipment_description" />
+
+                <TextView
+                    android:id="@+id/equipmentDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@{equipment.description, default=description}" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/addequipmentButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@{!isAdded ? @string/equipment_fragment_add_equipment_button : @string/equipment_fragment_remove_equipment_button}" />
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

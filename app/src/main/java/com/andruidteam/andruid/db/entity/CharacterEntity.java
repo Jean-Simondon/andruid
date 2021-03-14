@@ -36,6 +36,10 @@ public class CharacterEntity implements Character {
     @ColumnInfo(name = "skills")
     public Map<String, String> skills;
 
+    @TypeConverters(StringListMapConverter.class)
+    @ColumnInfo(name = "equipments")
+    public Map<String, String> equipments;
+
     public Map<String, String> getSpells() {
         return spells;
     }
@@ -58,6 +62,18 @@ public class CharacterEntity implements Character {
 
     public void removeSkill(String skillKey) {
         skills.remove(skillKey);
+    }
+
+    public Map<String, String> getEquipments() {
+        return equipments;
+    }
+
+    public void addEquipment(String equipementKey, String equipementName) {
+        equipments.put(equipementKey, equipementName);
+    }
+
+    public void removeEquipment(String equipementKey) {
+        equipments.remove(equipementKey);
     }
 
     public int getId() {
@@ -121,6 +137,7 @@ public class CharacterEntity implements Character {
         this.level = level;
         this.spells = new HashMap<>();
         this.skills = new HashMap<>();
+        this.equipments = new HashMap<>();
     }
 
     public CharacterEntity(CharacterEntity character) {
@@ -132,6 +149,7 @@ public class CharacterEntity implements Character {
         this.level = character.getLevel();
         this.spells = character.getSpells();
         this.skills = character.getSkills();
+        this.equipments = character.getEquipments();
     }
 
 }

@@ -35,7 +35,18 @@
         android:name="com.andruidteam.andruid.ui.fragment.inventory.InventoryFragment"
         android:label="@string/menu_inventory"
         tools:layout="@layout/fragment_inventory" >
+        <action
+            android:id="@+id/action_inventoryFragment_to_equipmentFragment"
+            app:destination="@id/equipmentFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/equipmentFragment"
+        android:name="com.andruidteam.andruid.ui.fragment.inventory.EquipmentFragment"
+        android:label="@string/menu_equipment"
+        tools:layout="@layout/fragment_equipment" >
+    </fragment>
+
 
     <fragment
         android:id="@+id/skillsFragment"

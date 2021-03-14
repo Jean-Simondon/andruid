@@ -13,10 +13,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.andruidteam.andruid.R;
 import com.andruidteam.andruid.databinding.FragmentSpellBinding;
+import com.andruidteam.andruid.rds.Requests;
 import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SpellFragment extends Fragment {
     public static final String TAG = "SpellFragment";
@@ -65,30 +67,37 @@ public class SpellFragment extends Fragment {
             try {
                 spell = new Spell();
                 spell.setIndex(spellKey);
-                spell.setName(response.getString("name"));
-                spell.setRange(response.getString("range"));
+                spell.setName(Requests.getStringOrEmpty(response, "name"));
+                spell.setRange(Requests.getStringOrEmpty(response, "range"));
                 StringBuilder description = new StringBuilder();
-                JSONArray descriptions = response.getJSONArray("desc");
-                for (int i = 0; i < descriptions.length(); i++) {
-                    description.append(descriptions.getString(i)).append("\n");
+                JSONArray descriptions = Requests.getJSONArrayOrNull(response, "desc");
+                if (descriptions != null) {
+                    for (int i = 0; i < descriptions.length(); i++) {
+                        description.append(descriptions.getString(i)).append("\n");
+                    }
                 }
                 spell.setDescription(description.toString());
-                spell.setMaterial(response.getString("material"));
-                spell.setDuration(response.getString("duration"));
-                spell.setConcentration(response.getString("concentration"));
-                spell.setCastingTime(response.getString("casting_time"));
-                spell.setLevel(response.getString("level"));
-                spell.setSchool(response.getJSONObject("school").getString("name"));
+                spell.setMaterial(Requests.getStringOrEmpty(response, "material"));
+                spell.setDuration(Requests.getStringOrEmpty(response, "duration"));
+                spell.setConcentration(Requests.getStringOrEmpty(response, "concentration"));
+                spell.setCastingTime(Requests.getStringOrEmpty(response, "casting_time"));
+                spell.setLevel(Requests.getStringOrEmpty(response, "level"));
+                JSONObject school = Requests.getJSONObjectOrNull(response,"school");
+                spell.setSchool(school != null ? Requests.getStringOrEmpty(school,"name") : "");
                 StringBuilder components = new StringBuilder();
-                JSONArray componentsArray = response.getJSONArray("components");
-                for (int i = 0; i < componentsArray.length(); i++) {
-                    components.append(componentsArray.getString(i)).append(", ");
+                JSONArray componentsArray = Requests.getJSONArrayOrNull(response,"components");
+                if (componentsArray != null) {
+                    for (int i = 0; i < componentsArray.length(); i++) {
+                        components.append(componentsArray.getString(i)).append(", ");
+                    }
                 }
                 spell.setComponents(components.toString());
                 StringBuilder higherLevel = new StringBuilder();
-                JSONArray higherLevelArray = response.getJSONArray("higher_level");
-                for (int i = 0; i < higherLevelArray.length(); i++) {
-                    higherLevel.append(higherLevelArray.getString(i)).append("\n");
+                JSONArray higherLevelArray = Requests.getJSONArrayOrNull(response,"higher_level");
+                if (higherLevelArray != null) {
+                    for (int i = 0; i < higherLevelArray.length(); i++) {
+                        higherLevel.append(higherLevelArray.getString(i)).append("\n");
+                    }
                 }
                 spell.setHigherLevel(higherLevel.toString());
                 mBinding.setSpell(spell);

@@ -41,11 +41,12 @@ public class SpellsFragment extends Fragment {
 
     private Map<String, String> characterSpells = new HashMap<>();
 
+    private boolean checked;
+
     private SpellListAdapter mSpellListAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_spells, container, false);
-        ;
         return mBinding.getRoot();
     }
 
@@ -54,7 +55,12 @@ public class SpellsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(CharacterViewModel.class);
         characterSpells = viewModel.getCharacter().getSpells();
-        mSpellListAdapter = new SpellListAdapter(requireActivity(), characterSpells);
+        checked = false;
+        if (mSpellListAdapter == null) {
+            mSpellListAdapter = new SpellListAdapter(requireActivity(), characterSpells);
+        } else {
+            mSpellListAdapter.setSpells(characterSpells);
+        }
         mBinding.spellsList.setAdapter(mSpellListAdapter);
         getAllSpells();
 
@@ -67,7 +73,8 @@ public class SpellsFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String currentText = charSequence.toString().trim();
-                Map<String, String> filteredSpells = allSpells.entrySet()
+                Map<String, String> currentSpells = checked ? allSpells : characterSpells;
+                Map<String, String> filteredSpells = currentSpells.entrySet()
                         .stream()
                         .filter(entry -> entry.getValue().toLowerCase().startsWith(currentText.toLowerCase()))
                         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
@@ -86,6 +93,7 @@ public class SpellsFragment extends Fragment {
             } else {
                 mSpellListAdapter.setSpells(characterSpells);
             }
+            this.checked = checked;
         });
 
         mBinding.spellsList.setOnItemClickListener((parent, listView, position, id) -> {
@@ -98,7 +106,6 @@ public class SpellsFragment extends Fragment {
 
     private void getAllSpells() {
         if (allSpells.isEmpty()) {
-            mBinding.setIsLoading(true);
             viewModel.getRepository().doGETJsonObject("https://www.dnd5eapi.co/api/spells", response -> {
                 try {
                     JSONArray spellJsonArray = response.getJSONArray("results");
@@ -107,7 +114,6 @@ public class SpellsFragment extends Fragment {
                         String name = spellJsonArray.getJSONObject(i).getString("name");
                         allSpells.put(index, name);
                     }
-                    mBinding.setIsLoading(false);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

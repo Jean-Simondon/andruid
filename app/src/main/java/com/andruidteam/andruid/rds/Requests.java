@@ -8,6 +8,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Requests {
@@ -26,6 +27,30 @@ public class Requests {
                     Log.e("httpRequest", error.getMessage());
                     Log.getStackTraceString(error);
                 });
+    }
+
+    public static String getStringOrEmpty(JSONObject object, String index) {
+        try {
+            return object.getString(index);
+        } catch (JSONException e) {
+        }
+        return "";
+    }
+
+    public static JSONArray getJSONArrayOrNull(JSONObject object, String index) {
+        try {
+            return object.getJSONArray(index);
+        } catch (JSONException e) {
+        }
+        return null;
+    }
+
+    public static JSONObject getJSONObjectOrNull(JSONObject object, String index) {
+        try {
+            return object.getJSONObject(index);
+        } catch (JSONException e) {
+        }
+        return null;
     }
 
 }

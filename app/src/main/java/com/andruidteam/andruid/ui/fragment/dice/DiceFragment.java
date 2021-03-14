@@ -31,8 +31,6 @@ import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 import java.io.IOException;
 import java.util.Random;
 
-import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
-
 public class DiceFragment extends Fragment {
 
     public static final String TAG = "DiceFragment";

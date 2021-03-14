@@ -1,10 +1,13 @@
 package com.andruidteam.andruid.ui.fragment.home_dm;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,10 +44,45 @@ public class HomeDmFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
         mBinding.setGame(viewModel.getGame());
 
-        /**
-         * TO DO
-         * méthode pour modifier le contenu des champs textView, peut-être avec un OnLongClickListener
-         */
+        mBinding.title.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mBinding.title.setVisibility(View.GONE);
+                mBinding.titleEdit.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
+
+        mBinding.titleEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                mBinding.getGame().setTitle(s.toString());
+            }
+        });
+
+        mBinding.description.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+               mBinding.description.setVisibility(View.GONE);
+               mBinding.descriptionEdit.setVisibility(View.VISIBLE);
+               return false;
+            }
+        });
+
+        mBinding.descriptionEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                mBinding.getGame().setDescription(s.toString());
+            }
+        });
 
     }
 

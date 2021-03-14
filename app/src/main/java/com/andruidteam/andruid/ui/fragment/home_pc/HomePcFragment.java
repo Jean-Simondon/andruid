@@ -39,9 +39,12 @@ public class HomePcFragment extends Fragment {
         Log.d(TAG, "onViewCreated: ");
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(CharacterViewModel.class);
-
-
         mBinding.setCharacter(viewModel.getCharacter());
+
+
+
+
+
 
 //        mBinding.setLifecycleOwner(getViewLifecycleOwner());
 //        mBinding.CharacterViewModel(model);

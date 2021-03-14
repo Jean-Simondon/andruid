@@ -19,7 +19,8 @@ import com.andruidteam.andruid.databinding.FragmentJournalBinding;
 import com.andruidteam.andruid.viewmodel.CharacterViewModel;
 import com.andruidteam.andruid.viewmodel.GameViewModel;
 
-public class FightFragment extends Fragment {
+public class
+FightFragment extends Fragment {
 
     public static final String TAG = "FightFragment";
 

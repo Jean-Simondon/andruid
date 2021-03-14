@@ -26,13 +26,41 @@
             android:inputType="textMultiLine"
             android:text="@{game.title, default=Title}" />
 
+        <EditText
+            android:id="@+id/title_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:visibility="gone"
+            android:textSize="40dp"
+            android:inputType="textMultiLine"
+            android:text="@{game.title, default=Title}"/>
+
         <TextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="40dp"
+            android:textSize="20dp"
             android:inputType="textMultiLine"
             android:text="@{game.description, default=description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description}" />
+
+        <EditText
+            android:id="@+id/description_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:visibility="gone"
+            android:textSize="20dp"
+            android:inputType="textMultiLine"
+            android:text="@{game.description, default=description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description_description}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="10dp"
+            android:text="Long press on text to edit, leave the view to save"/>
 
     </LinearLayout>
 

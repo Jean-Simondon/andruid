@@ -36,4 +36,7 @@ Côté Maitre du jeu :
       Music : (A faire) un moyen d'accéder aux musique du smartphones pour diffuser des musiques d'ambiances (épique!) en fond de tâche pendant la partie
      
      
-     
+Persistence des données :
+  De ce côté, il a été mis en place une Base de données avec le framework android Room. Mais par manque de temps, l'usage de la base de données n'a pas été mené à son terme. Les données sont obtenus depuis le DataGenerator dans un premier temps, et sont stocké dans les ViewModel pour les nouvelles info produits lors de l'usage de l'appli. Il sera plus tard connecté le DataRepository avec la BDD. En fin de compte, la BDD devrait être quasiment fonctionnelle.
+
+
